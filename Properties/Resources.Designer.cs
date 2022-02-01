@@ -75,7 +75,7 @@ namespace iSlavici.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap myProfile_24px {
             get {
-                object obj = ResourceManager.GetObject("myProfile-24px", resourceCulture);
+                object obj = ResourceManager.GetObject("myProfile_24px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -85,7 +85,7 @@ namespace iSlavici.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap notesBtn_24px {
             get {
-                object obj = ResourceManager.GetObject("notesBtn-24px", resourceCulture);
+                object obj = ResourceManager.GetObject("notesBtn_24px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -115,7 +115,7 @@ namespace iSlavici.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap offline_24px {
             get {
-                object obj = ResourceManager.GetObject("offline-24px", resourceCulture);
+                object obj = ResourceManager.GetObject("offline_24px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -125,7 +125,7 @@ namespace iSlavici.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap online_24px {
             get {
-                object obj = ResourceManager.GetObject("online-24px", resourceCulture);
+                object obj = ResourceManager.GetObject("online_24px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -145,7 +145,7 @@ namespace iSlavici.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap presenceBtn_24px {
             get {
-                object obj = ResourceManager.GetObject("presenceBtn-24px", resourceCulture);
+                object obj = ResourceManager.GetObject("presenceBtn_24px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -1,6 +1,6 @@
-﻿namespace kryptonProject
+﻿namespace classbook
 {
-    partial class loginForm
+    partial class Login
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(loginForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.panelLogin = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.checkbuttonRemember = new ComponentFactory.Krypton.Toolkit.KryptonCheckButton();
             this.kryptonLabel1 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
@@ -71,6 +71,7 @@
             this.checkbuttonRemember.Size = new System.Drawing.Size(17, 17);
             this.checkbuttonRemember.TabIndex = 7;
             this.checkbuttonRemember.Values.Text = "";
+            this.checkbuttonRemember.Click += new System.EventHandler(this.CheckbuttonRemember_Click);
             // 
             // kryptonLabel1
             // 
@@ -127,6 +128,7 @@
             this.buttonLogin.Size = new System.Drawing.Size(90, 25);
             this.buttonLogin.TabIndex = 2;
             this.buttonLogin.Values.Text = "LOGIN";
+            this.buttonLogin.Click += new System.EventHandler(this.ButtonLogin_Click);
             // 
             // labelPassword
             // 
@@ -148,7 +150,7 @@
             this.labelUsername.TabIndex = 0;
             this.labelUsername.Values.Text = "Username:";
             // 
-            // loginForm
+            // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -157,10 +159,10 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "loginForm";
+            this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "iSlavici Classbook";
-            this.Load += new System.EventHandler(this.loginForm_Load);
+            this.Load += new System.EventHandler(this.LoginForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.panelLogin)).EndInit();
             this.panelLogin.ResumeLayout(false);
             this.panelLogin.PerformLayout();

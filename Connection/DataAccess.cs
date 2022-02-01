@@ -1,16 +1,17 @@
-﻿using System;
+﻿using iSlavici.Connection.Models.db;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace iSlavici.Connection
+namespace classbook.Connection
 {
-    internal class DataAccess
+    public class DataAccess
     {
-        private static string _ISLAVICI_DB_IP_ADDRESS = Helper.GetConnectionServer("iSlaviciDB");
-
+        private static readonly string _ISLAVICI_DB_IP_ADDRESS = Helper.GetConnectionServer("iSlaviciDB");
+        public static Account _loggedAccount;
 
         /// <summary>
         /// Represents the method that check if can be a connection to database ip address
@@ -20,7 +21,7 @@ namespace iSlavici.Connection
         {
             try
             {
-                string ipAddress = _ISLAVICI_DB_IP_ADDRESS;
+                string ipAddress = "google.ro";
 
                 Ping ping = new Ping();
                 PingOptions options = new PingOptions
@@ -40,9 +41,9 @@ namespace iSlavici.Connection
                 }
                 return false;
             }
-            catch (Exception)
+            catch 
             {
-                throw;
+                return false;
             }
         }
     }

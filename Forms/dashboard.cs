@@ -7,15 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using iSlavici.Classes;
+using classbook.Utility;
 
-namespace iSlavici.Forms
+namespace classbook
 {
-    public partial class dashboard : Form
+    public partial class Dashboard : Form
     {
-        private Resize _resize;
+        private readonly Resize _resize;
 
-        public dashboard()
+        public Dashboard()
         {
             this.DoubleBuffered = true;
 
@@ -42,6 +42,9 @@ namespace iSlavici.Forms
             if(navigator.Pages.Contains(pageCreateUser) && pageCreateUser.Visible == false) pageCreateUser.Visible = true; 
         }
 
-        
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

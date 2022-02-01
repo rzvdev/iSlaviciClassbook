@@ -1,6 +1,6 @@
-﻿namespace iSlavici.Forms
+﻿namespace classbook
 {
-    partial class dashboard
+    partial class Dashboard
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(dashboard));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.splitcontainer = new ComponentFactory.Krypton.Toolkit.KryptonSplitContainer();
             this.edgeDownPersonName = new ComponentFactory.Krypton.Toolkit.KryptonBorderEdge();
             this.panelAdmin = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
@@ -548,6 +548,7 @@
             this.btnCreate.StateNormal.Border.Rounding = -5;
             this.btnCreate.TabIndex = 24;
             this.btnCreate.Values.Text = "Create";
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // lblFirstNameCreate
             // 

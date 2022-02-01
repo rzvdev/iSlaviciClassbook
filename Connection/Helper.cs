@@ -1,7 +1,7 @@
 ﻿using System.Configuration;
 using System.Data.SqlClient;
 
-namespace iSlavici.Connection
+namespace classbook.Connection
 {
     internal class Helper
     {
