@@ -63,6 +63,16 @@ namespace iSlavici.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap accountancy_24px {
+            get {
+                object obj = ResourceManager.GetObject("accountancy-24px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap economy {
             get {
                 object obj = ResourceManager.GetObject("economy", resourceCulture);

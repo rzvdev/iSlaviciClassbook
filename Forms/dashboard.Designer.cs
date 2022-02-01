@@ -60,7 +60,7 @@
             this.selectProfileCalculatoare = new ComponentFactory.Krypton.Toolkit.KryptonCommand();
             this.kryptonContextMenuSeparator3 = new ComponentFactory.Krypton.Toolkit.KryptonContextMenuSeparator();
             this.kryptonContextMenuItem2 = new ComponentFactory.Krypton.Toolkit.KryptonContextMenuItem();
-            this.selectProfileEconomie = new ComponentFactory.Krypton.Toolkit.KryptonCommand();
+            this.selectProfileContabilitate = new ComponentFactory.Krypton.Toolkit.KryptonCommand();
             this.lblPasswordCreate = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.lblProfileSectionCreate = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.lblPersonSectionCreate = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
@@ -491,13 +491,13 @@
             // 
             // kryptonContextMenuItem2
             // 
-            this.kryptonContextMenuItem2.KryptonCommand = this.selectProfileEconomie;
+            this.kryptonContextMenuItem2.KryptonCommand = this.selectProfileContabilitate;
             this.kryptonContextMenuItem2.Text = "ECONOMIE";
             // 
-            // selectProfileEconomie
+            // selectProfileContabilitate
             // 
-            this.selectProfileEconomie.ImageSmall = global::iSlavici.Properties.Resources.economy;
-            this.selectProfileEconomie.Text = "ECONOMIE";
+            this.selectProfileContabilitate.ImageSmall = global::iSlavici.Properties.Resources.accountancy_24px;
+            this.selectProfileContabilitate.Text = "CONTABILITATE";
             // 
             // lblPasswordCreate
             // 
@@ -684,7 +684,7 @@
             this.txtboxPhoneCreate.TabIndex = 14;
             this.txtboxPhoneCreate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // dashboard
+            // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -693,7 +693,7 @@
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "dashboard";
+            this.Name = "Dashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dashboard";
             this.TopMost = true;
@@ -742,7 +742,7 @@
         private ComponentFactory.Krypton.Toolkit.KryptonCommand selectProfileCalculatoare;
         private ComponentFactory.Krypton.Toolkit.KryptonContextMenuSeparator kryptonContextMenuSeparator3;
         private ComponentFactory.Krypton.Toolkit.KryptonContextMenuItem kryptonContextMenuItem2;
-        private ComponentFactory.Krypton.Toolkit.KryptonCommand selectProfileEconomie;
+        private ComponentFactory.Krypton.Toolkit.KryptonCommand selectProfileContabilitate;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel lblPasswordCreate;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel lblPersonSectionCreate;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel lblFirstNameCreate;

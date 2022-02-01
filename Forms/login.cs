@@ -113,21 +113,6 @@ namespace classbook
         }
 
         /// <summary>
-        /// Represent the method that update the configuration file
-        /// </summary>
-        /// <param name="key"></param>
-        /// <param name="value"></param>
-        private void UpdateSetting(string key, string value)
-        {
-            Configuration configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            configuration.AppSettings.Settings[key].Value = value;
-            configuration.Save();
-
-            ConfigurationManager.RefreshSection("appSettings");
-
-        }
-
-        /// <summary>
         /// Represents the method that validate if the username or password meet specific the requirments
         /// no empty fiels, no spaces and is connection
         /// </summary>
@@ -179,15 +164,15 @@ namespace classbook
         {
             if (checkbuttonRemember.Checked)
             {
-                UpdateSetting("SAVED_USERNAME",textboxUsername.Text);
-                UpdateSetting("SAVED_PASSWORD",textboxPassword.Text);
-                UpdateSetting("REMEMBER_CHECKED","1");
+                Writer.UpdateConfig("SAVED_USERNAME",textboxUsername.Text);
+                Writer.UpdateConfig("SAVED_PASSWORD",textboxPassword.Text);
+                Writer.UpdateConfig("REMEMBER_CHECKED","1");
             }
             else
             {
-                UpdateSetting("SAVED_USERNAME","");
-                UpdateSetting("SAVED_PASSWORD","");
-                UpdateSetting("REMEMBER_CHECKED","");
+                Writer.UpdateConfig("SAVED_USERNAME","");
+                Writer.UpdateConfig("SAVED_PASSWORD","");
+                Writer.UpdateConfig("REMEMBER_CHECKED","");
             }
         }
     }

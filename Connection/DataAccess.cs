@@ -23,7 +23,7 @@ namespace classbook.Connection
         {
             try
             {
-                string ipAddress = "google.ro";
+                string ipAddress = _ISLAVICI_DB_IP_ADDRESS;
 
                 Ping ping = new Ping();
                 PingOptions options = new PingOptions
