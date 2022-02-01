@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using classbook.Connection;
 using classbook.Utility;
+using iSlavici.Utility;
+using System;
+using System.Windows.Forms;
 
 namespace classbook
 {
@@ -23,7 +18,7 @@ namespace classbook
             _resize = new Resize(this);
             Load += Dashboard_Load;
             Resize += Dashboard_Resize;
-
+            labelPersonName.Text = $"{DataAccess._loggedPerson.FirstName} { DataAccess._loggedPerson.LastName}";
         }
 
         private void Dashboard_Resize(object sender, EventArgs e)
@@ -33,13 +28,15 @@ namespace classbook
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
-           _resize.GetInitialSize();
-
+            _resize.GetInitialSize();
+            SendToBack();
+            ConnectionTick connectionTick = new ConnectionTick(null);
+            connectionTick.StartTimer();
         }
 
         private void btnProfiles_Click(object sender, EventArgs e)
         {
-            if(navigator.Pages.Contains(pageCreateUser) && pageCreateUser.Visible == false) pageCreateUser.Visible = true; 
+            if (navigator.Pages.Contains(pageCreateUser) && pageCreateUser.Visible == false) pageCreateUser.Visible = true;
         }
 
         private void btnCreate_Click(object sender, EventArgs e)

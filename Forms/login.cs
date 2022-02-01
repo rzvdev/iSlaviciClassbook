@@ -1,5 +1,6 @@
 ﻿using classbook.Connection;
 using iSlavici.Connection.Models.db;
+using iSlavici.Utility;
 using System;
 using System.Configuration;
 using System.Data;
@@ -10,9 +11,7 @@ namespace classbook
 {
     public partial class Login : Form
     {
-        private static bool _isConnection = false;
-        private SlaviciContext _dbContext = null;
-        private Timer _connection_timer = new Timer();
+        private static ConnectionTick _connectionTick;
 
         public Login()
         {
@@ -22,17 +21,11 @@ namespace classbook
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-           SetSavedAccount();
-
             try
             {
-                _connection_timer = new Timer
-                {
-                    Interval = int.Parse(ConfigurationManager.AppSettings["CHECK_CONNECTION_INTERVAL"])
-                };
-
-                _connection_timer.Tick += new EventHandler(Check_Connection_Tick);
-                _connection_timer.Start();
+                SetSavedAccount();
+                _connectionTick = new ConnectionTick(labelConnectionStatusPicture);
+                _connectionTick.StartTimer();
             }
             catch (Exception ex)
             {
@@ -55,68 +48,54 @@ namespace classbook
             }
         }
 
-        private void Check_Connection_Tick(object sender, EventArgs e)
-        {
-            try
-            {
-                if (DataAccess.TryConnection())
-                {
-                    labelConnectionStatusPicture.Image = iSlavici.Properties.Resources.online_24px;
-                    _isConnection = true;
-                    _dbContext = new SlaviciContext();
-                }
-                else
-                {
-                    if(_isConnection)
-                    {
-                        _connection_timer.Stop();
-                        MessageBox.Show("Connection was lost!","Connection lost",MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                        Environment.Exit(0);
-                    }
-
-                    labelConnectionStatusPicture.Image = iSlavici.Properties.Resources.offline_24px;
-                    _isConnection = false;
-                    _dbContext = null;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Check Connection Tick Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                throw ex;
-            }
-        }
-
+        /// <summary>
+        /// Represents the method for the button login
+        /// Which first validate the fields and then if it is all ok
+        /// then try to login 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonLogin_Click(object sender, EventArgs e)
         {
-            Validate(textboxUsername, textboxPassword);
-            if (_isConnection && TryLogin())
+            if (!Validate(textboxUsername, textboxPassword)) return;
+            if (DataAccess._isConnection && TryLogin())
             {
-                this.Hide();
+                _connectionTick.StopTimer();
+                Hide();
                 Dashboard dashboard = new Dashboard();
-                dashboard.Show();          
+                dashboard.ShowDialog();
+                Close();
             }
         }
 
-
-
-
         /// <summary>
-        /// Represents the method that return a account if that exist in database
+        /// Represents the method that return a account,person,role,profile if that exist in database
         /// </summary>
         private bool TryLogin()
         {
             try
             {
                 /// SEARCH FOR ACCOUNT IN DATABASE
-                Account searched = (from acc in _dbContext.Account
+                Account searchedAccount = (from acc in DataAccess._dbContext.Account
                                     where acc.Username == textboxUsername.Text &&
                                           acc.Password == textboxPassword.Text
                                     select acc).FirstOrDefault();
 
                 /// IF THE ACCOUNT SEARCHED EXIST THEN LOG IN
-                if (searched != null)
+                if (searchedAccount != null)
                 {
-                    DataAccess._loggedAccount = searched;
+                    DataAccess._loggedAccount = searchedAccount;
+                    DataAccess._loggedPerson = (from person in DataAccess._dbContext.Person
+                                                where person.Id == searchedAccount.PersonId
+                                                select person).First();
+                    DataAccess._loggedRole = (from role in DataAccess._dbContext.Role
+                                              where role.Id == searchedAccount.RoleId
+                                              select role).First();
+                    /// THE ADMINISTRATOR ROLE CANNOT HAVE PROFILE 
+                    DataAccess._loggedProfile = (from pro in DataAccess._dbContext.Profile
+                                                 where pro.Id == searchedAccount.ProfileId
+                                                 select pro).FirstOrDefault();
+
                     MessageBox.Show("You have successfully logged in!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     return true;
                 }
@@ -154,15 +133,15 @@ namespace classbook
         /// </summary>
         /// <param name="username"></param>
         /// <param name="password"></param>
-        private void Validate(ComponentFactory.Krypton.Toolkit.KryptonTextBox username, ComponentFactory.Krypton.Toolkit.KryptonTextBox password)
+        private bool Validate(ComponentFactory.Krypton.Toolkit.KryptonTextBox username, ComponentFactory.Krypton.Toolkit.KryptonTextBox password)
         {
             try
             {
                 /// CHECK IF HAVE CONNECTION TO THE INTERNET 
-                if (!_isConnection)
+                if (!DataAccess._isConnection)
                 {
                     MessageBox.Show("The connection is down.\nCheck your internet connection or the server is down!", "No connection", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                    return;
+                    return false;
                 }
 
                 /// CHECK IF USERNAME OR PASSWORD FIELDS IT IS NOT NULL
@@ -171,7 +150,7 @@ namespace classbook
                     MessageBox.Show("The username or password cannot be empty!", "Empty fields", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     username.Text = string.Empty;
                     password.Text = string.Empty;
-                    return;
+                    return false;
                 }
 
                 /// CHECK IF USERNAME OR PASSWORD FIELDS DOSENT CONTAINS WHITE SPACES 
@@ -180,14 +159,15 @@ namespace classbook
                     MessageBox.Show("The username or password cannot contain spaces!", "Spaces in fields", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     username.Text = string.Empty;
                     password.Text = string.Empty;
-                    return;
+                    return false;
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return false;
             }
+            return true;
         }
 
         /// <summary>

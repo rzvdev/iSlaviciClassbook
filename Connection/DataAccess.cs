@@ -1,10 +1,6 @@
 ﻿using iSlavici.Connection.Models.db;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.NetworkInformation;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace classbook.Connection
 {
@@ -12,6 +8,12 @@ namespace classbook.Connection
     {
         private static readonly string _ISLAVICI_DB_IP_ADDRESS = Helper.GetConnectionServer("iSlaviciDB");
         public static Account _loggedAccount;
+        public static Person _loggedPerson;
+        public static Profile _loggedProfile;
+        public static Role _loggedRole;
+
+        public static SlaviciContext _dbContext;
+        public static bool _isConnection;
 
         /// <summary>
         /// Represents the method that check if can be a connection to database ip address
@@ -41,7 +43,7 @@ namespace classbook.Connection
                 }
                 return false;
             }
-            catch 
+            catch
             {
                 return false;
             }

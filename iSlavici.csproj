@@ -191,6 +191,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Utility\ConnectionTick.cs" />
     <Compile Include="Utility\Resize.cs" />
     <Compile Include="Connection\DataAccess.cs" />
     <Compile Include="Connection\Helper.cs" />
