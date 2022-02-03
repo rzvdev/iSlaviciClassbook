@@ -48,7 +48,6 @@
             this.borderPersonSectionCreate = new ComponentFactory.Krypton.Toolkit.KryptonBorderEdge();
             this.borderAccountSectionCreate = new ComponentFactory.Krypton.Toolkit.KryptonBorderEdge();
             this.borderProfileYearSectionCreate = new ComponentFactory.Krypton.Toolkit.KryptonBorderEdge();
-            this.lblLastNameCreate = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.lblYearSectionCreate = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.lblAccountSectionCreate = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.numBtnYearCreate = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
@@ -65,7 +64,7 @@
             this.lblProfileSectionCreate = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.lblPersonSectionCreate = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.btnCreate = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.lblFirstNameCreate = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.lblFullNameCreate = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.radBtnAdminCreate = new ComponentFactory.Krypton.Toolkit.KryptonRadioButton();
             this.lblEmailCreate = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.lblPhoneCreate = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
@@ -74,8 +73,7 @@
             this.borderRoleSectionCreate = new ComponentFactory.Krypton.Toolkit.KryptonBorderEdge();
             this.txtboxPasswordCreate = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.lblRoleSectionCreate = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
-            this.txtboxFirstNameCreate = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
-            this.txtboxLastNameCreate = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.txtboxFullNameCreate = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.txtboxEmailCreate = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.txtboxPhoneCreate = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitcontainer)).BeginInit();
@@ -108,6 +106,7 @@
             // 
             this.splitcontainer.Panel1.Controls.Add(this.edgeDownPersonName);
             this.splitcontainer.Panel1.Controls.Add(this.panelAdmin);
+            this.splitcontainer.Panel1.Controls.Add(this.panelStudent);
             this.splitcontainer.Panel1.Controls.Add(this.labelPersonName);
             this.splitcontainer.Panel1.Controls.Add(this.labelWelcome);
             this.splitcontainer.Panel1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
@@ -118,7 +117,7 @@
             this.splitcontainer.Panel2.Controls.Add(this.navigator);
             this.splitcontainer.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.splitcontainer.Size = new System.Drawing.Size(800, 450);
-            this.splitcontainer.SplitterDistance = 104;
+            this.splitcontainer.SplitterDistance = 101;
             this.splitcontainer.SplitterWidth = 0;
             this.splitcontainer.TabIndex = 0;
             // 
@@ -130,7 +129,7 @@
             this.edgeDownPersonName.BorderStyle = ComponentFactory.Krypton.Toolkit.PaletteBorderStyle.ButtonStandalone;
             this.edgeDownPersonName.Location = new System.Drawing.Point(0, 72);
             this.edgeDownPersonName.Name = "edgeDownPersonName";
-            this.edgeDownPersonName.Size = new System.Drawing.Size(110, 1);
+            this.edgeDownPersonName.Size = new System.Drawing.Size(107, 1);
             // 
             // panelAdmin
             // 
@@ -140,13 +139,12 @@
             this.panelAdmin.Controls.Add(this.btnNotes);
             this.panelAdmin.Controls.Add(this.btnProfiles);
             this.panelAdmin.Controls.Add(this.btnPresence);
-            this.panelAdmin.Controls.Add(this.panelStudent);
-            this.panelAdmin.Location = new System.Drawing.Point(0, 73);
+            this.panelAdmin.Location = new System.Drawing.Point(0, 92);
             this.panelAdmin.Name = "panelAdmin";
             this.panelAdmin.Palette = this.paletteRolePanel;
             this.panelAdmin.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
             this.panelAdmin.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.PanelRibbonInactive;
-            this.panelAdmin.Size = new System.Drawing.Size(104, 377);
+            this.panelAdmin.Size = new System.Drawing.Size(101, 377);
             this.panelAdmin.TabIndex = 4;
             // 
             // btnNotes
@@ -158,7 +156,7 @@
             this.btnNotes.Name = "btnNotes";
             this.btnNotes.Palette = this.paletteRolePanel;
             this.btnNotes.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
-            this.btnNotes.Size = new System.Drawing.Size(100, 32);
+            this.btnNotes.Size = new System.Drawing.Size(97, 32);
             this.btnNotes.StateNormal.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
@@ -180,14 +178,14 @@
             this.btnProfiles.Name = "btnProfiles";
             this.btnProfiles.Palette = this.paletteRolePanel;
             this.btnProfiles.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
-            this.btnProfiles.Size = new System.Drawing.Size(100, 32);
+            this.btnProfiles.Size = new System.Drawing.Size(97, 32);
             this.btnProfiles.StateNormal.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.btnProfiles.TabIndex = 0;
             this.btnProfiles.Values.Image = global::iSlavici.Properties.Resources.myProfile_24px;
             this.btnProfiles.Values.Text = "Profiles";
-            this.btnProfiles.Click += new System.EventHandler(this.btnProfiles_Click);
+            this.btnProfiles.Click += new System.EventHandler(this.BtnProfiles_Click);
             // 
             // btnPresence
             // 
@@ -198,7 +196,7 @@
             this.btnPresence.Name = "btnPresence";
             this.btnPresence.Palette = this.paletteRolePanel;
             this.btnPresence.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
-            this.btnPresence.Size = new System.Drawing.Size(100, 32);
+            this.btnPresence.Size = new System.Drawing.Size(97, 32);
             this.btnPresence.StateNormal.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
@@ -208,18 +206,15 @@
             // 
             // panelStudent
             // 
-            this.panelStudent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.panelStudent.Controls.Add(this.btnMyPresence);
             this.panelStudent.Controls.Add(this.btnMyNotes);
             this.panelStudent.Controls.Add(this.btnMyProfile);
-            this.panelStudent.Location = new System.Drawing.Point(0, 0);
+            this.panelStudent.Location = new System.Drawing.Point(0, 92);
             this.panelStudent.Name = "panelStudent";
             this.panelStudent.Palette = this.paletteRolePanel;
             this.panelStudent.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
             this.panelStudent.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.PanelRibbonInactive;
-            this.panelStudent.Size = new System.Drawing.Size(104, 377);
+            this.panelStudent.Size = new System.Drawing.Size(101, 377);
             this.panelStudent.TabIndex = 3;
             // 
             // btnMyPresence
@@ -231,7 +226,7 @@
             this.btnMyPresence.Name = "btnMyPresence";
             this.btnMyPresence.Palette = this.paletteRolePanel;
             this.btnMyPresence.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
-            this.btnMyPresence.Size = new System.Drawing.Size(100, 32);
+            this.btnMyPresence.Size = new System.Drawing.Size(97, 32);
             this.btnMyPresence.StateNormal.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
@@ -248,7 +243,7 @@
             this.btnMyNotes.Name = "btnMyNotes";
             this.btnMyNotes.Palette = this.paletteRolePanel;
             this.btnMyNotes.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
-            this.btnMyNotes.Size = new System.Drawing.Size(100, 32);
+            this.btnMyNotes.Size = new System.Drawing.Size(97, 32);
             this.btnMyNotes.StateNormal.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
@@ -265,7 +260,7 @@
             this.btnMyProfile.Name = "btnMyProfile";
             this.btnMyProfile.Palette = this.paletteRolePanel;
             this.btnMyProfile.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
-            this.btnMyProfile.Size = new System.Drawing.Size(100, 32);
+            this.btnMyProfile.Size = new System.Drawing.Size(97, 32);
             this.btnMyProfile.StateNormal.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
@@ -280,10 +275,9 @@
             this.labelPersonName.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.labelPersonName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(76)))));
             this.labelPersonName.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.SuperTip;
-            this.labelPersonName.Location = new System.Drawing.Point(0, 26);
+            this.labelPersonName.Location = new System.Drawing.Point(-2, 26);
             this.labelPersonName.Name = "labelPersonName";
             this.labelPersonName.Size = new System.Drawing.Size(106, 31);
-            this.labelPersonName.Text = "Lungu Razvan ";
             this.labelPersonName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.labelPersonName.UseCompatibleTextRendering = true;
             this.labelPersonName.UseMnemonic = false;
@@ -296,7 +290,7 @@
             this.labelWelcome.Location = new System.Drawing.Point(2, 3);
             this.labelWelcome.Name = "labelWelcome";
             this.labelWelcome.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
-            this.labelWelcome.Size = new System.Drawing.Size(101, 20);
+            this.labelWelcome.Size = new System.Drawing.Size(97, 20);
             this.labelWelcome.TabIndex = 0;
             this.labelWelcome.Values.Text = "      Welcome,";
             // 
@@ -315,7 +309,7 @@
             this.navigator.Pages.AddRange(new ComponentFactory.Krypton.Navigator.KryptonPage[] {
             this.pageCreateUser});
             this.navigator.SelectedIndex = 0;
-            this.navigator.Size = new System.Drawing.Size(696, 450);
+            this.navigator.Size = new System.Drawing.Size(699, 450);
             this.navigator.TabIndex = 0;
             this.navigator.Text = "kryptonNavigator1";
             // 
@@ -325,7 +319,6 @@
             this.pageCreateUser.Controls.Add(this.borderPersonSectionCreate);
             this.pageCreateUser.Controls.Add(this.borderAccountSectionCreate);
             this.pageCreateUser.Controls.Add(this.borderProfileYearSectionCreate);
-            this.pageCreateUser.Controls.Add(this.lblLastNameCreate);
             this.pageCreateUser.Controls.Add(this.lblYearSectionCreate);
             this.pageCreateUser.Controls.Add(this.lblAccountSectionCreate);
             this.pageCreateUser.Controls.Add(this.numBtnYearCreate);
@@ -335,7 +328,7 @@
             this.pageCreateUser.Controls.Add(this.lblProfileSectionCreate);
             this.pageCreateUser.Controls.Add(this.lblPersonSectionCreate);
             this.pageCreateUser.Controls.Add(this.btnCreate);
-            this.pageCreateUser.Controls.Add(this.lblFirstNameCreate);
+            this.pageCreateUser.Controls.Add(this.lblFullNameCreate);
             this.pageCreateUser.Controls.Add(this.radBtnAdminCreate);
             this.pageCreateUser.Controls.Add(this.lblEmailCreate);
             this.pageCreateUser.Controls.Add(this.lblPhoneCreate);
@@ -344,15 +337,14 @@
             this.pageCreateUser.Controls.Add(this.borderRoleSectionCreate);
             this.pageCreateUser.Controls.Add(this.txtboxPasswordCreate);
             this.pageCreateUser.Controls.Add(this.lblRoleSectionCreate);
-            this.pageCreateUser.Controls.Add(this.txtboxFirstNameCreate);
-            this.pageCreateUser.Controls.Add(this.txtboxLastNameCreate);
+            this.pageCreateUser.Controls.Add(this.txtboxFullNameCreate);
             this.pageCreateUser.Controls.Add(this.txtboxEmailCreate);
             this.pageCreateUser.Controls.Add(this.txtboxPhoneCreate);
             this.pageCreateUser.Flags = 65534;
             this.pageCreateUser.LastVisibleSet = true;
             this.pageCreateUser.MinimumSize = new System.Drawing.Size(50, 50);
             this.pageCreateUser.Name = "pageCreateUser";
-            this.pageCreateUser.Size = new System.Drawing.Size(692, 370);
+            this.pageCreateUser.Size = new System.Drawing.Size(695, 370);
             this.pageCreateUser.Text = "Create User";
             this.pageCreateUser.TextDescription = "Here you can create accounts ";
             this.pageCreateUser.TextTitle = "Profiles";
@@ -364,7 +356,7 @@
             // 
             this.borderPersonSectionCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.borderPersonSectionCreate.AutoSize = false;
-            this.borderPersonSectionCreate.Location = new System.Drawing.Point(408, 47);
+            this.borderPersonSectionCreate.Location = new System.Drawing.Point(409, 47);
             this.borderPersonSectionCreate.Name = "borderPersonSectionCreate";
             this.borderPersonSectionCreate.Size = new System.Drawing.Size(224, 1);
             this.borderPersonSectionCreate.Text = "kryptonBorderEdge1";
@@ -373,7 +365,7 @@
             // 
             this.borderAccountSectionCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.borderAccountSectionCreate.AutoSize = false;
-            this.borderAccountSectionCreate.Location = new System.Drawing.Point(63, 47);
+            this.borderAccountSectionCreate.Location = new System.Drawing.Point(64, 47);
             this.borderAccountSectionCreate.Name = "borderAccountSectionCreate";
             this.borderAccountSectionCreate.Size = new System.Drawing.Size(224, 1);
             this.borderAccountSectionCreate.Text = "kryptonBorderEdge2";
@@ -382,27 +374,17 @@
             // 
             this.borderProfileYearSectionCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.borderProfileYearSectionCreate.AutoSize = false;
-            this.borderProfileYearSectionCreate.Location = new System.Drawing.Point(61, 261);
+            this.borderProfileYearSectionCreate.Location = new System.Drawing.Point(62, 263);
             this.borderProfileYearSectionCreate.Name = "borderProfileYearSectionCreate";
             this.borderProfileYearSectionCreate.Size = new System.Drawing.Size(224, 1);
             this.borderProfileYearSectionCreate.Text = "kryptonBorderEdge1";
-            // 
-            // lblLastNameCreate
-            // 
-            this.lblLastNameCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblLastNameCreate.Location = new System.Drawing.Point(409, 96);
-            this.lblLastNameCreate.Name = "lblLastNameCreate";
-            this.lblLastNameCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
-            this.lblLastNameCreate.Size = new System.Drawing.Size(71, 20);
-            this.lblLastNameCreate.TabIndex = 6;
-            this.lblLastNameCreate.Values.Text = "Last Name:";
             // 
             // lblYearSectionCreate
             // 
             this.lblYearSectionCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblYearSectionCreate.AutoSize = false;
             this.lblYearSectionCreate.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.SuperTip;
-            this.lblYearSectionCreate.Location = new System.Drawing.Point(229, 236);
+            this.lblYearSectionCreate.Location = new System.Drawing.Point(230, 238);
             this.lblYearSectionCreate.Name = "lblYearSectionCreate";
             this.lblYearSectionCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.lblYearSectionCreate.Size = new System.Drawing.Size(38, 26);
@@ -413,7 +395,7 @@
             // 
             this.lblAccountSectionCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblAccountSectionCreate.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.SuperTip;
-            this.lblAccountSectionCreate.Location = new System.Drawing.Point(73, 22);
+            this.lblAccountSectionCreate.Location = new System.Drawing.Point(74, 22);
             this.lblAccountSectionCreate.Name = "lblAccountSectionCreate";
             this.lblAccountSectionCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.lblAccountSectionCreate.Size = new System.Drawing.Size(60, 26);
@@ -423,7 +405,7 @@
             // numBtnYearCreate
             // 
             this.numBtnYearCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.numBtnYearCreate.Location = new System.Drawing.Point(225, 268);
+            this.numBtnYearCreate.Location = new System.Drawing.Point(226, 268);
             this.numBtnYearCreate.Maximum = new decimal(new int[] {
             4,
             0,
@@ -448,7 +430,7 @@
             // lblUsernameCreate
             // 
             this.lblUsernameCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblUsernameCreate.Location = new System.Drawing.Point(67, 64);
+            this.lblUsernameCreate.Location = new System.Drawing.Point(68, 65);
             this.lblUsernameCreate.Name = "lblUsernameCreate";
             this.lblUsernameCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.lblUsernameCreate.Size = new System.Drawing.Size(68, 20);
@@ -459,7 +441,7 @@
             // 
             this.droBtnProfilesCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.droBtnProfilesCreate.KryptonContextMenu = this.profilesContextMenu;
-            this.droBtnProfilesCreate.Location = new System.Drawing.Point(62, 267);
+            this.droBtnProfilesCreate.Location = new System.Drawing.Point(63, 268);
             this.droBtnProfilesCreate.Name = "droBtnProfilesCreate";
             this.droBtnProfilesCreate.Size = new System.Drawing.Size(133, 25);
             this.droBtnProfilesCreate.TabIndex = 28;
@@ -488,6 +470,7 @@
             this.selectProfileCalculatoare.ImageLarge = global::iSlavici.Properties.Resources.pc;
             this.selectProfileCalculatoare.ImageSmall = global::iSlavici.Properties.Resources.pc;
             this.selectProfileCalculatoare.Text = "CALCULATORE";
+            this.selectProfileCalculatoare.Execute += new System.EventHandler(this.SelectProfileCalculatoare_Execute);
             // 
             // kryptonContextMenuItem2
             // 
@@ -498,6 +481,7 @@
             // 
             this.selectProfileContabilitate.ImageSmall = global::iSlavici.Properties.Resources.accountancy_24px;
             this.selectProfileContabilitate.Text = "CONTABILITATE";
+            this.selectProfileContabilitate.Execute += new System.EventHandler(this.SelectProfileContabilitate_Execute);
             // 
             // lblPasswordCreate
             // 
@@ -513,7 +497,7 @@
             // 
             this.lblProfileSectionCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblProfileSectionCreate.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.SuperTip;
-            this.lblProfileSectionCreate.Location = new System.Drawing.Point(75, 236);
+            this.lblProfileSectionCreate.Location = new System.Drawing.Point(76, 238);
             this.lblProfileSectionCreate.Name = "lblProfileSectionCreate";
             this.lblProfileSectionCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.lblProfileSectionCreate.Size = new System.Drawing.Size(51, 26);
@@ -524,7 +508,7 @@
             // 
             this.lblPersonSectionCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblPersonSectionCreate.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.SuperTip;
-            this.lblPersonSectionCreate.Location = new System.Drawing.Point(420, 22);
+            this.lblPersonSectionCreate.Location = new System.Drawing.Point(421, 22);
             this.lblPersonSectionCreate.Name = "lblPersonSectionCreate";
             this.lblPersonSectionCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.lblPersonSectionCreate.Size = new System.Drawing.Size(94, 26);
@@ -535,7 +519,7 @@
             // 
             this.btnCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnCreate.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnCreate.Location = new System.Drawing.Point(301, 325);
+            this.btnCreate.Location = new System.Drawing.Point(302, 325);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.btnCreate.Size = new System.Drawing.Size(90, 25);
@@ -548,32 +532,33 @@
             this.btnCreate.StateNormal.Border.Rounding = -5;
             this.btnCreate.TabIndex = 24;
             this.btnCreate.Values.Text = "Create";
-            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
+            this.btnCreate.Click += new System.EventHandler(this.BtnCreate_Click);
             // 
-            // lblFirstNameCreate
+            // lblFullNameCreate
             // 
-            this.lblFirstNameCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblFirstNameCreate.Location = new System.Drawing.Point(408, 64);
-            this.lblFirstNameCreate.Name = "lblFirstNameCreate";
-            this.lblFirstNameCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
-            this.lblFirstNameCreate.Size = new System.Drawing.Size(72, 20);
-            this.lblFirstNameCreate.TabIndex = 5;
-            this.lblFirstNameCreate.Values.Text = "First Name:";
+            this.lblFullNameCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblFullNameCreate.Location = new System.Drawing.Point(412, 65);
+            this.lblFullNameCreate.Name = "lblFullNameCreate";
+            this.lblFullNameCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
+            this.lblFullNameCreate.Size = new System.Drawing.Size(68, 20);
+            this.lblFullNameCreate.TabIndex = 5;
+            this.lblFullNameCreate.Values.Text = "Full Name:";
             // 
             // radBtnAdminCreate
             // 
             this.radBtnAdminCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.radBtnAdminCreate.Location = new System.Drawing.Point(169, 189);
+            this.radBtnAdminCreate.Location = new System.Drawing.Point(170, 190);
             this.radBtnAdminCreate.Name = "radBtnAdminCreate";
             this.radBtnAdminCreate.Size = new System.Drawing.Size(118, 20);
             this.radBtnAdminCreate.TabIndex = 23;
             this.radBtnAdminCreate.Values.Text = "ADMINISTRATOR";
+            this.radBtnAdminCreate.CheckedChanged += new System.EventHandler(this.radBtnAdminCreate_CheckedChanged);
             // 
             // lblEmailCreate
             // 
             this.lblEmailCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblEmailCreate.AutoSize = false;
-            this.lblEmailCreate.Location = new System.Drawing.Point(409, 128);
+            this.lblEmailCreate.Location = new System.Drawing.Point(410, 95);
             this.lblEmailCreate.Name = "lblEmailCreate";
             this.lblEmailCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.lblEmailCreate.Size = new System.Drawing.Size(71, 20);
@@ -584,7 +569,7 @@
             // 
             this.lblPhoneCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblPhoneCreate.AutoSize = false;
-            this.lblPhoneCreate.Location = new System.Drawing.Point(409, 160);
+            this.lblPhoneCreate.Location = new System.Drawing.Point(410, 125);
             this.lblPhoneCreate.Name = "lblPhoneCreate";
             this.lblPhoneCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.lblPhoneCreate.Size = new System.Drawing.Size(71, 20);
@@ -594,16 +579,17 @@
             // radBtnStudentCreate
             // 
             this.radBtnStudentCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.radBtnStudentCreate.Location = new System.Drawing.Point(71, 189);
+            this.radBtnStudentCreate.Location = new System.Drawing.Point(72, 190);
             this.radBtnStudentCreate.Name = "radBtnStudentCreate";
             this.radBtnStudentCreate.Size = new System.Drawing.Size(75, 20);
             this.radBtnStudentCreate.TabIndex = 21;
             this.radBtnStudentCreate.Values.Text = "STUDENT";
+            this.radBtnStudentCreate.CheckedChanged += new System.EventHandler(this.RadBtnStudentCreate_CheckedChanged);
             // 
             // txtboxUsernameCreate
             // 
             this.txtboxUsernameCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtboxUsernameCreate.Location = new System.Drawing.Point(141, 61);
+            this.txtboxUsernameCreate.Location = new System.Drawing.Point(142, 61);
             this.txtboxUsernameCreate.Name = "txtboxUsernameCreate";
             this.txtboxUsernameCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.txtboxUsernameCreate.Size = new System.Drawing.Size(146, 23);
@@ -614,7 +600,7 @@
             // 
             this.borderRoleSectionCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.borderRoleSectionCreate.AutoSize = false;
-            this.borderRoleSectionCreate.Location = new System.Drawing.Point(63, 186);
+            this.borderRoleSectionCreate.Location = new System.Drawing.Point(64, 186);
             this.borderRoleSectionCreate.Name = "borderRoleSectionCreate";
             this.borderRoleSectionCreate.Size = new System.Drawing.Size(224, 1);
             this.borderRoleSectionCreate.Text = "kryptonBorderEdge1";
@@ -622,7 +608,7 @@
             // txtboxPasswordCreate
             // 
             this.txtboxPasswordCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtboxPasswordCreate.Location = new System.Drawing.Point(141, 97);
+            this.txtboxPasswordCreate.Location = new System.Drawing.Point(142, 99);
             this.txtboxPasswordCreate.Name = "txtboxPasswordCreate";
             this.txtboxPasswordCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.txtboxPasswordCreate.PasswordChar = '●';
@@ -635,37 +621,27 @@
             // 
             this.lblRoleSectionCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblRoleSectionCreate.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.SuperTip;
-            this.lblRoleSectionCreate.Location = new System.Drawing.Point(75, 161);
+            this.lblRoleSectionCreate.Location = new System.Drawing.Point(76, 163);
             this.lblRoleSectionCreate.Name = "lblRoleSectionCreate";
             this.lblRoleSectionCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.lblRoleSectionCreate.Size = new System.Drawing.Size(38, 26);
             this.lblRoleSectionCreate.TabIndex = 19;
             this.lblRoleSectionCreate.Values.Text = "Role";
             // 
-            // txtboxFirstNameCreate
+            // txtboxFullNameCreate
             // 
-            this.txtboxFirstNameCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtboxFirstNameCreate.Location = new System.Drawing.Point(486, 61);
-            this.txtboxFirstNameCreate.Name = "txtboxFirstNameCreate";
-            this.txtboxFirstNameCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
-            this.txtboxFirstNameCreate.Size = new System.Drawing.Size(146, 23);
-            this.txtboxFirstNameCreate.TabIndex = 11;
-            this.txtboxFirstNameCreate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtboxLastNameCreate
-            // 
-            this.txtboxLastNameCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtboxLastNameCreate.Location = new System.Drawing.Point(486, 94);
-            this.txtboxLastNameCreate.Name = "txtboxLastNameCreate";
-            this.txtboxLastNameCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
-            this.txtboxLastNameCreate.Size = new System.Drawing.Size(146, 23);
-            this.txtboxLastNameCreate.TabIndex = 12;
-            this.txtboxLastNameCreate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtboxFullNameCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtboxFullNameCreate.Location = new System.Drawing.Point(487, 61);
+            this.txtboxFullNameCreate.Name = "txtboxFullNameCreate";
+            this.txtboxFullNameCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
+            this.txtboxFullNameCreate.Size = new System.Drawing.Size(146, 23);
+            this.txtboxFullNameCreate.TabIndex = 11;
+            this.txtboxFullNameCreate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtboxEmailCreate
             // 
             this.txtboxEmailCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtboxEmailCreate.Location = new System.Drawing.Point(486, 127);
+            this.txtboxEmailCreate.Location = new System.Drawing.Point(487, 94);
             this.txtboxEmailCreate.Name = "txtboxEmailCreate";
             this.txtboxEmailCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.txtboxEmailCreate.Size = new System.Drawing.Size(146, 23);
@@ -677,7 +653,7 @@
             this.txtboxPhoneCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtboxPhoneCreate.CausesValidation = false;
             this.txtboxPhoneCreate.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txtboxPhoneCreate.Location = new System.Drawing.Point(486, 160);
+            this.txtboxPhoneCreate.Location = new System.Drawing.Point(487, 125);
             this.txtboxPhoneCreate.Name = "txtboxPhoneCreate";
             this.txtboxPhoneCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.txtboxPhoneCreate.Size = new System.Drawing.Size(146, 23);
@@ -733,7 +709,6 @@
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnProfiles;
         private ComponentFactory.Krypton.Navigator.KryptonNavigator navigator;
         private ComponentFactory.Krypton.Navigator.KryptonPage pageCreateUser;
-        private ComponentFactory.Krypton.Toolkit.KryptonLabel lblLastNameCreate;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel lblAccountSectionCreate;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel lblUsernameCreate;
         private ComponentFactory.Krypton.Toolkit.KryptonContextMenu profilesContextMenu;
@@ -745,14 +720,13 @@
         private ComponentFactory.Krypton.Toolkit.KryptonCommand selectProfileContabilitate;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel lblPasswordCreate;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel lblPersonSectionCreate;
-        private ComponentFactory.Krypton.Toolkit.KryptonLabel lblFirstNameCreate;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel lblFullNameCreate;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel lblEmailCreate;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel lblPhoneCreate;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtboxUsernameCreate;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtboxPasswordCreate;
-        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtboxFirstNameCreate;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtboxFullNameCreate;
         private ComponentFactory.Krypton.Toolkit.KryptonBorderEdge borderAccountSectionCreate;
-        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtboxLastNameCreate;
         private ComponentFactory.Krypton.Toolkit.KryptonBorderEdge borderPersonSectionCreate;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtboxEmailCreate;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtboxPhoneCreate;

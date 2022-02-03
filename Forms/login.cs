@@ -39,12 +39,19 @@ namespace classbook
         /// </summary>
         private void SetSavedAccount()
         {
-            bool rememberIsChecked = ConfigurationManager.AppSettings.Get("REMEMBER_CHECKED").Equals("1");
-            if (rememberIsChecked)
+            try
             {
-                textboxUsername.Text = ConfigurationManager.AppSettings.Get("SAVED_USERNAME");
-                textboxPassword.Text = ConfigurationManager.AppSettings.Get("SAVED_PASSWORD");
-                checkbuttonRemember.Checked = true;
+                bool rememberIsChecked = ConfigurationManager.AppSettings.Get("REMEMBER_CHECKED").Equals("1");
+                if (rememberIsChecked)
+                {
+                    textboxUsername.Text = ConfigurationManager.AppSettings.Get("SAVED_USERNAME");
+                    textboxPassword.Text = ConfigurationManager.AppSettings.Get("SAVED_PASSWORD");
+                    checkbuttonRemember.Checked = true;
+                }
+            } catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw ex;
             }
         }
 
@@ -57,14 +64,21 @@ namespace classbook
         /// <param name="e"></param>
         private void ButtonLogin_Click(object sender, EventArgs e)
         {
-            if (!Validate(textboxUsername, textboxPassword)) return;
-            if (DataAccess._isConnection && TryLogin())
+            try
             {
-                _connectionTick.StopTimer();
-                Hide();
-                Dashboard dashboard = new Dashboard();
-                dashboard.ShowDialog();
-                Close();
+                if (!Validate(textboxUsername, textboxPassword)) return;
+                if (DataAccess._isConnection && TryLogin())
+                {
+                    _connectionTick.StopTimer();
+                    Hide();
+                    Dashboard dashboard = new Dashboard();
+                    dashboard.ShowDialog();
+                    Close();
+                }
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw ex;
             }
         }
 
@@ -130,7 +144,7 @@ namespace classbook
                 }
 
                 /// CHECK IF USERNAME OR PASSWORD FIELDS IT IS NOT NULL
-                if (string.IsNullOrEmpty(username.Text.Trim()) || string.IsNullOrEmpty(password.Text.Trim()))
+                if (string.IsNullOrEmpty(username.Text) || string.IsNullOrEmpty(password.Text))
                 {
                     MessageBox.Show("The username or password cannot be empty!", "Empty fields", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     username.Text = string.Empty;
@@ -162,17 +176,24 @@ namespace classbook
         /// <param name="e"></param>
         private void CheckbuttonRemember_Click(object sender, EventArgs e)
         {
-            if (checkbuttonRemember.Checked)
+            try
             {
-                Writer.UpdateConfig("SAVED_USERNAME",textboxUsername.Text);
-                Writer.UpdateConfig("SAVED_PASSWORD",textboxPassword.Text);
-                Writer.UpdateConfig("REMEMBER_CHECKED","1");
-            }
-            else
+                if (checkbuttonRemember.Checked)
+                {
+                    Writer.UpdateConfig("SAVED_USERNAME", textboxUsername.Text);
+                    Writer.UpdateConfig("SAVED_PASSWORD", textboxPassword.Text);
+                    Writer.UpdateConfig("REMEMBER_CHECKED", "1");
+                }
+                else
+                {
+                    Writer.UpdateConfig("SAVED_USERNAME", "");
+                    Writer.UpdateConfig("SAVED_PASSWORD", "");
+                    Writer.UpdateConfig("REMEMBER_CHECKED", "");
+                }
+            } catch(Exception ex)
             {
-                Writer.UpdateConfig("SAVED_USERNAME","");
-                Writer.UpdateConfig("SAVED_PASSWORD","");
-                Writer.UpdateConfig("REMEMBER_CHECKED","");
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw ex;
             }
         }
     }

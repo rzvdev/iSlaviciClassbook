@@ -40,8 +40,9 @@ namespace iSlavici.Connection.Models.db
                 entity.Property(e => e.Password)
                     .IsRequired()
                     .HasMaxLength(50);
+                    
 
-                entity.Property(e => e.PersonId).HasColumnName("PersonID");
+               // entity.Property(e => e.PersonId).HasColumnName("PersonID");
 
                 entity.Property(e => e.ProfileId).HasColumnName("ProfileID");
 
@@ -59,10 +60,6 @@ namespace iSlavici.Connection.Models.db
                     .HasDefaultValueSql("(getdate())");
 
                 entity.Property(e => e.Email).HasMaxLength(50);
-
-                entity.Property(e => e.FirstName).HasMaxLength(50);
-
-                entity.Property(e => e.LastName).HasMaxLength(50);
 
                 entity.Property(e => e.Phone).HasMaxLength(50);
             });
