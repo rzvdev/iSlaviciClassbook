@@ -5,6 +5,10 @@ using iSlavici.Utility;
 using System;
 using System.Windows.Forms;
 using System.Linq;
+using System.Data;
+using System.Drawing;
+using ComponentFactory.Krypton.Toolkit;
+using System.Globalization;
 
 namespace classbook
 {
@@ -17,6 +21,9 @@ namespace classbook
         public Dashboard()
         {
             this.DoubleBuffered = true;
+            CultureInfo defaultCulture = new CultureInfo("en-US");
+            CultureInfo.DefaultThreadCurrentCulture = defaultCulture;
+            CultureInfo.DefaultThreadCurrentUICulture = defaultCulture;
 
             InitializeComponent();
             _resize = new Resize(this);
@@ -24,6 +31,16 @@ namespace classbook
             Resize += Dashboard_Resize;
             labelPersonName.Text = $"{DataAccess._loggedPerson.FullName}";
 
+            InitializeRolePanel();
+
+            LoadDgvUserList();
+        }
+
+        /// <summary>
+        /// Represents the method that initialize Student panel or Admin panel by Role type
+        /// </summary>
+        private void InitializeRolePanel()
+        {
             if (DataAccess._loggedAccount.RoleId == 2)
             {
                 panelStudent.Visible = true;
@@ -45,9 +62,76 @@ namespace classbook
             }
         }
 
+        private void LoadDgvUserList()
+        {
+
+            var userAndPerson = (from acc in DataAccess._dbContext.Account
+                                 join per in DataAccess._dbContext.Person on acc.PersonId equals per.Id
+                                 join rol in DataAccess._dbContext.Role on acc.RoleId equals rol.Id
+                                 join pro in DataAccess._dbContext.Profile on acc.ProfileId equals pro.Id into lftJoin
+                                 from leftJoin in lftJoin.DefaultIfEmpty()
+                                 select new UserList
+                                 {
+                                     ID = acc.Id,
+                                     Username = acc.Username,
+                                     Name = per.FullName,
+                                     Role = rol.Name,
+                                     Email = per.Email,
+                                     Phone = per.Phone,
+                                     Profile = (leftJoin == null ? string.Empty : leftJoin.Name),
+                                     Year = 1,
+                                     CreatedDate = per.CreatedDate
+                                 }).ToList();
+
+            dgvUserList.DataSource = userAndPerson;
+
+            dgvUserList.Columns.Add("ACTION","ACTIONS");
+          
+            CustomizeTable(dgvUserList);
+        }
+
+        private void CustomizeTable(DataGridView dgv)
+        {
+            dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(50, 58, 68);
+            dgv.ColumnHeadersHeight = 30;
+
+            // ID
+            dgv.Columns[0].Width = 50;
+
+            // USERNAME
+            dgv.Columns[1].Width = 150;
+
+            // FULLNAME
+            dgv.Columns[2].Width = 200;
+
+            // ROLE
+            dgv.Columns[3].Width = 80;
+
+            // EMAIL
+            dgv.Columns[4].Width = 200;
+
+            // PROFILE
+            dgv.Columns[6].Width = 130;
+
+            // YEAR
+            dgv.Columns[7].Width = 50;
+
+            // CREATEDDATE
+            dgv.Columns[8].Width = 150;
+
+            dgv.Refresh();
+        }
+
         private void Dashboard_Resize(object sender, EventArgs e)
         {
-            _resize.ResizeForm();
+            //if (dgvUserList.Visible)
+            //{
+            //    _resize.ResizeForm(dgvUserList.ColumnHeadersDefaultCellStyle.Font.FontFamily);
+            //}
+            //else
+            //{
+            //    _resize.ResizeForm();
+            //}
         }
 
         private void Dashboard_Load(object sender, EventArgs e)

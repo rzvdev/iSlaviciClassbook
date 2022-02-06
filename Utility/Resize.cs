@@ -45,8 +45,10 @@ namespace classbook.Utility
         /// </summary>
         public void ResizeForm() //Set the resize
         {
-            double _form_ratio_width = (double)Form.ClientSize.Width / (double)FormSize.Width; //ratio could be greater or less than 1
+            double _form_ratio_width =  (double)Form.ClientSize.Width / (double)FormSize.Width; //ratio could be greater or less than 1
+            if (_form_ratio_width <= 0) _form_ratio_width = 1;
             double _form_ratio_height = (double)Form.ClientSize.Height / (double)FormSize.Height; // this one too
+            if (_form_ratio_height <= 0) _form_ratio_height = 1;
             var _controls = GetAllControls(Form); //reenumerate the control collection
             int _pos = -1;//do not change this value unless you know what you are doing
             foreach (Control control in _controls)
@@ -73,6 +75,41 @@ namespace classbook.Utility
                 control.Font = new System.Drawing.Font(Form.Font.FontFamily,
                  (float)(((Convert.ToDouble(FontSize) * _form_ratio_width) / 2) +
                   ((Convert.ToDouble(FontSize) * _form_ratio_height) / 2)));
+
+            }
+        }
+
+        public void ResizeForm(FontFamily fontFamily) //Set the resize
+        {
+            double _form_ratio_width = (double)Form.ClientSize.Width / (double)FormSize.Width; //ratio could be greater or less than 1
+            if (_form_ratio_width <= 0) _form_ratio_width = 1;
+            double _form_ratio_height = (double)Form.ClientSize.Height / (double)FormSize.Height; // this one too
+            if (_form_ratio_height <= 0) _form_ratio_height = 1;
+            var _controls = GetAllControls(Form); //reenumerate the control collection
+            int _pos = -1;//do not change this value unless you know what you are doing
+            foreach (Control control in _controls)
+            {
+                // do some math calc
+                _pos += 1;//increment by 1;
+                Size _controlSize = new Size((int)(_arr_control_storage[_pos].Width * _form_ratio_width),
+                    (int)(_arr_control_storage[_pos].Height * _form_ratio_height)); //use for sizing
+
+                Point _controlposition = new Point((int)
+                (_arr_control_storage[_pos].X * _form_ratio_width), (int)(_arr_control_storage[_pos].Y * _form_ratio_height));//use for location
+
+                //set bounds
+                control.Bounds = new Rectangle(_controlposition, _controlSize); //Put together
+
+                //Assuming you have a datagridview inside a form()
+                //if you want to show the row header, replace the false statement of 
+                //showRowHeader on top/public declaration to true;
+                if (control.GetType() == typeof(DataGridView))
+                    _dgv_Column_Adjust(((DataGridView)control), showRowHeader);
+
+                //Font AutoSize
+                control.Font = new Font(fontFamily,
+                 (float)(((Convert.ToDouble(FontSize) * _form_ratio_width) / 2) +
+                  ((Convert.ToDouble(FontSize) * _form_ratio_height) / 2)),FontStyle.Bold);
 
             }
         }

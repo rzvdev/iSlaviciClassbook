@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.splitcontainer = new ComponentFactory.Krypton.Toolkit.KryptonSplitContainer();
             this.edgeDownPersonName = new ComponentFactory.Krypton.Toolkit.KryptonBorderEdge();
@@ -76,6 +79,9 @@
             this.txtboxFullNameCreate = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.txtboxEmailCreate = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.txtboxPhoneCreate = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.pageUserList = new ComponentFactory.Krypton.Navigator.KryptonPage();
+            this.splitContainerPageUserList = new ComponentFactory.Krypton.Toolkit.KryptonSplitContainer();
+            this.dgvUserList = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.splitcontainer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitcontainer.Panel1)).BeginInit();
             this.splitcontainer.Panel1.SuspendLayout();
@@ -90,6 +96,14 @@
             this.navigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pageCreateUser)).BeginInit();
             this.pageCreateUser.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pageUserList)).BeginInit();
+            this.pageUserList.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerPageUserList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerPageUserList.Panel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerPageUserList.Panel2)).BeginInit();
+            this.splitContainerPageUserList.Panel2.SuspendLayout();
+            this.splitContainerPageUserList.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUserList)).BeginInit();
             this.SuspendLayout();
             // 
             // splitcontainer
@@ -307,8 +321,9 @@
             this.navigator.NavigatorMode = ComponentFactory.Krypton.Navigator.NavigatorMode.HeaderGroupTab;
             this.navigator.PageBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.TabLowProfile;
             this.navigator.Pages.AddRange(new ComponentFactory.Krypton.Navigator.KryptonPage[] {
-            this.pageCreateUser});
-            this.navigator.SelectedIndex = 0;
+            this.pageCreateUser,
+            this.pageUserList});
+            this.navigator.SelectedIndex = 1;
             this.navigator.Size = new System.Drawing.Size(699, 450);
             this.navigator.TabIndex = 0;
             this.navigator.Text = "kryptonNavigator1";
@@ -660,6 +675,79 @@
             this.txtboxPhoneCreate.TabIndex = 14;
             this.txtboxPhoneCreate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // pageUserList
+            // 
+            this.pageUserList.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
+            this.pageUserList.Controls.Add(this.splitContainerPageUserList);
+            this.pageUserList.Flags = 65534;
+            this.pageUserList.LastVisibleSet = true;
+            this.pageUserList.MinimumSize = new System.Drawing.Size(50, 50);
+            this.pageUserList.Name = "pageUserList";
+            this.pageUserList.Size = new System.Drawing.Size(695, 370);
+            this.pageUserList.Text = "User List";
+            this.pageUserList.TextDescription = "Here you can see a list of registered users as well as certain user information.";
+            this.pageUserList.TextTitle = "Profiles";
+            this.pageUserList.ToolTipTitle = "Page ToolTip";
+            this.pageUserList.UniqueName = "E8E7D5BE3F5C4E70B8B9D9244E28C9B0";
+            // 
+            // splitContainerPageUserList
+            // 
+            this.splitContainerPageUserList.Cursor = System.Windows.Forms.Cursors.Default;
+            this.splitContainerPageUserList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerPageUserList.IsSplitterFixed = true;
+            this.splitContainerPageUserList.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerPageUserList.Name = "splitContainerPageUserList";
+            this.splitContainerPageUserList.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainerPageUserList.Panel2
+            // 
+            this.splitContainerPageUserList.Panel2.Controls.Add(this.dgvUserList);
+            this.splitContainerPageUserList.Size = new System.Drawing.Size(695, 370);
+            this.splitContainerPageUserList.SplitterDistance = 47;
+            this.splitContainerPageUserList.TabIndex = 1;
+            // 
+            // dgvUserList
+            // 
+            this.dgvUserList.AllowUserToAddRows = false;
+            this.dgvUserList.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(141)))), ((int)(((byte)(161)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvUserList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvUserList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvUserList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgvUserList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(52)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvUserList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvUserList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUserList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvUserList.Location = new System.Drawing.Point(0, 0);
+            this.dgvUserList.Name = "dgvUserList";
+            this.dgvUserList.ReadOnly = true;
+            this.dgvUserList.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvUserList.RowHeadersWidth = 40;
+            this.dgvUserList.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(141)))), ((int)(((byte)(161)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvUserList.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvUserList.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvUserList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvUserList.Size = new System.Drawing.Size(695, 318);
+            this.dgvUserList.TabIndex = 0;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -688,6 +776,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.pageCreateUser)).EndInit();
             this.pageCreateUser.ResumeLayout(false);
             this.pageCreateUser.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pageUserList)).EndInit();
+            this.pageUserList.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerPageUserList.Panel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerPageUserList.Panel2)).EndInit();
+            this.splitContainerPageUserList.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerPageUserList)).EndInit();
+            this.splitContainerPageUserList.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUserList)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -740,5 +836,8 @@
         private ComponentFactory.Krypton.Toolkit.KryptonDropButton droBtnProfilesCreate;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel lblProfileSectionCreate;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnCreate;
+        private ComponentFactory.Krypton.Navigator.KryptonPage pageUserList;
+        private ComponentFactory.Krypton.Toolkit.KryptonSplitContainer splitContainerPageUserList;
+        private System.Windows.Forms.DataGridView dgvUserList;
     }
 }

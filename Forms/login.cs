@@ -89,6 +89,7 @@ namespace classbook
         {
             try
             {
+                if (DataAccess._dbContext == null) return false;
                 /// SEARCH FOR ACCOUNT IN DATABASE
                 Account searchedAccount = (from acc in DataAccess._dbContext.Account
                                     where acc.Username == textboxUsername.Text &&
