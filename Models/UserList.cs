@@ -1,12 +1,13 @@
 ﻿using System;
 
-namespace iSlavici.Utility
+namespace iSlavici.Models
 {
     public class UserList
     {
         public int ID { get; set; }
         public string Username { get; set; }
         public string Name { get; set; }
+        public string CNP { get; set; }
         public string Role { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
@@ -18,11 +19,12 @@ namespace iSlavici.Utility
             set;
         }
 
-        public UserList(int Id, string username, string name, string role, string email, string profile, string phone, int year, DateTime createdDate)
+        public UserList(int Id, string username, string name, string cnp, string role, string email, string profile, string phone, int year, DateTime createdDate)
         {
             ID = Id;
             Username = username;
             Name = name;
+            CNP = cnp;
             Role = role;
             Email = email;
             Phone = phone;

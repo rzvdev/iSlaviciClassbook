@@ -23,6 +23,14 @@ namespace iSlavici.Connection.Models.db
         public virtual DbSet<Person> Person { get; set; }
         public virtual DbSet<Profile> Profile { get; set; }
         public virtual DbSet<Role> Role { get; set; }
+        public virtual DbSet<Note> Note { get; set; }
+        public virtual DbSet<NoteType> NoteType { get; set; }
+        public virtual DbSet<Subject> Subject { get; set; }
+        public virtual DbSet<SubjectType> SubjectType { get; set; }
+        public virtual DbSet<SubjectExamination> SubjectExamination { get; set; }
+
+
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

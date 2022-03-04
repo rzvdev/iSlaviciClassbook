@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using iSlavici.Connection.Models.db;
 
 namespace iSlavici.Migrations
 {
     [DbContext(typeof(SlaviciContext))]
-    partial class SlaviciContextModelSnapshot : ModelSnapshot
+    [Migration("20220304091327_AddSubjectExaminationTbl")]
+    partial class AddSubjectExaminationTbl
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -226,21 +228,6 @@ namespace iSlavici.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Subject");
-                });
-
-            modelBuilder.Entity("iSlavici.Connection.Models.db.SubjectExamination", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("ExaminationName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("SubjectExamination");
                 });
 
             modelBuilder.Entity("iSlavici.Connection.Models.db.SubjectType", b =>

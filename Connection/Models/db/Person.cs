@@ -15,6 +15,7 @@ namespace iSlavici.Connection.Models.db
         public string FullName { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
+        public string CNP { get; set; }
         public DateTime CreatedDate { get; set; }
 
         public Account Account { get; set; }

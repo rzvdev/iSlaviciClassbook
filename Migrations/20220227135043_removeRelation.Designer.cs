@@ -10,8 +10,8 @@ using iSlavici.Connection.Models.db;
 namespace iSlavici.Migrations
 {
     [DbContext(typeof(SlaviciContext))]
-    [Migration("20220203171858_AddRelationshipBetweenAccountAndPerson")]
-    partial class AddRelationshipBetweenAccountAndPerson
+    [Migration("20220227135043_removeRelation")]
+    partial class removeRelation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -57,12 +57,72 @@ namespace iSlavici.Migrations
                     b.ToTable("Account");
                 });
 
+            modelBuilder.Entity("iSlavici.Connection.Models.db.Note", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("AddedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("NoteTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("NoteTypeName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("NoteValue")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("PersonId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("StudentName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SubjectId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SubjectName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NoteTypeId");
+
+                    b.HasIndex("PersonId");
+
+                    b.HasIndex("SubjectId");
+
+                    b.ToTable("Note");
+                });
+
+            modelBuilder.Entity("iSlavici.Connection.Models.db.NoteType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("TypeName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("NoteType");
+                });
+
             modelBuilder.Entity("iSlavici.Connection.Models.db.Person", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CNP")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
@@ -122,11 +182,84 @@ namespace iSlavici.Migrations
                     b.ToTable("Role");
                 });
 
+            modelBuilder.Entity("iSlavici.Connection.Models.db.Subject", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Abvr")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProfileId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ProfileName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SemesterStudy")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SubjectTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SubjectTypeName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TeacherName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("YearStudy")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Subject");
+                });
+
+            modelBuilder.Entity("iSlavici.Connection.Models.db.SubjectType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("TypeName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SubjectType");
+                });
+
             modelBuilder.Entity("iSlavici.Connection.Models.db.Account", b =>
                 {
                     b.HasOne("iSlavici.Connection.Models.db.Person", "Person")
                         .WithOne("Account")
                         .HasForeignKey("iSlavici.Connection.Models.db.Account", "PersonId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("iSlavici.Connection.Models.db.Note", b =>
+                {
+                    b.HasOne("iSlavici.Connection.Models.db.NoteType", "NoteType")
+                        .WithMany()
+                        .HasForeignKey("NoteTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("iSlavici.Connection.Models.db.Person", "Person")
+                        .WithMany()
+                        .HasForeignKey("PersonId");
+
+                    b.HasOne("iSlavici.Connection.Models.db.Subject", "Subject")
+                        .WithMany()
+                        .HasForeignKey("SubjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

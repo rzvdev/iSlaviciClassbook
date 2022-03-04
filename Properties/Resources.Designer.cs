@@ -73,6 +73,56 @@ namespace iSlavici.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap coursesBtn {
+            get {
+                object obj = ResourceManager.GetObject("coursesBtn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap coursesBtn_24px {
+            get {
+                object obj = ResourceManager.GetObject("coursesBtn-24px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap dgvUserListDeleteBtn_24px {
+            get {
+                object obj = ResourceManager.GetObject("dgvUserListDeleteBtn-24px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap dgvUserListEditBtn_24px {
+            get {
+                object obj = ResourceManager.GetObject("dgvUserListEditBtn-24px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap dgvUserListEditBtn_64px {
+            get {
+                object obj = ResourceManager.GetObject("dgvUserListEditBtn-64px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap economy {
             get {
                 object obj = ResourceManager.GetObject("economy", resourceCulture);
