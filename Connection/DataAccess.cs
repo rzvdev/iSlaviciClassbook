@@ -1,4 +1,7 @@
-﻿using iSlavici.Connection.Models.db;
+﻿using iSlavici.Connection.Models.builder;
+using iSlavici.Connection.Models.db;
+using iSlavici.Connection.Models.db.interfaces;
+using iSlavici.Connection.Models.interfaces;
 using iSlavici.Models;
 using System;
 using System.Collections.Generic;
@@ -68,8 +71,10 @@ namespace classbook.Connection
                                             Teacher = c.TeacherName,
                                             Profile = c.ProfileName,
                                             Type = c.SubjectTypeName,
+                                            ExaminationMode = c.CourseExaminationName,
+                                            Credit = c.Credit,
                                             Year = c.YearStudy,
-                                            Semester = c.SemesterStudy
+                                            Semester = c.SemesterStudy,
                                         }).ToList();
             return courses;
         }
@@ -203,22 +208,40 @@ namespace classbook.Connection
         {
             try
             {
-                Account account = new Account
-                {
-                    Username = username,
-                    Password = password,
-                    ProfileId = profileId,
-                    RoleId = roleId
-                };
+                /// USING BUILDER DESIGN PATTERN
+                AccountBuilder buildAccount = new AccountBuilder();
 
-                Person person = new Person()
-                {
-                    FullName = fullName,
-                    Email = email,
-                    CNP = cnp,
-                    Phone = phone,
-                    Account = account
-                };
+                IAccount account = buildAccount.Username(username)
+                                                .Password(password)
+                                                .Have(roleId)
+                                                .On(profileId)
+                                                .Build();
+
+                PersonBuilder buildPerson = new PersonBuilder();
+
+                IPerson person = buildPerson.Name(fullName)
+                                           .HavePhone(phone)
+                                           .HaveCnp(cnp)
+                                           .HaveEmail(email)
+                                           .WithAccount((Account)account)
+                                           .Build();
+
+                //Account account = new Account
+                //{
+                //    Username = username,
+                //    Password = password,
+                //    ProfileId = profileId,
+                //    RoleId = roleId
+                //};
+
+                //Person person = new Person()
+                //{
+                //    FullName = fullName,
+                //    Email = email,
+                //    CNP = cnp,
+                //    Phone = phone,
+                //    Account = account
+                //};
 
 
                 _dbContext.Add(person);
@@ -396,21 +419,33 @@ namespace classbook.Connection
                 var profile = _dbContext.Profile.Where(x => x.Id == courseProfile).FirstOrDefault();
                 var examMode = _dbContext.SubjectExamination.Where(x => x.Id == courseExamMode).FirstOrDefault();
 
-                Subject subject = new Subject
-                {
-                    Name = courseName,
-                    Abvr = courseAbrv,
-                    TeacherName = courseTeacherName,
-                    SubjectTypeName = subjectType.TypeName,
-                    SubjectTypeId = subjectType.Id,
-                    YearStudy = courseYear,
-                    SemesterStudy = courseSemester,
-                    ProfileName = profile.Name,
-                    ProfileId = profile.Id,
-                    CourseExaminationId = examMode.Id,
-                    CourseExaminationName = examMode.ExaminationName,
-                    Credit = courseCredit
-                };
+                /// USING BUILDER DESIGN PATTERN
+                SubjectBuilder subjectBuilder = new SubjectBuilder();
+                ISubject subject = subjectBuilder.HaveName(courseName)
+                                                 .WithAbvr(courseAbrv)
+                                                 .TeachBy(courseTeacherName)
+                                                 .TypeOf(subjectType)
+                                                 .In(courseYear, courseSemester)
+                                                 .On(profile)
+                                                 .ExaminationMode(examMode)
+                                                 .WithCredit(courseCredit)
+                                                 .Build();
+
+                //Subject subject = new Subject
+                //{
+                //    Name = courseName,
+                //    Abvr = courseAbrv,
+                //    TeacherName = courseTeacherName,
+                //    SubjectTypeName = subjectType.TypeName,
+                //    SubjectTypeId = subjectType.Id,
+                //    YearStudy = courseYear,
+                //    SemesterStudy = courseSemester,
+                //    ProfileName = profile.Name,
+                //    ProfileId = profile.Id,
+                //    CourseExaminationId = examMode.Id,
+                //    CourseExaminationName = examMode.ExaminationName,
+                //    Credit = courseCredit
+                //};
 
                 _dbContext.Add(subject);
                 _dbContext.SaveChanges();

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using iSlavici.Connection.Models.db.interfaces;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -9,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace iSlavici.Connection.Models.db
 {
-    public partial class Account
+    public partial class Account : IAccount
     {
         [Key,DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }

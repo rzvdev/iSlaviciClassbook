@@ -183,7 +183,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connection\Models\builder\AccountBuilder.cs" />
+    <Compile Include="Connection\Models\builder\PersonBuilder.cs" />
+    <Compile Include="Connection\Models\builder\SubjectBuilder.cs" />
     <Compile Include="Connection\Models\db\Account.cs" />
+    <Compile Include="Connection\Models\interfaces\IAccount.cs" />
     <Compile Include="Connection\Models\db\Note.cs" />
     <Compile Include="Connection\Models\db\NoteType.cs" />
     <Compile Include="Connection\Models\db\Person.cs" />
@@ -193,6 +197,8 @@
     <Compile Include="Connection\Models\db\Subject.cs" />
     <Compile Include="Connection\Models\db\SubjectExamination.cs" />
     <Compile Include="Connection\Models\db\SubjectType.cs" />
+    <Compile Include="Connection\Models\interfaces\IPerson.cs" />
+    <Compile Include="Connection\Models\interfaces\ISubject.cs" />
     <Compile Include="Migrations\20220227134459_dropall.cs" />
     <Compile Include="Migrations\20220227134459_dropall.designer.cs">
       <DependentUpon>20220227134459_dropall.cs</DependentUpon>

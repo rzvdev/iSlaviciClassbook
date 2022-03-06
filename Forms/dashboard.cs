@@ -204,30 +204,37 @@ namespace classbook
                     dgv.Columns[0].Width = 20;
 
                     // ID
-                    dgv.Columns[1].Width = 40;
+                    dgv.Columns[1].Width = 60;
 
                     // Course Name
-                    dgv.Columns[2].Width = 150;
+                    dgv.Columns[2].Width = 300;
 
                     // Abvr
-                    dgv.Columns[3].Width = 40;
-                    dgv.Columns[3].HeaderText = "Abv";
+                    dgv.Columns[3].Width = 80;
+                    dgv.Columns[3].HeaderText = "Abrv";
 
                     // Teacher Name
-                    dgv.Columns[4].Width = 160;
+                    dgv.Columns[4].Width = 250;
 
                     // Profile Name
-                    dgv.Columns[5].Width = 140;
+                    dgv.Columns[5].Width = 200;
 
                     // Subject Type
-                    dgv.Columns[6].Width = 80;
+                    dgv.Columns[6].Width = 150;
+
+                    // Examination Mode
+                    dgv.Columns[7].Width = 150;
+                    dgv.Columns[7].HeaderText = "Examination";
+                    
+                    // Credit
+                    dgv.Columns[8].Width = 80;
 
                     // Year
-                    dgv.Columns[7].Width = 50;
+                    dgv.Columns[9].Width = 80;
 
                     // Semester
-                    dgv.Columns[8].Width = 50;
-                    dgv.Columns[8].HeaderText = "Sem.";
+                    dgv.Columns[10].Width = 80;
+
                     break;
             }
             dgv.Refresh();

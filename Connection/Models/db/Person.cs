@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using iSlavici.Connection.Models.interfaces;
+using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
 // Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace iSlavici.Connection.Models.db
 {
-    public partial class Person
+    public partial class Person : IPerson
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }

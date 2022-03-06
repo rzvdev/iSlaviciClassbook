@@ -1,9 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using iSlavici.Connection.Models.interfaces;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace iSlavici.Connection.Models.db
 {
-    public class Subject
+    public class Subject : ISubject
     {
         public int Id { get; set; }
         public string Name { get; set; }
