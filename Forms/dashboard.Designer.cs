@@ -41,6 +41,11 @@ namespace classbook
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.splitcontainer = new ComponentFactory.Krypton.Toolkit.KryptonSplitContainer();
             this.splitcontainerLeftSide = new ComponentFactory.Krypton.Toolkit.KryptonSplitContainer();
@@ -152,6 +157,31 @@ namespace classbook
             this.kryptonBorderEdge5 = new ComponentFactory.Krypton.Toolkit.KryptonBorderEdge();
             this.lblCourseTypeSectionCreateCourse = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.txtboxAbvrCreateCourse = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.pageNoteList = new ComponentFactory.Krypton.Navigator.KryptonPage();
+            this.splitContainerAddNotePage = new ComponentFactory.Krypton.Toolkit.KryptonSplitContainer();
+            this.txtboxSearchAddNote = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.labelSearchAddNote = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.dgvNoteList = new System.Windows.Forms.DataGridView();
+            this.pageAddNote = new ComponentFactory.Krypton.Navigator.KryptonPage();
+            this.btnAddInAddNote = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.cbNoteTypeAddNote = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
+            this.cbCourseAddNote = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
+            this.cbNameAddNote = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
+            this.numBtnAddNoteValue = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
+            this.kryptonBorderEdge6 = new ComponentFactory.Krypton.Toolkit.KryptonBorderEdge();
+            this.kryptonLabel4 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.lblNoteValue = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.lblNoteType = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.lblCourse = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.lblYearValueAddNote = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.lblProfileValueAddNote = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.lblCnpValueAddNote = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.lblYear = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.lblProfile = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.lblCnp = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.lblName = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.borderStudentSection = new ComponentFactory.Krypton.Toolkit.KryptonBorderEdge();
+            this.lblStudentSection = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             ((System.ComponentModel.ISupportInitialize)(this.splitcontainer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitcontainer.Panel1)).BeginInit();
             this.splitcontainer.Panel1.SuspendLayout();
@@ -193,6 +223,20 @@ namespace classbook
             this.pageEditUser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pageCreateCourse)).BeginInit();
             this.pageCreateCourse.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pageNoteList)).BeginInit();
+            this.pageNoteList.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerAddNotePage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerAddNotePage.Panel1)).BeginInit();
+            this.splitContainerAddNotePage.Panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerAddNotePage.Panel2)).BeginInit();
+            this.splitContainerAddNotePage.Panel2.SuspendLayout();
+            this.splitContainerAddNotePage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvNoteList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pageAddNote)).BeginInit();
+            this.pageAddNote.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbNoteTypeAddNote)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbCourseAddNote)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbNameAddNote)).BeginInit();
             this.SuspendLayout();
             // 
             // splitcontainer
@@ -227,7 +271,7 @@ namespace classbook
             this.splitcontainerLeftSide.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitcontainerLeftSide.IsSplitterFixed = true;
             this.splitcontainerLeftSide.Location = new System.Drawing.Point(0, 0);
-            this.splitcontainerLeftSide.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitcontainerLeftSide.Margin = new System.Windows.Forms.Padding(2);
             this.splitcontainerLeftSide.Name = "splitcontainerLeftSide";
             this.splitcontainerLeftSide.Orientation = System.Windows.Forms.Orientation.Horizontal;
             this.splitcontainerLeftSide.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
@@ -460,8 +504,10 @@ namespace classbook
             this.pageUserList,
             this.pageCourseList,
             this.pageEditUser,
-            this.pageCreateCourse});
-            this.navigator.SelectedIndex = 1;
+            this.pageCreateCourse,
+            this.pageNoteList,
+            this.pageAddNote});
+            this.navigator.SelectedIndex = 5;
             this.navigator.Size = new System.Drawing.Size(702, 450);
             this.navigator.TabIndex = 0;
             // 
@@ -498,7 +544,7 @@ namespace classbook
             this.pageCreateUser.LastVisibleSet = true;
             this.pageCreateUser.MinimumSize = new System.Drawing.Size(50, 50);
             this.pageCreateUser.Name = "pageCreateUser";
-            this.pageCreateUser.Size = new System.Drawing.Size(698, 374);
+            this.pageCreateUser.Size = new System.Drawing.Size(698, 370);
             this.pageCreateUser.Text = "Create User";
             this.pageCreateUser.TextDescription = "Here you can create accounts ";
             this.pageCreateUser.TextTitle = "Profiles";
@@ -510,7 +556,7 @@ namespace classbook
             // 
             this.lblCnpCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblCnpCreate.AutoSize = false;
-            this.lblCnpCreate.Location = new System.Drawing.Point(412, 93);
+            this.lblCnpCreate.Location = new System.Drawing.Point(412, 91);
             this.lblCnpCreate.Name = "lblCnpCreate";
             this.lblCnpCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.lblCnpCreate.Size = new System.Drawing.Size(71, 20);
@@ -520,7 +566,7 @@ namespace classbook
             // textboxCnpCreate
             // 
             this.textboxCnpCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textboxCnpCreate.Location = new System.Drawing.Point(489, 92);
+            this.textboxCnpCreate.Location = new System.Drawing.Point(489, 90);
             this.textboxCnpCreate.Name = "textboxCnpCreate";
             this.textboxCnpCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.textboxCnpCreate.Size = new System.Drawing.Size(146, 23);
@@ -531,7 +577,7 @@ namespace classbook
             // 
             this.borderPersonSectionCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.borderPersonSectionCreate.AutoSize = false;
-            this.borderPersonSectionCreate.Location = new System.Drawing.Point(411, 50);
+            this.borderPersonSectionCreate.Location = new System.Drawing.Point(411, 48);
             this.borderPersonSectionCreate.Name = "borderPersonSectionCreate";
             this.borderPersonSectionCreate.Size = new System.Drawing.Size(224, 1);
             this.borderPersonSectionCreate.Text = "kryptonBorderEdge1";
@@ -540,7 +586,7 @@ namespace classbook
             // 
             this.borderAccountSectionCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.borderAccountSectionCreate.AutoSize = false;
-            this.borderAccountSectionCreate.Location = new System.Drawing.Point(64, 50);
+            this.borderAccountSectionCreate.Location = new System.Drawing.Point(64, 48);
             this.borderAccountSectionCreate.Name = "borderAccountSectionCreate";
             this.borderAccountSectionCreate.Size = new System.Drawing.Size(224, 1);
             this.borderAccountSectionCreate.Text = "kryptonBorderEdge2";
@@ -549,7 +595,7 @@ namespace classbook
             // 
             this.borderProfileYearSectionCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.borderProfileYearSectionCreate.AutoSize = false;
-            this.borderProfileYearSectionCreate.Location = new System.Drawing.Point(64, 266);
+            this.borderProfileYearSectionCreate.Location = new System.Drawing.Point(64, 264);
             this.borderProfileYearSectionCreate.Name = "borderProfileYearSectionCreate";
             this.borderProfileYearSectionCreate.Size = new System.Drawing.Size(224, 1);
             this.borderProfileYearSectionCreate.Text = "kryptonBorderEdge1";
@@ -559,7 +605,7 @@ namespace classbook
             this.lblYearSectionCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblYearSectionCreate.AutoSize = false;
             this.lblYearSectionCreate.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.SuperTip;
-            this.lblYearSectionCreate.Location = new System.Drawing.Point(232, 241);
+            this.lblYearSectionCreate.Location = new System.Drawing.Point(232, 239);
             this.lblYearSectionCreate.Name = "lblYearSectionCreate";
             this.lblYearSectionCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.lblYearSectionCreate.Size = new System.Drawing.Size(38, 26);
@@ -570,7 +616,7 @@ namespace classbook
             // 
             this.lblAccountSectionCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblAccountSectionCreate.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.SuperTip;
-            this.lblAccountSectionCreate.Location = new System.Drawing.Point(76, 25);
+            this.lblAccountSectionCreate.Location = new System.Drawing.Point(76, 23);
             this.lblAccountSectionCreate.Name = "lblAccountSectionCreate";
             this.lblAccountSectionCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.lblAccountSectionCreate.Size = new System.Drawing.Size(60, 26);
@@ -580,7 +626,7 @@ namespace classbook
             // numBtnYearCreate
             // 
             this.numBtnYearCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.numBtnYearCreate.Location = new System.Drawing.Point(226, 271);
+            this.numBtnYearCreate.Location = new System.Drawing.Point(226, 269);
             this.numBtnYearCreate.Maximum = new decimal(new int[] {
             4,
             0,
@@ -605,7 +651,7 @@ namespace classbook
             // lblUsernameCreate
             // 
             this.lblUsernameCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblUsernameCreate.Location = new System.Drawing.Point(70, 68);
+            this.lblUsernameCreate.Location = new System.Drawing.Point(70, 66);
             this.lblUsernameCreate.Name = "lblUsernameCreate";
             this.lblUsernameCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.lblUsernameCreate.Size = new System.Drawing.Size(68, 20);
@@ -616,7 +662,7 @@ namespace classbook
             // 
             this.droBtnProfilesCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.droBtnProfilesCreate.KryptonContextMenu = this.profilesContextMenu;
-            this.droBtnProfilesCreate.Location = new System.Drawing.Point(64, 271);
+            this.droBtnProfilesCreate.Location = new System.Drawing.Point(64, 269);
             this.droBtnProfilesCreate.Name = "droBtnProfilesCreate";
             this.droBtnProfilesCreate.Size = new System.Drawing.Size(133, 25);
             this.droBtnProfilesCreate.TabIndex = 17;
@@ -661,7 +707,7 @@ namespace classbook
             // lblPasswordCreate
             // 
             this.lblPasswordCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblPasswordCreate.Location = new System.Drawing.Point(70, 103);
+            this.lblPasswordCreate.Location = new System.Drawing.Point(70, 101);
             this.lblPasswordCreate.Name = "lblPasswordCreate";
             this.lblPasswordCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.lblPasswordCreate.Size = new System.Drawing.Size(65, 20);
@@ -672,7 +718,7 @@ namespace classbook
             // 
             this.lblProfileSectionCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblProfileSectionCreate.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.SuperTip;
-            this.lblProfileSectionCreate.Location = new System.Drawing.Point(76, 241);
+            this.lblProfileSectionCreate.Location = new System.Drawing.Point(76, 239);
             this.lblProfileSectionCreate.Name = "lblProfileSectionCreate";
             this.lblProfileSectionCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.lblProfileSectionCreate.Size = new System.Drawing.Size(51, 26);
@@ -683,7 +729,7 @@ namespace classbook
             // 
             this.lblPersonSectionCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblPersonSectionCreate.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.SuperTip;
-            this.lblPersonSectionCreate.Location = new System.Drawing.Point(423, 25);
+            this.lblPersonSectionCreate.Location = new System.Drawing.Point(423, 23);
             this.lblPersonSectionCreate.Name = "lblPersonSectionCreate";
             this.lblPersonSectionCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.lblPersonSectionCreate.Size = new System.Drawing.Size(94, 26);
@@ -694,7 +740,7 @@ namespace classbook
             // 
             this.btnCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnCreate.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnCreate.Location = new System.Drawing.Point(304, 328);
+            this.btnCreate.Location = new System.Drawing.Point(304, 326);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.btnCreate.Size = new System.Drawing.Size(90, 25);
@@ -712,7 +758,7 @@ namespace classbook
             // lblFullNameCreate
             // 
             this.lblFullNameCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblFullNameCreate.Location = new System.Drawing.Point(412, 68);
+            this.lblFullNameCreate.Location = new System.Drawing.Point(412, 66);
             this.lblFullNameCreate.Name = "lblFullNameCreate";
             this.lblFullNameCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.lblFullNameCreate.Size = new System.Drawing.Size(68, 20);
@@ -722,7 +768,7 @@ namespace classbook
             // radBtnAdminCreate
             // 
             this.radBtnAdminCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.radBtnAdminCreate.Location = new System.Drawing.Point(172, 193);
+            this.radBtnAdminCreate.Location = new System.Drawing.Point(172, 191);
             this.radBtnAdminCreate.Name = "radBtnAdminCreate";
             this.radBtnAdminCreate.Size = new System.Drawing.Size(118, 20);
             this.radBtnAdminCreate.TabIndex = 16;
@@ -733,7 +779,7 @@ namespace classbook
             // 
             this.lblEmailCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblEmailCreate.AutoSize = false;
-            this.lblEmailCreate.Location = new System.Drawing.Point(412, 119);
+            this.lblEmailCreate.Location = new System.Drawing.Point(412, 117);
             this.lblEmailCreate.Name = "lblEmailCreate";
             this.lblEmailCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.lblEmailCreate.Size = new System.Drawing.Size(71, 20);
@@ -744,7 +790,7 @@ namespace classbook
             // 
             this.lblPhoneCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblPhoneCreate.AutoSize = false;
-            this.lblPhoneCreate.Location = new System.Drawing.Point(412, 150);
+            this.lblPhoneCreate.Location = new System.Drawing.Point(412, 148);
             this.lblPhoneCreate.Name = "lblPhoneCreate";
             this.lblPhoneCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.lblPhoneCreate.Size = new System.Drawing.Size(71, 20);
@@ -754,7 +800,7 @@ namespace classbook
             // radBtnStudentCreate
             // 
             this.radBtnStudentCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.radBtnStudentCreate.Location = new System.Drawing.Point(74, 193);
+            this.radBtnStudentCreate.Location = new System.Drawing.Point(74, 191);
             this.radBtnStudentCreate.Name = "radBtnStudentCreate";
             this.radBtnStudentCreate.Size = new System.Drawing.Size(75, 20);
             this.radBtnStudentCreate.TabIndex = 15;
@@ -764,7 +810,7 @@ namespace classbook
             // txtboxUsernameCreate
             // 
             this.txtboxUsernameCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtboxUsernameCreate.Location = new System.Drawing.Point(142, 64);
+            this.txtboxUsernameCreate.Location = new System.Drawing.Point(142, 62);
             this.txtboxUsernameCreate.Name = "txtboxUsernameCreate";
             this.txtboxUsernameCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.txtboxUsernameCreate.Size = new System.Drawing.Size(146, 23);
@@ -775,7 +821,7 @@ namespace classbook
             // 
             this.borderRoleSectionCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.borderRoleSectionCreate.AutoSize = false;
-            this.borderRoleSectionCreate.Location = new System.Drawing.Point(64, 189);
+            this.borderRoleSectionCreate.Location = new System.Drawing.Point(64, 187);
             this.borderRoleSectionCreate.Name = "borderRoleSectionCreate";
             this.borderRoleSectionCreate.Size = new System.Drawing.Size(224, 1);
             this.borderRoleSectionCreate.Text = "kryptonBorderEdge1";
@@ -783,7 +829,7 @@ namespace classbook
             // txtboxPasswordCreate
             // 
             this.txtboxPasswordCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtboxPasswordCreate.Location = new System.Drawing.Point(142, 102);
+            this.txtboxPasswordCreate.Location = new System.Drawing.Point(142, 100);
             this.txtboxPasswordCreate.Name = "txtboxPasswordCreate";
             this.txtboxPasswordCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.txtboxPasswordCreate.PasswordChar = '●';
@@ -796,7 +842,7 @@ namespace classbook
             // 
             this.lblRoleSectionCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblRoleSectionCreate.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.SuperTip;
-            this.lblRoleSectionCreate.Location = new System.Drawing.Point(76, 167);
+            this.lblRoleSectionCreate.Location = new System.Drawing.Point(76, 165);
             this.lblRoleSectionCreate.Name = "lblRoleSectionCreate";
             this.lblRoleSectionCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.lblRoleSectionCreate.Size = new System.Drawing.Size(38, 26);
@@ -806,7 +852,7 @@ namespace classbook
             // txtboxFullNameCreate
             // 
             this.txtboxFullNameCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtboxFullNameCreate.Location = new System.Drawing.Point(489, 64);
+            this.txtboxFullNameCreate.Location = new System.Drawing.Point(489, 62);
             this.txtboxFullNameCreate.Name = "txtboxFullNameCreate";
             this.txtboxFullNameCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.txtboxFullNameCreate.Size = new System.Drawing.Size(146, 23);
@@ -816,7 +862,7 @@ namespace classbook
             // txtboxEmailCreate
             // 
             this.txtboxEmailCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtboxEmailCreate.Location = new System.Drawing.Point(489, 119);
+            this.txtboxEmailCreate.Location = new System.Drawing.Point(489, 117);
             this.txtboxEmailCreate.Name = "txtboxEmailCreate";
             this.txtboxEmailCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.txtboxEmailCreate.Size = new System.Drawing.Size(146, 23);
@@ -828,7 +874,7 @@ namespace classbook
             this.txtboxPhoneCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtboxPhoneCreate.CausesValidation = false;
             this.txtboxPhoneCreate.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txtboxPhoneCreate.Location = new System.Drawing.Point(489, 150);
+            this.txtboxPhoneCreate.Location = new System.Drawing.Point(489, 148);
             this.txtboxPhoneCreate.Name = "txtboxPhoneCreate";
             this.txtboxPhoneCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.txtboxPhoneCreate.Size = new System.Drawing.Size(146, 23);
@@ -1047,7 +1093,7 @@ namespace classbook
             this.pageEditUser.LastVisibleSet = true;
             this.pageEditUser.MinimumSize = new System.Drawing.Size(50, 50);
             this.pageEditUser.Name = "pageEditUser";
-            this.pageEditUser.Size = new System.Drawing.Size(698, 374);
+            this.pageEditUser.Size = new System.Drawing.Size(698, 370);
             this.pageEditUser.Text = "Edit User";
             this.pageEditUser.TextDescription = "Here you can edit user";
             this.pageEditUser.TextTitle = "Profiles";
@@ -1058,7 +1104,7 @@ namespace classbook
             // 
             this.lblCnpEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblCnpEdit.AutoSize = false;
-            this.lblCnpEdit.Location = new System.Drawing.Point(412, 90);
+            this.lblCnpEdit.Location = new System.Drawing.Point(412, 88);
             this.lblCnpEdit.Name = "lblCnpEdit";
             this.lblCnpEdit.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.lblCnpEdit.Size = new System.Drawing.Size(71, 20);
@@ -1068,7 +1114,7 @@ namespace classbook
             // txtboxCnpEdit
             // 
             this.txtboxCnpEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtboxCnpEdit.Location = new System.Drawing.Point(489, 89);
+            this.txtboxCnpEdit.Location = new System.Drawing.Point(489, 87);
             this.txtboxCnpEdit.Name = "txtboxCnpEdit";
             this.txtboxCnpEdit.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.txtboxCnpEdit.Size = new System.Drawing.Size(146, 23);
@@ -1079,7 +1125,7 @@ namespace classbook
             // 
             this.borderPersonSectionEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.borderPersonSectionEdit.AutoSize = false;
-            this.borderPersonSectionEdit.Location = new System.Drawing.Point(411, 49);
+            this.borderPersonSectionEdit.Location = new System.Drawing.Point(411, 47);
             this.borderPersonSectionEdit.Name = "borderPersonSectionEdit";
             this.borderPersonSectionEdit.Size = new System.Drawing.Size(224, 1);
             this.borderPersonSectionEdit.Text = "kryptonBorderEdge1";
@@ -1088,7 +1134,7 @@ namespace classbook
             // 
             this.borderAccountSectionEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.borderAccountSectionEdit.AutoSize = false;
-            this.borderAccountSectionEdit.Location = new System.Drawing.Point(64, 49);
+            this.borderAccountSectionEdit.Location = new System.Drawing.Point(64, 47);
             this.borderAccountSectionEdit.Name = "borderAccountSectionEdit";
             this.borderAccountSectionEdit.Size = new System.Drawing.Size(224, 1);
             this.borderAccountSectionEdit.Text = "kryptonBorderEdge2";
@@ -1097,7 +1143,7 @@ namespace classbook
             // 
             this.kryptonBorderEdge3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.kryptonBorderEdge3.AutoSize = false;
-            this.kryptonBorderEdge3.Location = new System.Drawing.Point(64, 264);
+            this.kryptonBorderEdge3.Location = new System.Drawing.Point(64, 262);
             this.kryptonBorderEdge3.Name = "kryptonBorderEdge3";
             this.kryptonBorderEdge3.Size = new System.Drawing.Size(224, 1);
             this.kryptonBorderEdge3.Text = "kryptonBorderEdge1";
@@ -1107,7 +1153,7 @@ namespace classbook
             this.lblYearSectionEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblYearSectionEdit.AutoSize = false;
             this.lblYearSectionEdit.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.SuperTip;
-            this.lblYearSectionEdit.Location = new System.Drawing.Point(232, 240);
+            this.lblYearSectionEdit.Location = new System.Drawing.Point(232, 238);
             this.lblYearSectionEdit.Name = "lblYearSectionEdit";
             this.lblYearSectionEdit.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.lblYearSectionEdit.Size = new System.Drawing.Size(38, 26);
@@ -1118,7 +1164,7 @@ namespace classbook
             // 
             this.lblAccountSectionEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblAccountSectionEdit.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.SuperTip;
-            this.lblAccountSectionEdit.Location = new System.Drawing.Point(76, 24);
+            this.lblAccountSectionEdit.Location = new System.Drawing.Point(76, 22);
             this.lblAccountSectionEdit.Name = "lblAccountSectionEdit";
             this.lblAccountSectionEdit.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.lblAccountSectionEdit.Size = new System.Drawing.Size(60, 26);
@@ -1128,7 +1174,7 @@ namespace classbook
             // numBtnYearEdit
             // 
             this.numBtnYearEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.numBtnYearEdit.Location = new System.Drawing.Point(226, 270);
+            this.numBtnYearEdit.Location = new System.Drawing.Point(226, 268);
             this.numBtnYearEdit.Maximum = new decimal(new int[] {
             4,
             0,
@@ -1153,7 +1199,7 @@ namespace classbook
             // lblUsernameEdit
             // 
             this.lblUsernameEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblUsernameEdit.Location = new System.Drawing.Point(70, 67);
+            this.lblUsernameEdit.Location = new System.Drawing.Point(70, 65);
             this.lblUsernameEdit.Name = "lblUsernameEdit";
             this.lblUsernameEdit.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.lblUsernameEdit.Size = new System.Drawing.Size(68, 20);
@@ -1164,7 +1210,7 @@ namespace classbook
             // 
             this.droBtnProfilesEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.droBtnProfilesEdit.KryptonContextMenu = this.profilesContextMenu;
-            this.droBtnProfilesEdit.Location = new System.Drawing.Point(64, 270);
+            this.droBtnProfilesEdit.Location = new System.Drawing.Point(64, 268);
             this.droBtnProfilesEdit.Name = "droBtnProfilesEdit";
             this.droBtnProfilesEdit.Size = new System.Drawing.Size(133, 25);
             this.droBtnProfilesEdit.TabIndex = 52;
@@ -1173,7 +1219,7 @@ namespace classbook
             // lblPasswordEdit
             // 
             this.lblPasswordEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblPasswordEdit.Location = new System.Drawing.Point(70, 102);
+            this.lblPasswordEdit.Location = new System.Drawing.Point(70, 100);
             this.lblPasswordEdit.Name = "lblPasswordEdit";
             this.lblPasswordEdit.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.lblPasswordEdit.Size = new System.Drawing.Size(65, 20);
@@ -1184,7 +1230,7 @@ namespace classbook
             // 
             this.lblProfileSectionEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblProfileSectionEdit.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.SuperTip;
-            this.lblProfileSectionEdit.Location = new System.Drawing.Point(76, 240);
+            this.lblProfileSectionEdit.Location = new System.Drawing.Point(76, 238);
             this.lblProfileSectionEdit.Name = "lblProfileSectionEdit";
             this.lblProfileSectionEdit.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.lblProfileSectionEdit.Size = new System.Drawing.Size(51, 26);
@@ -1195,7 +1241,7 @@ namespace classbook
             // 
             this.lblPersonSectionEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblPersonSectionEdit.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.SuperTip;
-            this.lblPersonSectionEdit.Location = new System.Drawing.Point(423, 24);
+            this.lblPersonSectionEdit.Location = new System.Drawing.Point(423, 22);
             this.lblPersonSectionEdit.Name = "lblPersonSectionEdit";
             this.lblPersonSectionEdit.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.lblPersonSectionEdit.Size = new System.Drawing.Size(94, 26);
@@ -1206,7 +1252,7 @@ namespace classbook
             // 
             this.btnUpdateEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnUpdateEdit.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnUpdateEdit.Location = new System.Drawing.Point(304, 327);
+            this.btnUpdateEdit.Location = new System.Drawing.Point(304, 325);
             this.btnUpdateEdit.Name = "btnUpdateEdit";
             this.btnUpdateEdit.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.btnUpdateEdit.Size = new System.Drawing.Size(90, 25);
@@ -1224,7 +1270,7 @@ namespace classbook
             // lblFullnameEdit
             // 
             this.lblFullnameEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblFullnameEdit.Location = new System.Drawing.Point(412, 67);
+            this.lblFullnameEdit.Location = new System.Drawing.Point(412, 65);
             this.lblFullnameEdit.Name = "lblFullnameEdit";
             this.lblFullnameEdit.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.lblFullnameEdit.Size = new System.Drawing.Size(68, 20);
@@ -1234,7 +1280,7 @@ namespace classbook
             // radBtnAdminEdit
             // 
             this.radBtnAdminEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.radBtnAdminEdit.Location = new System.Drawing.Point(172, 192);
+            this.radBtnAdminEdit.Location = new System.Drawing.Point(172, 190);
             this.radBtnAdminEdit.Name = "radBtnAdminEdit";
             this.radBtnAdminEdit.Size = new System.Drawing.Size(118, 20);
             this.radBtnAdminEdit.TabIndex = 51;
@@ -1245,7 +1291,7 @@ namespace classbook
             // 
             this.lblEmailEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblEmailEdit.AutoSize = false;
-            this.lblEmailEdit.Location = new System.Drawing.Point(412, 118);
+            this.lblEmailEdit.Location = new System.Drawing.Point(412, 116);
             this.lblEmailEdit.Name = "lblEmailEdit";
             this.lblEmailEdit.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.lblEmailEdit.Size = new System.Drawing.Size(71, 20);
@@ -1256,7 +1302,7 @@ namespace classbook
             // 
             this.lblPhoneEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblPhoneEdit.AutoSize = false;
-            this.lblPhoneEdit.Location = new System.Drawing.Point(412, 147);
+            this.lblPhoneEdit.Location = new System.Drawing.Point(412, 145);
             this.lblPhoneEdit.Name = "lblPhoneEdit";
             this.lblPhoneEdit.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.lblPhoneEdit.Size = new System.Drawing.Size(71, 20);
@@ -1267,7 +1313,7 @@ namespace classbook
             // 
             this.radBtnStudentEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.radBtnStudentEdit.Checked = true;
-            this.radBtnStudentEdit.Location = new System.Drawing.Point(74, 192);
+            this.radBtnStudentEdit.Location = new System.Drawing.Point(74, 190);
             this.radBtnStudentEdit.Name = "radBtnStudentEdit";
             this.radBtnStudentEdit.Size = new System.Drawing.Size(75, 20);
             this.radBtnStudentEdit.TabIndex = 50;
@@ -1277,7 +1323,7 @@ namespace classbook
             // txtboxUsernameEdit
             // 
             this.txtboxUsernameEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtboxUsernameEdit.Location = new System.Drawing.Point(142, 63);
+            this.txtboxUsernameEdit.Location = new System.Drawing.Point(142, 61);
             this.txtboxUsernameEdit.Name = "txtboxUsernameEdit";
             this.txtboxUsernameEdit.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.txtboxUsernameEdit.Size = new System.Drawing.Size(146, 23);
@@ -1288,7 +1334,7 @@ namespace classbook
             // 
             this.borderRoleSectionEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.borderRoleSectionEdit.AutoSize = false;
-            this.borderRoleSectionEdit.Location = new System.Drawing.Point(64, 188);
+            this.borderRoleSectionEdit.Location = new System.Drawing.Point(64, 186);
             this.borderRoleSectionEdit.Name = "borderRoleSectionEdit";
             this.borderRoleSectionEdit.Size = new System.Drawing.Size(224, 1);
             this.borderRoleSectionEdit.Text = "kryptonBorderEdge1";
@@ -1296,7 +1342,7 @@ namespace classbook
             // txtboxPasswordEdit
             // 
             this.txtboxPasswordEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtboxPasswordEdit.Location = new System.Drawing.Point(142, 101);
+            this.txtboxPasswordEdit.Location = new System.Drawing.Point(142, 99);
             this.txtboxPasswordEdit.Name = "txtboxPasswordEdit";
             this.txtboxPasswordEdit.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.txtboxPasswordEdit.PasswordChar = '●';
@@ -1309,7 +1355,7 @@ namespace classbook
             // 
             this.lblRoleSectionEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblRoleSectionEdit.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.SuperTip;
-            this.lblRoleSectionEdit.Location = new System.Drawing.Point(76, 164);
+            this.lblRoleSectionEdit.Location = new System.Drawing.Point(76, 162);
             this.lblRoleSectionEdit.Name = "lblRoleSectionEdit";
             this.lblRoleSectionEdit.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.lblRoleSectionEdit.Size = new System.Drawing.Size(38, 26);
@@ -1319,7 +1365,7 @@ namespace classbook
             // txtboxFullNameEdit
             // 
             this.txtboxFullNameEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtboxFullNameEdit.Location = new System.Drawing.Point(489, 63);
+            this.txtboxFullNameEdit.Location = new System.Drawing.Point(489, 61);
             this.txtboxFullNameEdit.Name = "txtboxFullNameEdit";
             this.txtboxFullNameEdit.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.txtboxFullNameEdit.Size = new System.Drawing.Size(146, 23);
@@ -1329,7 +1375,7 @@ namespace classbook
             // txtboxEmailEdit
             // 
             this.txtboxEmailEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtboxEmailEdit.Location = new System.Drawing.Point(489, 116);
+            this.txtboxEmailEdit.Location = new System.Drawing.Point(489, 114);
             this.txtboxEmailEdit.Name = "txtboxEmailEdit";
             this.txtboxEmailEdit.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.txtboxEmailEdit.Size = new System.Drawing.Size(146, 23);
@@ -1341,7 +1387,7 @@ namespace classbook
             this.txtboxPhoneEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtboxPhoneEdit.CausesValidation = false;
             this.txtboxPhoneEdit.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txtboxPhoneEdit.Location = new System.Drawing.Point(489, 147);
+            this.txtboxPhoneEdit.Location = new System.Drawing.Point(489, 145);
             this.txtboxPhoneEdit.Name = "txtboxPhoneEdit";
             this.txtboxPhoneEdit.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.txtboxPhoneEdit.Size = new System.Drawing.Size(146, 23);
@@ -1381,7 +1427,7 @@ namespace classbook
             this.pageCreateCourse.LastVisibleSet = true;
             this.pageCreateCourse.MinimumSize = new System.Drawing.Size(50, 50);
             this.pageCreateCourse.Name = "pageCreateCourse";
-            this.pageCreateCourse.Size = new System.Drawing.Size(698, 374);
+            this.pageCreateCourse.Size = new System.Drawing.Size(698, 370);
             this.pageCreateCourse.Text = "Create Course";
             this.pageCreateCourse.TextDescription = "Here you can create courses";
             this.pageCreateCourse.TextTitle = "Courses";
@@ -1391,6 +1437,7 @@ namespace classbook
             // 
             // togBtnOralCreateCourse
             // 
+            this.togBtnOralCreateCourse.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.togBtnOralCreateCourse.Appearance = System.Windows.Forms.Appearance.Button;
             this.togBtnOralCreateCourse.AutoSize = true;
             this.togBtnOralCreateCourse.BackColor = System.Drawing.Color.White;
@@ -1408,6 +1455,7 @@ namespace classbook
             // 
             // togBtnWrittenCreateCourse
             // 
+            this.togBtnWrittenCreateCourse.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.togBtnWrittenCreateCourse.Appearance = System.Windows.Forms.Appearance.Button;
             this.togBtnWrittenCreateCourse.AutoSize = true;
             this.togBtnWrittenCreateCourse.BackColor = System.Drawing.Color.White;
@@ -1426,7 +1474,7 @@ namespace classbook
             // numBtnCreditCreateCourse
             // 
             this.numBtnCreditCreateCourse.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.numBtnCreditCreateCourse.Location = new System.Drawing.Point(314, 292);
+            this.numBtnCreditCreateCourse.Location = new System.Drawing.Point(314, 290);
             this.numBtnCreditCreateCourse.Maximum = new decimal(new int[] {
             50,
             0,
@@ -1448,7 +1496,7 @@ namespace classbook
             this.lblCreditSectionCreateUser.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblCreditSectionCreateUser.AutoSize = false;
             this.lblCreditSectionCreateUser.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.SuperTip;
-            this.lblCreditSectionCreateUser.Location = new System.Drawing.Point(316, 259);
+            this.lblCreditSectionCreateUser.Location = new System.Drawing.Point(316, 257);
             this.lblCreditSectionCreateUser.Name = "lblCreditSectionCreateUser";
             this.lblCreditSectionCreateUser.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.lblCreditSectionCreateUser.Size = new System.Drawing.Size(55, 26);
@@ -1459,7 +1507,7 @@ namespace classbook
             // 
             this.kryptonBorderEdge1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.kryptonBorderEdge1.AutoSize = false;
-            this.kryptonBorderEdge1.Location = new System.Drawing.Point(226, 227);
+            this.kryptonBorderEdge1.Location = new System.Drawing.Point(226, 225);
             this.kryptonBorderEdge1.Name = "kryptonBorderEdge1";
             this.kryptonBorderEdge1.Size = new System.Drawing.Size(246, 1);
             this.kryptonBorderEdge1.Text = "kryptonBorderEdge1";
@@ -1468,7 +1516,7 @@ namespace classbook
             // 
             this.lblExaminationModeSectionCreateCourse.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblExaminationModeSectionCreateCourse.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.SuperTip;
-            this.lblExaminationModeSectionCreateCourse.Location = new System.Drawing.Point(240, 202);
+            this.lblExaminationModeSectionCreateCourse.Location = new System.Drawing.Point(240, 200);
             this.lblExaminationModeSectionCreateCourse.Name = "lblExaminationModeSectionCreateCourse";
             this.lblExaminationModeSectionCreateCourse.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.lblExaminationModeSectionCreateCourse.Size = new System.Drawing.Size(122, 26);
@@ -1478,7 +1526,7 @@ namespace classbook
             // numBtnSemesterCreateCourse
             // 
             this.numBtnSemesterCreateCourse.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.numBtnSemesterCreateCourse.Location = new System.Drawing.Point(502, 292);
+            this.numBtnSemesterCreateCourse.Location = new System.Drawing.Point(502, 290);
             this.numBtnSemesterCreateCourse.Maximum = new decimal(new int[] {
             2,
             0,
@@ -1505,7 +1553,7 @@ namespace classbook
             this.lblSectionSemesterCreateCourse.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblSectionSemesterCreateCourse.AutoSize = false;
             this.lblSectionSemesterCreateCourse.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.SuperTip;
-            this.lblSectionSemesterCreateCourse.Location = new System.Drawing.Point(498, 259);
+            this.lblSectionSemesterCreateCourse.Location = new System.Drawing.Point(498, 257);
             this.lblSectionSemesterCreateCourse.Name = "lblSectionSemesterCreateCourse";
             this.lblSectionSemesterCreateCourse.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.lblSectionSemesterCreateCourse.Size = new System.Drawing.Size(78, 26);
@@ -1516,7 +1564,7 @@ namespace classbook
             // 
             this.lblTeacherNameCreateCourse.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblTeacherNameCreateCourse.AutoSize = false;
-            this.lblTeacherNameCreateCourse.Location = new System.Drawing.Point(222, 113);
+            this.lblTeacherNameCreateCourse.Location = new System.Drawing.Point(222, 111);
             this.lblTeacherNameCreateCourse.Name = "lblTeacherNameCreateCourse";
             this.lblTeacherNameCreateCourse.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.lblTeacherNameCreateCourse.Size = new System.Drawing.Size(94, 20);
@@ -1526,7 +1574,7 @@ namespace classbook
             // txtboxTeacherNameCreateCourse
             // 
             this.txtboxTeacherNameCreateCourse.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtboxTeacherNameCreateCourse.Location = new System.Drawing.Point(326, 111);
+            this.txtboxTeacherNameCreateCourse.Location = new System.Drawing.Point(326, 109);
             this.txtboxTeacherNameCreateCourse.Name = "txtboxTeacherNameCreateCourse";
             this.txtboxTeacherNameCreateCourse.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.txtboxTeacherNameCreateCourse.Size = new System.Drawing.Size(146, 23);
@@ -1537,7 +1585,7 @@ namespace classbook
             // 
             this.kryptonBorderEdge2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.kryptonBorderEdge2.AutoSize = false;
-            this.kryptonBorderEdge2.Location = new System.Drawing.Point(230, 37);
+            this.kryptonBorderEdge2.Location = new System.Drawing.Point(230, 35);
             this.kryptonBorderEdge2.Name = "kryptonBorderEdge2";
             this.kryptonBorderEdge2.Size = new System.Drawing.Size(246, 1);
             this.kryptonBorderEdge2.Text = "kryptonBorderEdge2";
@@ -1546,7 +1594,7 @@ namespace classbook
             // 
             this.kryptonBorderEdge4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.kryptonBorderEdge4.AutoSize = false;
-            this.kryptonBorderEdge4.Location = new System.Drawing.Point(136, 286);
+            this.kryptonBorderEdge4.Location = new System.Drawing.Point(136, 284);
             this.kryptonBorderEdge4.Name = "kryptonBorderEdge4";
             this.kryptonBorderEdge4.Size = new System.Drawing.Size(436, 1);
             this.kryptonBorderEdge4.Text = "kryptonBorderEdge1";
@@ -1556,7 +1604,7 @@ namespace classbook
             this.lblYearSectionCreateCourse.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblYearSectionCreateCourse.AutoSize = false;
             this.lblYearSectionCreateCourse.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.SuperTip;
-            this.lblYearSectionCreateCourse.Location = new System.Drawing.Point(417, 259);
+            this.lblYearSectionCreateCourse.Location = new System.Drawing.Point(417, 257);
             this.lblYearSectionCreateCourse.Name = "lblYearSectionCreateCourse";
             this.lblYearSectionCreateCourse.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.lblYearSectionCreateCourse.Size = new System.Drawing.Size(38, 26);
@@ -1567,7 +1615,7 @@ namespace classbook
             // 
             this.lblCourseInfoSectionCreateCourse.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblCourseInfoSectionCreateCourse.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.SuperTip;
-            this.lblCourseInfoSectionCreateCourse.Location = new System.Drawing.Point(240, 12);
+            this.lblCourseInfoSectionCreateCourse.Location = new System.Drawing.Point(240, 10);
             this.lblCourseInfoSectionCreateCourse.Name = "lblCourseInfoSectionCreateCourse";
             this.lblCourseInfoSectionCreateCourse.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.lblCourseInfoSectionCreateCourse.Size = new System.Drawing.Size(126, 26);
@@ -1577,7 +1625,7 @@ namespace classbook
             // numBtnYearCreateCourse
             // 
             this.numBtnYearCreateCourse.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.numBtnYearCreateCourse.Location = new System.Drawing.Point(408, 292);
+            this.numBtnYearCreateCourse.Location = new System.Drawing.Point(408, 290);
             this.numBtnYearCreateCourse.Maximum = new decimal(new int[] {
             4,
             0,
@@ -1602,7 +1650,7 @@ namespace classbook
             // lblCourseNameCreateCourse
             // 
             this.lblCourseNameCreateCourse.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblCourseNameCreateCourse.Location = new System.Drawing.Point(226, 53);
+            this.lblCourseNameCreateCourse.Location = new System.Drawing.Point(226, 51);
             this.lblCourseNameCreateCourse.Name = "lblCourseNameCreateCourse";
             this.lblCourseNameCreateCourse.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.lblCourseNameCreateCourse.Size = new System.Drawing.Size(87, 20);
@@ -1613,7 +1661,7 @@ namespace classbook
             // 
             this.droBtnProfilesCreateCourse.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.droBtnProfilesCreateCourse.KryptonContextMenu = this.profilesContextMenu;
-            this.droBtnProfilesCreateCourse.Location = new System.Drawing.Point(148, 292);
+            this.droBtnProfilesCreateCourse.Location = new System.Drawing.Point(148, 290);
             this.droBtnProfilesCreateCourse.Name = "droBtnProfilesCreateCourse";
             this.droBtnProfilesCreateCourse.Size = new System.Drawing.Size(133, 25);
             this.droBtnProfilesCreateCourse.TabIndex = 52;
@@ -1623,7 +1671,7 @@ namespace classbook
             // 
             this.lblProfileSectionCreateCourse.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblProfileSectionCreateCourse.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.SuperTip;
-            this.lblProfileSectionCreateCourse.Location = new System.Drawing.Point(184, 259);
+            this.lblProfileSectionCreateCourse.Location = new System.Drawing.Point(184, 257);
             this.lblProfileSectionCreateCourse.Name = "lblProfileSectionCreateCourse";
             this.lblProfileSectionCreateCourse.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.lblProfileSectionCreateCourse.Size = new System.Drawing.Size(51, 26);
@@ -1634,7 +1682,7 @@ namespace classbook
             // 
             this.btnCreateCourse.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnCreateCourse.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnCreateCourse.Location = new System.Drawing.Point(304, 334);
+            this.btnCreateCourse.Location = new System.Drawing.Point(304, 332);
             this.btnCreateCourse.Name = "btnCreateCourse";
             this.btnCreateCourse.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.btnCreateCourse.Size = new System.Drawing.Size(90, 25);
@@ -1652,7 +1700,7 @@ namespace classbook
             // lblAbvrCourseCreateCourse
             // 
             this.lblAbvrCourseCreateCourse.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblAbvrCourseCreateCourse.Location = new System.Drawing.Point(229, 83);
+            this.lblAbvrCourseCreateCourse.Location = new System.Drawing.Point(229, 81);
             this.lblAbvrCourseCreateCourse.Name = "lblAbvrCourseCreateCourse";
             this.lblAbvrCourseCreateCourse.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.lblAbvrCourseCreateCourse.Size = new System.Drawing.Size(83, 20);
@@ -1662,7 +1710,7 @@ namespace classbook
             // radBtnColocviuCourseType
             // 
             this.radBtnColocviuCourseType.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.radBtnColocviuCourseType.Location = new System.Drawing.Point(380, 177);
+            this.radBtnColocviuCourseType.Location = new System.Drawing.Point(380, 175);
             this.radBtnColocviuCourseType.Name = "radBtnColocviuCourseType";
             this.radBtnColocviuCourseType.Size = new System.Drawing.Size(85, 20);
             this.radBtnColocviuCourseType.TabIndex = 51;
@@ -1673,7 +1721,7 @@ namespace classbook
             // 
             this.radbtnExamenCourseType.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.radbtnExamenCourseType.Checked = true;
-            this.radbtnExamenCourseType.Location = new System.Drawing.Point(254, 176);
+            this.radbtnExamenCourseType.Location = new System.Drawing.Point(254, 174);
             this.radbtnExamenCourseType.Name = "radbtnExamenCourseType";
             this.radbtnExamenCourseType.Size = new System.Drawing.Size(55, 20);
             this.radbtnExamenCourseType.TabIndex = 50;
@@ -1683,7 +1731,7 @@ namespace classbook
             // txtboxCourseNameCreateCourse
             // 
             this.txtboxCourseNameCreateCourse.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtboxCourseNameCreateCourse.Location = new System.Drawing.Point(326, 51);
+            this.txtboxCourseNameCreateCourse.Location = new System.Drawing.Point(326, 49);
             this.txtboxCourseNameCreateCourse.Name = "txtboxCourseNameCreateCourse";
             this.txtboxCourseNameCreateCourse.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.txtboxCourseNameCreateCourse.Size = new System.Drawing.Size(146, 23);
@@ -1694,7 +1742,7 @@ namespace classbook
             // 
             this.kryptonBorderEdge5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.kryptonBorderEdge5.AutoSize = false;
-            this.kryptonBorderEdge5.Location = new System.Drawing.Point(226, 173);
+            this.kryptonBorderEdge5.Location = new System.Drawing.Point(226, 171);
             this.kryptonBorderEdge5.Name = "kryptonBorderEdge5";
             this.kryptonBorderEdge5.Size = new System.Drawing.Size(246, 1);
             this.kryptonBorderEdge5.Text = "kryptonBorderEdge1";
@@ -1703,7 +1751,7 @@ namespace classbook
             // 
             this.lblCourseTypeSectionCreateCourse.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblCourseTypeSectionCreateCourse.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.SuperTip;
-            this.lblCourseTypeSectionCreateCourse.Location = new System.Drawing.Point(240, 148);
+            this.lblCourseTypeSectionCreateCourse.Location = new System.Drawing.Point(240, 146);
             this.lblCourseTypeSectionCreateCourse.Name = "lblCourseTypeSectionCreateCourse";
             this.lblCourseTypeSectionCreateCourse.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.lblCourseTypeSectionCreateCourse.Size = new System.Drawing.Size(84, 26);
@@ -1713,12 +1761,363 @@ namespace classbook
             // txtboxAbvrCreateCourse
             // 
             this.txtboxAbvrCreateCourse.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtboxAbvrCreateCourse.Location = new System.Drawing.Point(326, 81);
+            this.txtboxAbvrCreateCourse.Location = new System.Drawing.Point(326, 79);
             this.txtboxAbvrCreateCourse.Name = "txtboxAbvrCreateCourse";
             this.txtboxAbvrCreateCourse.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.txtboxAbvrCreateCourse.Size = new System.Drawing.Size(146, 23);
             this.txtboxAbvrCreateCourse.TabIndex = 46;
             this.txtboxAbvrCreateCourse.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // pageNoteList
+            // 
+            this.pageNoteList.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
+            this.pageNoteList.Controls.Add(this.splitContainerAddNotePage);
+            this.pageNoteList.Flags = 65534;
+            this.pageNoteList.LastVisibleSet = true;
+            this.pageNoteList.MinimumSize = new System.Drawing.Size(50, 50);
+            this.pageNoteList.Name = "pageNoteList";
+            this.pageNoteList.Size = new System.Drawing.Size(698, 370);
+            this.pageNoteList.Text = "Note List";
+            this.pageNoteList.TextDescription = "Here you can see and add note to students";
+            this.pageNoteList.TextTitle = "Notes";
+            this.pageNoteList.ToolTipTitle = "Page ToolTip\r\n";
+            this.pageNoteList.UniqueName = "EFBCFADB30634A97CC9CD728527F1E75";
+            this.pageNoteList.Visible = false;
+            // 
+            // splitContainerAddNotePage
+            // 
+            this.splitContainerAddNotePage.Cursor = System.Windows.Forms.Cursors.Default;
+            this.splitContainerAddNotePage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerAddNotePage.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerAddNotePage.Name = "splitContainerAddNotePage";
+            this.splitContainerAddNotePage.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainerAddNotePage.Panel1
+            // 
+            this.splitContainerAddNotePage.Panel1.Controls.Add(this.txtboxSearchAddNote);
+            this.splitContainerAddNotePage.Panel1.Controls.Add(this.labelSearchAddNote);
+            // 
+            // splitContainerAddNotePage.Panel2
+            // 
+            this.splitContainerAddNotePage.Panel2.Controls.Add(this.dgvNoteList);
+            this.splitContainerAddNotePage.Size = new System.Drawing.Size(698, 370);
+            this.splitContainerAddNotePage.SplitterDistance = 44;
+            this.splitContainerAddNotePage.TabIndex = 0;
+            // 
+            // txtboxSearchAddNote
+            // 
+            this.txtboxSearchAddNote.Location = new System.Drawing.Point(50, 8);
+            this.txtboxSearchAddNote.Name = "txtboxSearchAddNote";
+            this.txtboxSearchAddNote.Size = new System.Drawing.Size(100, 23);
+            this.txtboxSearchAddNote.TabIndex = 2;
+            this.txtboxSearchAddNote.TextChanged += new System.EventHandler(this.txtboxSearchAddNote_TextChanged);
+            // 
+            // labelSearchAddNote
+            // 
+            this.labelSearchAddNote.Location = new System.Drawing.Point(4, 10);
+            this.labelSearchAddNote.Name = "labelSearchAddNote";
+            this.labelSearchAddNote.Size = new System.Drawing.Size(49, 20);
+            this.labelSearchAddNote.TabIndex = 0;
+            this.labelSearchAddNote.Values.Text = "Search:";
+            // 
+            // dgvNoteList
+            // 
+            this.dgvNoteList.AllowUserToAddRows = false;
+            this.dgvNoteList.AllowUserToDeleteRows = false;
+            this.dgvNoteList.AllowUserToResizeRows = false;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(141)))), ((int)(((byte)(161)))));
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvNoteList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
+            this.dgvNoteList.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dgvNoteList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvNoteList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgvNoteList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(62)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            dataGridViewCellStyle12.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvNoteList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            this.dgvNoteList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvNoteList.DefaultCellStyle = dataGridViewCellStyle13;
+            this.dgvNoteList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvNoteList.EnableHeadersVisualStyles = false;
+            this.dgvNoteList.Location = new System.Drawing.Point(0, 0);
+            this.dgvNoteList.Name = "dgvNoteList";
+            this.dgvNoteList.ReadOnly = true;
+            this.dgvNoteList.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvNoteList.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            this.dgvNoteList.RowHeadersWidth = 40;
+            this.dgvNoteList.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvNoteList.RowsDefaultCellStyle = dataGridViewCellStyle15;
+            this.dgvNoteList.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvNoteList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvNoteList.Size = new System.Drawing.Size(698, 321);
+            this.dgvNoteList.TabIndex = 2;
+            this.dgvNoteList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAddNote_CellContentClick);
+            // 
+            // pageAddNote
+            // 
+            this.pageAddNote.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
+            this.pageAddNote.Controls.Add(this.btnAddInAddNote);
+            this.pageAddNote.Controls.Add(this.cbNoteTypeAddNote);
+            this.pageAddNote.Controls.Add(this.cbCourseAddNote);
+            this.pageAddNote.Controls.Add(this.cbNameAddNote);
+            this.pageAddNote.Controls.Add(this.numBtnAddNoteValue);
+            this.pageAddNote.Controls.Add(this.kryptonBorderEdge6);
+            this.pageAddNote.Controls.Add(this.kryptonLabel4);
+            this.pageAddNote.Controls.Add(this.lblNoteValue);
+            this.pageAddNote.Controls.Add(this.lblNoteType);
+            this.pageAddNote.Controls.Add(this.lblCourse);
+            this.pageAddNote.Controls.Add(this.lblYearValueAddNote);
+            this.pageAddNote.Controls.Add(this.lblProfileValueAddNote);
+            this.pageAddNote.Controls.Add(this.lblCnpValueAddNote);
+            this.pageAddNote.Controls.Add(this.lblYear);
+            this.pageAddNote.Controls.Add(this.lblProfile);
+            this.pageAddNote.Controls.Add(this.lblCnp);
+            this.pageAddNote.Controls.Add(this.lblName);
+            this.pageAddNote.Controls.Add(this.borderStudentSection);
+            this.pageAddNote.Controls.Add(this.lblStudentSection);
+            this.pageAddNote.Flags = 65534;
+            this.pageAddNote.LastVisibleSet = true;
+            this.pageAddNote.MinimumSize = new System.Drawing.Size(50, 50);
+            this.pageAddNote.Name = "pageAddNote";
+            this.pageAddNote.Size = new System.Drawing.Size(698, 370);
+            this.pageAddNote.Text = "Add Note";
+            this.pageAddNote.TextTitle = "Notes";
+            this.pageAddNote.ToolTipTitle = "Page ToolTip";
+            this.pageAddNote.UniqueName = "70E2DB3E0DD94BADDE84348A63B124AB";
+            this.pageAddNote.Visible = false;
+            // 
+            // btnAddInAddNote
+            // 
+            this.btnAddInAddNote.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnAddInAddNote.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnAddInAddNote.Location = new System.Drawing.Point(304, 318);
+            this.btnAddInAddNote.Name = "btnAddInAddNote";
+            this.btnAddInAddNote.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
+            this.btnAddInAddNote.Size = new System.Drawing.Size(90, 25);
+            this.btnAddInAddNote.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnAddInAddNote.StateNormal.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnAddInAddNote.StateNormal.Border.Rounding = -5;
+            this.btnAddInAddNote.TabIndex = 101;
+            this.btnAddInAddNote.Values.Text = "ADD";
+            this.btnAddInAddNote.Click += new System.EventHandler(this.btnAddInAddNote_Click);
+            // 
+            // cbNoteTypeAddNote
+            // 
+            this.cbNoteTypeAddNote.DropDownWidth = 121;
+            this.cbNoteTypeAddNote.Location = new System.Drawing.Point(471, 137);
+            this.cbNoteTypeAddNote.Name = "cbNoteTypeAddNote";
+            this.cbNoteTypeAddNote.Size = new System.Drawing.Size(164, 21);
+            this.cbNoteTypeAddNote.TabIndex = 98;
+            this.cbNoteTypeAddNote.SelectedIndexChanged += new System.EventHandler(this.cbNoteTypeAddNote_SelectedIndexChanged);
+            // 
+            // cbCourseAddNote
+            // 
+            this.cbCourseAddNote.DropDownWidth = 121;
+            this.cbCourseAddNote.Location = new System.Drawing.Point(471, 97);
+            this.cbCourseAddNote.Name = "cbCourseAddNote";
+            this.cbCourseAddNote.Size = new System.Drawing.Size(164, 21);
+            this.cbCourseAddNote.TabIndex = 97;
+            this.cbCourseAddNote.SelectedIndexChanged += new System.EventHandler(this.cbCourseAddNote_SelectedIndexChanged);
+            // 
+            // cbNameAddNote
+            // 
+            this.cbNameAddNote.DropDownWidth = 174;
+            this.cbNameAddNote.Location = new System.Drawing.Point(109, 87);
+            this.cbNameAddNote.Name = "cbNameAddNote";
+            this.cbNameAddNote.Size = new System.Drawing.Size(174, 21);
+            this.cbNameAddNote.TabIndex = 96;
+            this.cbNameAddNote.SelectedIndexChanged += new System.EventHandler(this.cbNameAddNote_SelectedIndexChanged);
+            // 
+            // numBtnAddNoteValue
+            // 
+            this.numBtnAddNoteValue.Location = new System.Drawing.Point(471, 181);
+            this.numBtnAddNoteValue.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numBtnAddNoteValue.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numBtnAddNoteValue.Name = "numBtnAddNoteValue";
+            this.numBtnAddNoteValue.Size = new System.Drawing.Size(39, 22);
+            this.numBtnAddNoteValue.TabIndex = 92;
+            this.numBtnAddNoteValue.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // kryptonBorderEdge6
+            // 
+            this.kryptonBorderEdge6.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.kryptonBorderEdge6.AutoSize = false;
+            this.kryptonBorderEdge6.Location = new System.Drawing.Point(410, 79);
+            this.kryptonBorderEdge6.Name = "kryptonBorderEdge6";
+            this.kryptonBorderEdge6.Size = new System.Drawing.Size(224, 1);
+            this.kryptonBorderEdge6.Text = "kryptonBorderEdge6";
+            // 
+            // kryptonLabel4
+            // 
+            this.kryptonLabel4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.kryptonLabel4.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.SuperTip;
+            this.kryptonLabel4.Location = new System.Drawing.Point(422, 54);
+            this.kryptonLabel4.Name = "kryptonLabel4";
+            this.kryptonLabel4.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
+            this.kryptonLabel4.Size = new System.Drawing.Size(41, 26);
+            this.kryptonLabel4.TabIndex = 91;
+            this.kryptonLabel4.Values.Text = "Note";
+            // 
+            // lblNoteValue
+            // 
+            this.lblNoteValue.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblNoteValue.Location = new System.Drawing.Point(391, 181);
+            this.lblNoteValue.Name = "lblNoteValue";
+            this.lblNoteValue.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
+            this.lblNoteValue.Size = new System.Drawing.Size(74, 20);
+            this.lblNoteValue.TabIndex = 90;
+            this.lblNoteValue.Values.Text = "Note Value:";
+            // 
+            // lblNoteType
+            // 
+            this.lblNoteType.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblNoteType.Location = new System.Drawing.Point(396, 138);
+            this.lblNoteType.Name = "lblNoteType";
+            this.lblNoteType.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
+            this.lblNoteType.Size = new System.Drawing.Size(70, 20);
+            this.lblNoteType.TabIndex = 89;
+            this.lblNoteType.Values.Text = "Note Type:";
+            // 
+            // lblCourse
+            // 
+            this.lblCourse.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblCourse.Location = new System.Drawing.Point(414, 98);
+            this.lblCourse.Name = "lblCourse";
+            this.lblCourse.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
+            this.lblCourse.Size = new System.Drawing.Size(51, 20);
+            this.lblCourse.TabIndex = 88;
+            this.lblCourse.Values.Text = "Course:";
+            // 
+            // lblYearValueAddNote
+            // 
+            this.lblYearValueAddNote.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.BoldControl;
+            this.lblYearValueAddNote.Location = new System.Drawing.Point(99, 163);
+            this.lblYearValueAddNote.Name = "lblYearValueAddNote";
+            this.lblYearValueAddNote.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
+            this.lblYearValueAddNote.Size = new System.Drawing.Size(6, 2);
+            this.lblYearValueAddNote.TabIndex = 82;
+            this.lblYearValueAddNote.Values.Text = "";
+            // 
+            // lblProfileValueAddNote
+            // 
+            this.lblProfileValueAddNote.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.BoldControl;
+            this.lblProfileValueAddNote.Location = new System.Drawing.Point(99, 137);
+            this.lblProfileValueAddNote.Name = "lblProfileValueAddNote";
+            this.lblProfileValueAddNote.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
+            this.lblProfileValueAddNote.Size = new System.Drawing.Size(6, 2);
+            this.lblProfileValueAddNote.TabIndex = 81;
+            this.lblProfileValueAddNote.Values.Text = "";
+            // 
+            // lblCnpValueAddNote
+            // 
+            this.lblCnpValueAddNote.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.BoldControl;
+            this.lblCnpValueAddNote.Location = new System.Drawing.Point(99, 111);
+            this.lblCnpValueAddNote.Name = "lblCnpValueAddNote";
+            this.lblCnpValueAddNote.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
+            this.lblCnpValueAddNote.Size = new System.Drawing.Size(6, 2);
+            this.lblCnpValueAddNote.TabIndex = 80;
+            this.lblCnpValueAddNote.Values.Text = "";
+            // 
+            // lblYear
+            // 
+            this.lblYear.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblYear.Location = new System.Drawing.Point(71, 163);
+            this.lblYear.Name = "lblYear";
+            this.lblYear.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
+            this.lblYear.Size = new System.Drawing.Size(37, 20);
+            this.lblYear.TabIndex = 78;
+            this.lblYear.Values.Text = "Year:";
+            // 
+            // lblProfile
+            // 
+            this.lblProfile.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblProfile.Location = new System.Drawing.Point(60, 137);
+            this.lblProfile.Name = "lblProfile";
+            this.lblProfile.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
+            this.lblProfile.Size = new System.Drawing.Size(48, 20);
+            this.lblProfile.TabIndex = 77;
+            this.lblProfile.Values.Text = "Profile:";
+            // 
+            // lblCnp
+            // 
+            this.lblCnp.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblCnp.Location = new System.Drawing.Point(71, 111);
+            this.lblCnp.Name = "lblCnp";
+            this.lblCnp.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
+            this.lblCnp.Size = new System.Drawing.Size(37, 20);
+            this.lblCnp.TabIndex = 76;
+            this.lblCnp.Values.Text = "CNP:";
+            // 
+            // lblName
+            // 
+            this.lblName.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblName.Location = new System.Drawing.Point(62, 88);
+            this.lblName.Name = "lblName";
+            this.lblName.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
+            this.lblName.Size = new System.Drawing.Size(46, 20);
+            this.lblName.TabIndex = 75;
+            this.lblName.Values.Text = "Name:";
+            // 
+            // borderStudentSection
+            // 
+            this.borderStudentSection.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.borderStudentSection.AutoSize = false;
+            this.borderStudentSection.Location = new System.Drawing.Point(63, 79);
+            this.borderStudentSection.Name = "borderStudentSection";
+            this.borderStudentSection.Size = new System.Drawing.Size(224, 1);
+            this.borderStudentSection.Text = "kryptonBorderEdge1";
+            // 
+            // lblStudentSection
+            // 
+            this.lblStudentSection.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblStudentSection.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.SuperTip;
+            this.lblStudentSection.Location = new System.Drawing.Point(75, 54);
+            this.lblStudentSection.Name = "lblStudentSection";
+            this.lblStudentSection.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
+            this.lblStudentSection.Size = new System.Drawing.Size(58, 26);
+            this.lblStudentSection.TabIndex = 74;
+            this.lblStudentSection.Values.Text = "Student";
             // 
             // Dashboard
             // 
@@ -1779,6 +2178,22 @@ namespace classbook
             ((System.ComponentModel.ISupportInitialize)(this.pageCreateCourse)).EndInit();
             this.pageCreateCourse.ResumeLayout(false);
             this.pageCreateCourse.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pageNoteList)).EndInit();
+            this.pageNoteList.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerAddNotePage.Panel1)).EndInit();
+            this.splitContainerAddNotePage.Panel1.ResumeLayout(false);
+            this.splitContainerAddNotePage.Panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerAddNotePage.Panel2)).EndInit();
+            this.splitContainerAddNotePage.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerAddNotePage)).EndInit();
+            this.splitContainerAddNotePage.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvNoteList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pageAddNote)).EndInit();
+            this.pageAddNote.ResumeLayout(false);
+            this.pageAddNote.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbNoteTypeAddNote)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbCourseAddNote)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbNameAddNote)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1895,5 +2310,30 @@ namespace classbook
         private ComponentFactory.Krypton.Toolkit.KryptonLabel lblCreditSectionCreateUser;
         private System.Windows.Forms.CheckBox togBtnWrittenCreateCourse;
         private System.Windows.Forms.CheckBox togBtnOralCreateCourse;
+        private ComponentFactory.Krypton.Navigator.KryptonPage pageNoteList;
+        private ComponentFactory.Krypton.Toolkit.KryptonSplitContainer splitContainerAddNotePage;
+        private System.Windows.Forms.DataGridView dgvNoteList;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtboxSearchAddNote;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel labelSearchAddNote;
+        private ComponentFactory.Krypton.Navigator.KryptonPage pageAddNote;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel lblYearValueAddNote;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel lblProfileValueAddNote;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel lblCnpValueAddNote;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel lblYear;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel lblProfile;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel lblCnp;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel lblName;
+        private ComponentFactory.Krypton.Toolkit.KryptonBorderEdge borderStudentSection;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel lblStudentSection;
+        private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown numBtnAddNoteValue;
+        private ComponentFactory.Krypton.Toolkit.KryptonBorderEdge kryptonBorderEdge6;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel4;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel lblNoteValue;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel lblNoteType;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel lblCourse;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox cbNoteTypeAddNote;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox cbCourseAddNote;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox cbNameAddNote;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnAddInAddNote;
     }
 }

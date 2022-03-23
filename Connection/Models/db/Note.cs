@@ -10,7 +10,7 @@ namespace iSlavici.Connection.Models.db
 
         ///  STUDENT FIELDS
         ///  
-        public Person Person { get; set; }
+        public int PersonId { get; set; }
         public string StudentName { get; set; }
 
 
@@ -22,7 +22,6 @@ namespace iSlavici.Connection.Models.db
 
         /// NOTE FIELDS 
         ///
-        public NoteType NoteType { get; set; }
         public int NoteTypeId { get; set; }
         public string NoteTypeName { get; set; }
         public int NoteValue { get; set; }

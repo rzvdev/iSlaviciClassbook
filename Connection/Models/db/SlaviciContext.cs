@@ -39,6 +39,8 @@ namespace iSlavici.Connection.Models.db
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer("Data Source=127.0.0.1;Initial Catalog=Slavici; User=root; Password=root");
             }
+
+            optionsBuilder.EnableSensitiveDataLogging();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

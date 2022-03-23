@@ -3,11 +3,13 @@ using iSlavici.Connection.Models.db;
 using iSlavici.Connection.Models.db.interfaces;
 using iSlavici.Connection.Models.interfaces;
 using iSlavici.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace classbook.Connection
 {
@@ -24,6 +26,36 @@ namespace classbook.Connection
 
         public static SlaviciContext _dbContext;
         public static bool _isConnection;
+
+        public static List<NoteList> noteList = new List<NoteList>();
+        public static List<StudentNoteList> studentNoteList = new List<StudentNoteList>();
+
+
+        public static bool AddNote(Person person,Subject subject,NoteType noteType,int noteValue)
+        {
+            try
+            {
+                Note toAdd = new Note
+                {
+                    StudentName = person.FullName,
+                    PersonId = person.Id,
+                    SubjectName = subject.Name,
+                    SubjectId = subject.Id,
+                    NoteTypeId = noteType.Id,
+                    NoteTypeName = noteType.TypeName,
+                    NoteValue = noteValue,
+                    AddedDate = DateTime.Now
+                };
+
+                _dbContext.Note.Add(toAdd);
+                _dbContext.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
 
 
         /// <summary>
@@ -54,8 +86,57 @@ namespace classbook.Connection
             return userAndPerson;
         }
 
+        public static async Task LoadStudentNotesAsync(string studentCnp, string subjectName)
+        {
+            await Task.Run(async () =>
+            {
+                studentNoteList = await (from student in _dbContext.Person
+                                         where student.CNP.Equals(studentCnp)
+                                         join note in _dbContext.Note on student.Id equals note.PersonId
+                                         join subject in _dbContext.Subject on note.SubjectId equals subject.Id
+                                         where subject.Name == subjectName
+                                         orderby note.AddedDate descending
+                                         select new StudentNoteList
+                                         {
+                                             SubjectName = subject.Name,
+                                             SubjectAbvr = subject.Abvr,
+                                             TeacherName = subject.TeacherName,
+                                             NoteType = note.NoteTypeName,
+                                             Note = note.NoteValue,
+                                             DateAdded = note.AddedDate
+                                         }).ToListAsync();
+            });
+        }
+
+        public static async Task LoadNoteListAsync()    
+        {
+            await Task.Run(async () =>
+            {
+                noteList = await (from n in _dbContext.Note
+                         join stu in _dbContext.Person on n.PersonId equals stu.Id
+                         join ty in _dbContext.NoteType on n.NoteTypeId equals ty.Id
+                         select new NoteList
+                         {
+                             Id = n.Id,
+                             SubjectName = n.SubjectName,
+                             SubjectAbrv = n.Subject.Abvr,
+                             StudentName = n.StudentName,
+                             TeacherName = n.Subject.TeacherName,
+                             NoteType = n.NoteTypeName,
+                             NoteValue = n.NoteValue,
+                             AddedDate = n.AddedDate
+                         }).ToListAsync();
+            });
+        }
+
         /// <summary>
-        /// Represents the method that load course list from database Subject table
+        /// Represents the method that load 
+        /// 
+        /// 
+        /// 
+        /// 
+        /// 
+        /// list from database Subject table
         /// </summary>
         /// <returns></returns>
         public static List<CourseList> LoadCourseList()

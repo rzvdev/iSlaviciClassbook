@@ -1,14 +1,18 @@
 ﻿using classbook.Connection;
 using classbook.Utility;
 using iSlavici.Connection.Models.db;
+using iSlavici.Forms;
 using iSlavici.Models;
 using iSlavici.Utility;
+using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace classbook
@@ -29,6 +33,7 @@ namespace classbook
         private int _course_type_selected = 1;
         private int _course_profile_selected = 0;
         private int _course_examination_selected = 0;
+
 
         public Dashboard()
         {
@@ -82,164 +87,58 @@ namespace classbook
             }
         }
 
+        private async Task LoadNoteListAsync()
+        {
+            await DataAccess.LoadNoteListAsync();
+        }
+
+        private async Task LoadDgvNoteList()
+        {
+
+            try
+            {
+                await LoadNoteListAsync();
+                dgvNoteList.DataSource = DataAccess.noteList;
+                TableCustomize customize = new TableCustomize(dgvNoteList, TableType.NoteTable);
+
+                for (int i = 0; i < dgvNoteList.Columns.Count; i++)
+                {
+                    DataGridViewColumn col = dgvNoteList.Columns[i];
+                    if (col.Tag != null)
+                    {
+                        if (col.Tag.Equals("dgvDeleteBtn") || col.Tag.Equals("dgvEditBtn"))
+                        {
+                            dgvNoteList.Columns.RemoveAt(i);
+                        }
+                    }
+                }
+
+                customize.CustomizeTable();
+                customize.AddButtons();
+                dgvNoteList.Refresh();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
         private void LoadDgvCourseList()
         {
             try
             {
-                AddButtons(dgvCourseList, TableType.CourseTable);
+                TableCustomize customize = new TableCustomize(dgvCourseList, TableType.CourseTable);
+                customize.AddButtons();
                 dgvCourseList.DataSource = DataAccess.LoadCourseList();
-                CustomizeTable(dgvCourseList, TableType.CourseTable);
+                customize.CustomizeTable();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        #region DGV METHODS
-        /// <summary>
-        /// This method add EDIT,DELETE buttons to dgv tables
-        /// </summary>
-        /// <param name="dgv"></param>
-        private void AddButtons(DataGridView dgv, TableType tableType)
-        {
-            DGVimageButtonDeleteColumn deleteBtn = new DGVimageButtonDeleteColumn
-            {
-                HeaderText = "",
-                Width = 20,
-                Text = "Delete this user",
-                Tag = "dgvDeleteBtn"
-            };
-
-
-            DGVimageButtonEditColumn editBtn = new DGVimageButtonEditColumn()
-            {
-                HeaderText = "",
-                Width = 20,
-                Text = "Edit this user",
-                Tag = "dgvEditBtn"
-            };
-
-            /// This collides re-adding these buttons
-            foreach (DataGridViewColumn column in dgv.Columns)
-            {
-                if (column.Tag == deleteBtn.Tag || column.Tag == editBtn.Tag)
-                {
-                    return;
-                }
-            }
-
-            switch (tableType)
-            {
-                case TableType.UserTable:
-                    dgv.Columns.Add(deleteBtn);
-                    dgv.Columns.Add(editBtn);
-                    break;
-                case TableType.CourseTable:
-                    dgv.Columns.Add(deleteBtn);
-                    break;
-            }
-        }
-
-        /// <summary>
-        /// Customize columns and more for the User List DataGridView
-        /// </summary>
-        /// <param name="dgv"></param>
-        private void CustomizeTable(DataGridView dgv, TableType type)
-        {
-            dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(50, 58, 68);
-            dgv.ColumnHeadersHeight = 30;
-            dgv.RowHeadersVisible = false;
-            dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-
-            foreach (DataGridViewColumn col in dgv.Columns)
-            {
-                col.DefaultCellStyle.Font = new Font("Tahoma", 11f, FontStyle.Regular);
-            }
-
-            switch (type)
-            {
-                case TableType.UserTable:
-                    // DELETE
-                    dgv.Columns[0].Width = 20;
-
-                    // EDIT
-                    dgv.Columns[1].Width = 20;
-
-                    // ID
-                    dgv.Columns[2].Width = 50;
-
-                    // USERNAME
-                    dgv.Columns[3].Width = 150;
-
-                    // FULLNAME
-                    dgv.Columns[4].Width = 200;
-
-                    // CNP
-                    dgv.Columns[5].Width = 200;
-
-                    // ROLE
-                    dgv.Columns[6].Width = 100;
-
-                    // EMAIL
-                    dgv.Columns[7].Width = 250;
-
-                    // PHONE
-                    dgv.Columns[8].Width = 200;
-
-                    // PROFILE
-                    dgv.Columns[9].Width = 150;
-
-                    // YEAR
-                    dgv.Columns[10].Width = 50;
-
-                    // CREATEDDATE
-                    dgv.Columns[11].Width = 200;
-                    dgv.Columns[11].HeaderText = "Date Created";
-
-                    break;
-
-                case TableType.CourseTable:
-                    // DELETE
-                    dgv.Columns[0].Width = 20;
-
-                    // ID
-                    dgv.Columns[1].Width = 60;
-
-                    // Course Name
-                    dgv.Columns[2].Width = 300;
-
-                    // Abvr
-                    dgv.Columns[3].Width = 80;
-                    dgv.Columns[3].HeaderText = "Abrv";
-
-                    // Teacher Name
-                    dgv.Columns[4].Width = 250;
-
-                    // Profile Name
-                    dgv.Columns[5].Width = 200;
-
-                    // Subject Type
-                    dgv.Columns[6].Width = 150;
-
-                    // Examination Mode
-                    dgv.Columns[7].Width = 150;
-                    dgv.Columns[7].HeaderText = "Examination";
-                    
-                    // Credit
-                    dgv.Columns[8].Width = 80;
-
-                    // Year
-                    dgv.Columns[9].Width = 80;
-
-                    // Semester
-                    dgv.Columns[10].Width = 80;
-
-                    break;
-            }
-            dgv.Refresh();
-        }
-        #endregion
 
         #region CREATE USER PAGE
         /// <summary>
@@ -612,9 +511,10 @@ namespace classbook
             {
                 if (!update)
                 {
-                    AddButtons(dgvUserList, TableType.UserTable);
+                    TableCustomize customize = new TableCustomize(dgvUserList, TableType.UserTable);
+                    customize.AddButtons();
                     dgvUserList.DataSource = DataAccess.LoadUserList();
-                    CustomizeTable(dgvUserList, TableType.UserTable);
+                    customize.CustomizeTable();
                 }
                 else
                 {
@@ -807,7 +707,7 @@ namespace classbook
         /// Represents the method that load course list and set make course list visible to true
         /// </summary>
         /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// 8<param name="e"></param>
         private void BtnCourse_Click(object sender, EventArgs e)
         {
             foreach (var page in navigator.Pages) page.Visible = false;
@@ -847,7 +747,7 @@ namespace classbook
                         return;
                     }
 
-                    Tuple<bool, string> createCourse = DataAccess.CreateCourse(courseName, courseAbrv, courseTeacherName, courseType, courseYear, courseSemester, courseProfile,courseExamMode,courseCredit);
+                    Tuple<bool, string> createCourse = DataAccess.CreateCourse(courseName, courseAbrv, courseTeacherName, courseType, courseYear, courseSemester, courseProfile, courseExamMode, courseCredit);
                     MessageBox.Show($"{createCourse.Item2}", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
@@ -894,7 +794,7 @@ namespace classbook
                     return false;
                 }
 
-                if(_course_examination_selected == 0)
+                if (_course_examination_selected == 0)
                 {
                     MessageBox.Show("The examination mode of course was not selected!", "Invalid field", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
@@ -1052,9 +952,14 @@ namespace classbook
             }
         }
 
-        private void btnNotes_Click(object sender, EventArgs e)
+        private async void btnNotes_Click(object sender, EventArgs e)
         {
             foreach (var page in navigator.Pages) page.Visible = false;
+
+            await LoadDgvNoteList();
+            InitializeComboboxes();
+            pageNoteList.Visible = true;
+            pageAddNote.Visible = true;
         }
 
         private void btnPresence_Click(object sender, EventArgs e)
@@ -1079,7 +984,8 @@ namespace classbook
             {
                 if (navigator.SelectedPage == pageCourseList)
                 {
-                    CustomizeTable(dgvCourseList, TableType.CourseTable);
+                    TableCustomize customize = new TableCustomize(dgvCourseList, TableType.CourseTable);
+                    customize.CustomizeTable();
                 }
             }
         }
@@ -1122,6 +1028,183 @@ namespace classbook
                 togBtnOralCreateCourse.BackColor = Color.White;
                 togBtnOralCreateCourse.ForeColor = Color.Black;
                 _course_examination_selected = 0;
+            }
+        }
+
+        private void txtboxSearchAddNote_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                //  dgvAddNote.DataSource = notes.Where(n => n.StudentName.ToLower().Contains(txtboxSearchAddNote.Text.ToLower()))
+                //                             .ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw ex;
+            }
+        }
+
+        private void dgvAddNote_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if ((e.RowIndex > -1) && (e.ColumnIndex > -1))
+                {
+                    if ((dgvNoteList.Columns[e.ColumnIndex].GetType().Equals(typeof(DGVimageButtonDeleteColumn))) ||
+                        (dgvNoteList.Columns[e.ColumnIndex].GetType().Equals(typeof(DGVimageButtonEditColumn))))
+                    {
+                        string id = dgvNoteList.Rows[e.RowIndex].Cells[1].Value.ToString();
+                        string studentName = dgvNoteList.Rows[e.RowIndex].Cells[2].Value.ToString();
+                        string subjectName = dgvNoteList.Rows[e.RowIndex].Cells[3].Value.ToString();
+
+                        var person = (from p in DataAccess._dbContext.Person
+                                      where p.FullName == studentName
+                                      select p).FirstOrDefault();
+
+                        var account = (from ac in DataAccess._dbContext.Account
+                                       where ac.PersonId == person.Id
+                                       select ac).FirstOrDefault();
+
+                        var profile = (from pro in DataAccess._dbContext.Profile
+                                       where pro.Id == account.ProfileId
+                                       select pro).FirstOrDefault();
+
+                        var subject = (from sub in DataAccess._dbContext.Subject
+                                       where sub.Name == subjectName
+                                       select sub).FirstOrDefault();
+
+                        switch (e.ColumnIndex)
+                        {
+                            case 0:
+                                SendToBack();
+                                AddNote addNote = new AddNote(person, profile,subject);
+
+
+                                addNote.Show();
+                                addNote.BringToFront();
+                                break;
+
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+
+        private async void InitializeComboboxes()
+        {
+            try
+            {
+                cbNameAddNote.Items.Clear();
+                cbCourseAddNote.Items.Clear();
+                cbNoteTypeAddNote.Items.Clear();
+
+                List<string> studentNames = await (from st in DataAccess._dbContext.Person
+                                                   where st.Account.RoleId == 2
+                                                   select st.FullName).ToListAsync();
+
+                List<string> courseNames = await (from c in DataAccess._dbContext.Subject
+                                                  select c.Name).ToListAsync();
+
+                List<string> noteTypes = await (from nt in DataAccess._dbContext.NoteType
+                                                select nt.TypeName).ToListAsync();
+
+                cbNameAddNote.Items.AddRange(studentNames.ToArray());
+                cbCourseAddNote.Items.AddRange(courseNames.ToArray());
+                cbNoteTypeAddNote.Items.AddRange(noteTypes.ToArray());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        private Person _personToAddNote;
+        private Account _accountToAddNote;
+        private Profile _profileToAddNote;
+        private Subject _subjectToAddNote;
+        private NoteType _noteTypeToAddNote;
+
+        private void cbNameAddNote_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string studentName = cbNameAddNote.SelectedItem.ToString();
+
+                _personToAddNote = (from p in DataAccess._dbContext.Person
+                                    where p.FullName == studentName
+                                    select p).FirstOrDefault();
+
+                _accountToAddNote = (from ac in DataAccess._dbContext.Account
+                                     where ac.PersonId == _personToAddNote.Id
+                                     select ac).FirstOrDefault();
+
+                _profileToAddNote = (from pr in DataAccess._dbContext.Profile
+                                     where pr.Id == _accountToAddNote.ProfileId
+                                     select pr).FirstOrDefault();
+
+                lblCnpValueAddNote.Text = _personToAddNote.CNP;
+                lblProfileValueAddNote.Text = _profileToAddNote.Name;
+                lblYearValueAddNote.Text = 1.ToString();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        private void btnAddInAddNote_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_personToAddNote == null || _accountToAddNote == null || _profileToAddNote == null) throw new ArgumentNullException();
+                if (DataAccess.AddNote(_personToAddNote,_subjectToAddNote,_noteTypeToAddNote,int.Parse(numBtnAddNoteValue.Value.ToString())))
+                {
+                    dgvNoteList.DataSource = DataAccess.LoadNoteListAsync();
+                    MessageBox.Show("Note was added with succes!","SUCCES",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    return;
+                }
+                MessageBox.Show("Cannot add this note!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void cbCourseAddNote_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                _subjectToAddNote = (from sub in DataAccess._dbContext.Subject
+                                     where sub.Name == cbCourseAddNote.SelectedItem.ToString()
+                                     select sub).FirstOrDefault();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        private void cbNoteTypeAddNote_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                _noteTypeToAddNote = (from nt in DataAccess._dbContext.NoteType
+                                     where nt.TypeName == cbNoteTypeAddNote.SelectedItem.ToString()
+                                     select nt).FirstOrDefault();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
     }
