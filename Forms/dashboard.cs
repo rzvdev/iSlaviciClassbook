@@ -50,8 +50,11 @@ namespace classbook
             labelPersonName.Text = $"{DataAccess._loggedPerson.FullName}";
 
             InitializeRolePanel();
-
+            DataAccess.LoadUserList();
             pageEditUser.Visible = false;
+
+            //panelAdmin.BringToFront();
+            splitcontainerLeftSide.Dock = DockStyle.Fill;
         }
 
         private void SetCulture(string cultureString)
@@ -68,22 +71,22 @@ namespace classbook
         {
             if (DataAccess._loggedAccount.RoleId == 2)
             {
-                panelStudent.Visible = true;
-                panelStudent.Enabled = true;
+                //panelStudent.Visible = true;
+                //panelStudent.Enabled = true;
                 BringToFront();
 
-                panelAdmin.Enabled = false;
-                panelAdmin.Visible = false;
+                //panelAdmin.Enabled = false;
+                //panelAdmin.Visible = false;
 
             }
             else
             {
-                panelAdmin.Visible = true;
-                panelAdmin.Enabled = true;
+               //panelAdmin.Visible = true;
+               // panelAdmin.Enabled = true;
                 BringToFront();
 
-                panelStudent.Enabled = false;
-                panelStudent.Visible = false;
+                //panelStudent.Enabled = false;
+                //panelStudent.Visible = false;
             }
         }
 
@@ -181,8 +184,10 @@ namespace classbook
                         string cnp = textboxCnpCreate.Text;
                         string phone = txtboxPhoneCreate.Text;
 
+                        /// STUDENT
+                        int inYear = int.Parse(numBtnYearCreate.Value.ToString());
 
-                        if (DataAccess.CreateUser(username, password, profileId, roleId, fullName, email, cnp, phone))
+                        if (DataAccess.CreateUser(username, password, profileId, roleId, fullName, email, cnp, phone,inYear))
                         {
                             MessageBox.Show("Account created succesfully!", "Succes", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
@@ -513,12 +518,13 @@ namespace classbook
                 {
                     TableCustomize customize = new TableCustomize(dgvUserList, TableType.UserTable);
                     customize.AddButtons();
-                    dgvUserList.DataSource = DataAccess.LoadUserList();
+                    dgvUserList.DataSource = DataAccess.userList;
                     customize.CustomizeTable();
                 }
                 else
                 {
-                    dgvUserList.DataSource = DataAccess.LoadUserList();
+                    DataAccess.LoadUserList();
+                    dgvUserList.DataSource = DataAccess.userList;
                     dgvUserList.Refresh();
                 }
             }
@@ -570,7 +576,7 @@ namespace classbook
                                 if (deleteDialog == DialogResult.Yes)
                                 {
                                     DataAccess.DeleteUser(int.Parse(id));
-                                    dgvUserList.DataSource = DataAccess.LoadUserList();
+                                    dgvUserList.DataSource = DataAccess.userList;
                                     dgvUserList.Refresh();
                                 }
                                 break;
@@ -641,7 +647,6 @@ namespace classbook
                         /// ACCOUNT 
                         string editUsername = txtboxUsernameEdit.Text;
                         string editPassword = txtboxPasswordEdit.Text;
-                        int editProfile = _profile_id_selected;
                         int editRole = _role_id_selected;
 
                         /// PERSON
@@ -650,7 +655,12 @@ namespace classbook
                         string CNP = txtboxCnpEdit.Text;
                         string phone = txtboxPhoneEdit.Text;
 
-                        if (DataAccess.UpdateUser(currentAccountId, editUsername, editPassword, editRole, fullname, email, CNP, phone))
+                        /// STUDENT
+                        int editProfile = _profile_id_selected;
+                        int inYear = int.Parse(numBtnYearEdit.Value.ToString());
+
+
+                        if (DataAccess.UpdateUser(currentAccountId, editUsername, editPassword, editRole, fullname, email, CNP, phone,editProfile,inYear))
                         {
                             MessageBox.Show("Account updated succesfully!", "Succes", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             LoadDgvUserList(true);
@@ -1214,6 +1224,30 @@ namespace classbook
             {
                 throw ex;
             }
+        }
+
+        private void panelAdmin_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void splitcontainer_Panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void splitcontainerLeftSide_Panel2_Paint(object sender, PaintEventArgs e)
+        {
+                    }
+
+        private void pageAddNote_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelAdmin_Paint_1(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

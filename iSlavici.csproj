@@ -186,6 +186,7 @@
   <ItemGroup>
     <Compile Include="Connection\Models\builder\AccountBuilder.cs" />
     <Compile Include="Connection\Models\builder\PersonBuilder.cs" />
+    <Compile Include="Connection\Models\builder\StudentBuilder.cs" />
     <Compile Include="Connection\Models\builder\SubjectBuilder.cs" />
     <Compile Include="Connection\Models\db\Account.cs" />
     <Compile Include="Connection\Models\db\Student.cs" />
@@ -200,6 +201,7 @@
     <Compile Include="Connection\Models\db\SubjectExamination.cs" />
     <Compile Include="Connection\Models\db\SubjectType.cs" />
     <Compile Include="Connection\Models\interfaces\IPerson.cs" />
+    <Compile Include="Connection\Models\interfaces\IStudent.cs" />
     <Compile Include="Connection\Models\interfaces\ISubject.cs" />
     <Compile Include="Forms\AddNote.cs">
       <SubType>Form</SubType>
@@ -238,6 +240,10 @@
     <Compile Include="Migrations\20220323150554_AddStudentTbl.cs" />
     <Compile Include="Migrations\20220323150554_AddStudentTbl.designer.cs">
       <DependentUpon>20220323150554_AddStudentTbl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20220323155432_addRelation.cs" />
+    <Compile Include="Migrations\20220323155432_addRelation.designer.cs">
+      <DependentUpon>20220323155432_addRelation.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\SlaviciContextModelSnapshot.cs" />
     <Compile Include="Models\NoteList.cs" />

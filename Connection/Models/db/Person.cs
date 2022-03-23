@@ -19,6 +19,7 @@ namespace iSlavici.Connection.Models.db
         public DateTime CreatedDate { get; set; }
 
         public Account Account { get; set; }
+        public Student Student { get; set; }
 
     }
 }

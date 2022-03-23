@@ -20,7 +20,7 @@ namespace classbook.Connection
         public static Person _loggedPerson;
         public static Profile _loggedProfile;
         public static Role _loggedRole;
-        public static Student _student;
+        public static Student _loggedStudent;
 
         public static Subject _subject;
         public static SubjectType subjectType;
@@ -30,6 +30,7 @@ namespace classbook.Connection
 
         public static List<NoteList> noteList = new List<NoteList>();
         public static List<StudentNoteList> studentNoteList = new List<StudentNoteList>();
+        public static List<UserList> userList = new List<UserList>();
 
 
         public static bool AddNote(Person person,Subject subject,NoteType noteType,int noteValue)
@@ -63,12 +64,11 @@ namespace classbook.Connection
         /// Represents the method that load user list from database 
         /// Account and Person tables
         /// </summary>
-        public static List<UserList> LoadUserList()
+        public static async void LoadUserList()
         {
-            List<UserList> userAndPerson;
-            userAndPerson = (from acc in _dbContext.Account
+            userList = await (from acc in _dbContext.Account
                              join per in _dbContext.Person on acc.PersonId equals per.Id
-                             join stu in _dbContext.Student on per.Id equals stu.Id
+                             join stu in _dbContext.Student on per.Id equals stu.PersonId
                              join rol in _dbContext.Role on acc.RoleId equals rol.Id
                              join pro in _dbContext.Profile on stu.ProfileId equals pro.Id into lftJoin
                              from leftJoin in lftJoin.DefaultIfEmpty()
@@ -82,10 +82,9 @@ namespace classbook.Connection
                                  Email = per.Email,
                                  Phone = per.Phone,
                                  Profile = (leftJoin == null ? string.Empty : leftJoin.Name),
-                                 Year = 1,
+                                 Year = stu.InYear,
                                  CreatedDate = per.CreatedDate
-                             }).ToList();
-            return userAndPerson;
+                             }).ToListAsync();
         }
 
         public static async Task LoadStudentNotesAsync(string studentCnp, string subjectName)
@@ -232,16 +231,7 @@ namespace classbook.Connection
         /// <summary>
         /// Represents the method that update the user from Edit User page
         /// </summary>
-        /// <param name="editAccountId"></param>
-        /// <param name="username"></param>
-        /// <param name="password"></param>
-        /// <param name="profileId"></param>
-        /// <param name="roleId"></param>
-        /// <param name="fullName"></param>
-        /// <param name="email"></param>
-        /// <param name="CNP"></param>
-        /// <param name="phone"></param>
-        internal static bool UpdateUser(string editAccountId, string username, string password, int roleId, string fullName, string email, string CNP, string phone)
+        internal static bool UpdateUser(string editAccountId, string username, string password, int roleId, string fullName, string email, string CNP, string phone, int profileId, int inYear)
         {
             try
             {
@@ -263,9 +253,17 @@ namespace classbook.Connection
                 person.Phone = phone;
                 person.Account = account;
 
+                Student student = (from stu in _dbContext.Student
+                                   where stu.PersonId == person.Id
+                                   select stu).FirstOrDefault();
+
+                student.ProfileId = profileId;
+                student.InYear = inYear;
+
                 _dbContext.Account.Update(account);
                 _dbContext.Person.Update(person);
-                _dbContext.SaveChanges();
+                _dbContext.Student.Update(student);
+                _dbContext.SaveChangesAsync();
                 return true;
             }
             catch
@@ -275,58 +273,77 @@ namespace classbook.Connection
         }
 
         /// <summary>
+        /// Return a school start year formatted
+        /// </summary>
+        /// <returns></returns>
+        private static DateTime SetStartYear()
+        {
+            try
+            {
+                DateTime startYear = new DateTime(DateTime.Now.Year, 10, 1);
+                return Convert.ToDateTime(startYear.ToString("dd/MM/yyyy"));
+            } catch(Exception ex)
+            {
+                throw ex;
+            }
+        } 
+
+        /// <summary>
+        /// Return year when student mush finish school
+        /// </summary>
+        /// <param name="profile"></param>
+        /// <returns></returns>
+        private static DateTime SetEndYear(Profile profile)
+        {
+            try
+            {
+                return Convert.ToDateTime(new DateTime(SetStartYear().AddYears(profile.Years).Year, 6, 1).ToString("dd/MM/yyyy"));
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        /// <summary>
         /// Represents the method that create a user account with a person profile
         /// </summary>
-        /// <param name="username"></param>
-        /// <param name="password"></param>
-        /// <param name="profileId"></param>
-        /// <param name="roleId"></param>
-        /// <param name="fullName"></param>
-        /// <param name="email"></param>
-        /// <param name="cnp"></param>
-        /// <param name="phone"></param>
-        /// <returns></returns>
-        internal static bool CreateUser(string username, string password, int profileId, int roleId, string fullName, string email, string cnp, string phone)
+        internal static bool CreateUser(string username, string password, int profileId, int roleId, string fullName, string email, string cnp, string phone, int inYear)
         {
             try
             {
                 /// USING BUILDER DESIGN PATTERN
                 AccountBuilder buildAccount = new AccountBuilder();
-
                 IAccount account = buildAccount.Username(username)
                                                 .Password(password)
                                                 .Have(roleId)
                                                 .Build();
 
                 PersonBuilder buildPerson = new PersonBuilder();
-
                 IPerson person = buildPerson.Name(fullName)
                                            .HavePhone(phone)
                                            .HaveCnp(cnp)
                                            .HaveEmail(email)
                                            .WithAccount((Account)account)
                                            .Build();
+                
+                Profile profil = (from pr in _dbContext.Profile
+                                  where pr.Id == profileId
+                                  select pr).FirstOrDefault();
 
-                //Account account = new Account
-                //{
-                //    Username = username,
-                //    Password = password,
-                //    ProfileId = profileId,
-                //    RoleId = roleId
-                //};
+                DateTime startYear = new DateTime(DateTime.Now.Year, 10, 1);
+                DateTime endYear = new DateTime(startYear.AddYears(profil.Years).Year, 6, 1);
 
-                //Person person = new Person()
-                //{
-                //    FullName = fullName,
-                //    Email = email,
-                //    CNP = cnp,
-                //    Phone = phone,
-                //    Account = account
-                //};
-
-
-                _dbContext.Add(person);
+                StudentBuilder buildStudent = new StudentBuilder();
+                IStudent student = buildStudent.SetPerson(person)
+                                               .WithProfile(profileId)
+                                               .InYear(inYear)
+                                               .StartingIn(SetStartYear())
+                                               .EndingIn(SetEndYear(profil))
+                                               .Build();
                 _dbContext.Add(account);
+                _dbContext.Add(person);
+                _dbContext.Add(student);
                 _dbContext.SaveChanges();
                 return true;
             }
@@ -340,16 +357,6 @@ namespace classbook.Connection
         /// Represents the method that check if the current user exists in database
         /// used in Create User page and Edit User Page with different rules of validating
         /// </summary>
-        /// <param name="username"></param>
-        /// <param name="cnp"></param>
-        /// <param name="email"></param>
-        /// <param name="phone"></param>
-        /// <param name="editMode"></param>
-        /// <param name="currUsername"></param>
-        /// <param name="currCnp"></param>
-        /// <param name="currEmail"></param>
-        /// <param name="currPhone"></param>
-        /// <returns></returns>
         internal static string CheckIfUserExist(string username, string cnp, string email, string phone, bool editMode = false, string currUsername = "", string currCnp = "", string currEmail = "", string currPhone = "")
         {
             if (!editMode)
@@ -462,10 +469,6 @@ namespace classbook.Connection
         /// Represents the method that check if the current course exist in database
         /// by coursename or abrravation AND profile 
         /// </summary>
-        /// <param name="courseName"></param>
-        /// <param name="abrv"></param>
-        /// <param name="profilId"></param>
-        /// <returns></returns>
         internal static Tuple<bool,string> CheckIfCourseExist(string courseName, string abrv, int profilId)
         {
             Subject subject = (from sub in _dbContext.Subject
@@ -484,14 +487,6 @@ namespace classbook.Connection
         /// <summary>
         /// Represents the method that create course in Subject table
         /// </summary>
-        /// <param name="courseName"></param>
-        /// <param name="courseAbrv"></param>
-        /// <param name="courseTeacherName"></param>
-        /// <param name="courseType"></param>
-        /// <param name="courseYear"></param>
-        /// <param name="courseSemester"></param>
-        /// <param name="courseProfile"></param>
-        /// <returns></returns>
         internal static Tuple<bool, string> CreateCourse(string courseName, string courseAbrv, string courseTeacherName, int courseType, int courseYear, int courseSemester, int courseProfile, int courseExamMode, int courseCredit)
         {
             try
@@ -512,22 +507,6 @@ namespace classbook.Connection
                                                  .WithCredit(courseCredit)
                                                  .Build();
 
-                //Subject subject = new Subject
-                //{
-                //    Name = courseName,
-                //    Abvr = courseAbrv,
-                //    TeacherName = courseTeacherName,
-                //    SubjectTypeName = subjectType.TypeName,
-                //    SubjectTypeId = subjectType.Id,
-                //    YearStudy = courseYear,
-                //    SemesterStudy = courseSemester,
-                //    ProfileName = profile.Name,
-                //    ProfileId = profile.Id,
-                //    CourseExaminationId = examMode.Id,
-                //    CourseExaminationName = examMode.ExaminationName,
-                //    Credit = courseCredit
-                //};
-
                 _dbContext.Add(subject);
                 _dbContext.SaveChanges();
 
@@ -539,6 +518,12 @@ namespace classbook.Connection
             }
         }
 
+
+        /// <summary>
+        /// That method delete a course from database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         internal static Tuple<bool, string> DeleteCourse(int id)
         {
             try

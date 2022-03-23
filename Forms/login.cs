@@ -116,12 +116,15 @@ namespace classbook
                                        where stu.PersonId == person.Id
                                        select stu).FirstOrDefault();
 
-                    DataAccess._student = student;
+                    DataAccess._loggedStudent = student;
 
-                    /// THE ADMINISTRATOR ROLE CANNOT HAVE PROFILE 
-                    DataAccess._loggedProfile = (from pro in DataAccess._dbContext.Profile
-                                                 where pro.Id == student.ProfileId
-                                                 select pro).FirstOrDefault();
+                    if (student != null)
+                    {
+                        /// THE ADMINISTRATOR ROLE CANNOT HAVE PROFILE 
+                        DataAccess._loggedProfile = (from pro in DataAccess._dbContext.Profile
+                                                     where pro.Id == student.ProfileId
+                                                     select pro).FirstOrDefault();
+                    }
 
                     MessageBox.Show("You have successfully logged in!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     return true;

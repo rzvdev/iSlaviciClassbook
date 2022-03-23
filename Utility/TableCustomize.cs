@@ -36,16 +36,16 @@ namespace iSlavici.Utility
 
 
             /// This collides re-adding these buttons
-            //foreach (DataGridViewColumn column in Dgv.Columns)
-            //{
-            //    if (column.Tag == deleteBtn.Tag || column.Tag == editBtn.Tag)
-            //    {
-            //        return;
-            //    }
-            //}
+            foreach (DataGridViewColumn column in Dgv.Columns)
+            {
+                if (column.Tag == deleteBtn.Tag || column.Tag == editBtn.Tag)
+                {
+                    return;
+                }
+            }
 
 
-            for(int i = 0; i < Dgv.Columns.Count; i++)
+            for (int i = 0; i < Dgv.Columns.Count; i++)
             {
                 DataGridViewColumn col = Dgv.Columns[i];
                 if(col.Tag == deleteBtn.Tag || col.Tag == editBtn.Tag)
