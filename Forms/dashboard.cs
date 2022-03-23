@@ -650,7 +650,7 @@ namespace classbook
                         string CNP = txtboxCnpEdit.Text;
                         string phone = txtboxPhoneEdit.Text;
 
-                        if (DataAccess.UpdateUser(currentAccountId, editUsername, editPassword, editProfile, editRole, fullname, email, CNP, phone))
+                        if (DataAccess.UpdateUser(currentAccountId, editUsername, editPassword, editRole, fullname, email, CNP, phone))
                         {
                             MessageBox.Show("Account updated succesfully!", "Succes", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             LoadDgvUserList(true);
@@ -1055,19 +1055,23 @@ namespace classbook
                         (dgvNoteList.Columns[e.ColumnIndex].GetType().Equals(typeof(DGVimageButtonEditColumn))))
                     {
                         string id = dgvNoteList.Rows[e.RowIndex].Cells[1].Value.ToString();
-                        string studentName = dgvNoteList.Rows[e.RowIndex].Cells[2].Value.ToString();
+                        string personName = dgvNoteList.Rows[e.RowIndex].Cells[2].Value.ToString();
                         string subjectName = dgvNoteList.Rows[e.RowIndex].Cells[3].Value.ToString();
 
                         var person = (from p in DataAccess._dbContext.Person
-                                      where p.FullName == studentName
+                                      where p.FullName == personName
                                       select p).FirstOrDefault();
 
                         var account = (from ac in DataAccess._dbContext.Account
                                        where ac.PersonId == person.Id
                                        select ac).FirstOrDefault();
 
+                        var student = (from st in DataAccess._dbContext.Student
+                                       where st.PersonId == person.Id
+                                       select st).FirstOrDefault();
+
                         var profile = (from pro in DataAccess._dbContext.Profile
-                                       where pro.Id == account.ProfileId
+                                       where pro.Id == student.ProfileId
                                        select pro).FirstOrDefault();
 
                         var subject = (from sub in DataAccess._dbContext.Subject
@@ -1145,8 +1149,12 @@ namespace classbook
                                      where ac.PersonId == _personToAddNote.Id
                                      select ac).FirstOrDefault();
 
+                var student = (from stu in DataAccess._dbContext.Student
+                               where stu.Id == _personToAddNote.Id
+                               select stu).FirstOrDefault();
+
                 _profileToAddNote = (from pr in DataAccess._dbContext.Profile
-                                     where pr.Id == _accountToAddNote.ProfileId
+                                     where pr.Id == student.ProfileId
                                      select pr).FirstOrDefault();
 
                 lblCnpValueAddNote.Text = _personToAddNote.CNP;

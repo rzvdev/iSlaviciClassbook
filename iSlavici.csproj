@@ -235,6 +235,10 @@
     <Compile Include="Migrations\20220313172028_RemovedPersonRelationFromNoteTable.designer.cs">
       <DependentUpon>20220313172028_RemovedPersonRelationFromNoteTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20220323150554_AddStudentTbl.cs" />
+    <Compile Include="Migrations\20220323150554_AddStudentTbl.designer.cs">
+      <DependentUpon>20220323150554_AddStudentTbl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\SlaviciContextModelSnapshot.cs" />
     <Compile Include="Models\NoteList.cs" />
     <Compile Include="Models\StudentNoteList.cs" />

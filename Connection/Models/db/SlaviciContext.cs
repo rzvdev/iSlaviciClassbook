@@ -28,6 +28,7 @@ namespace iSlavici.Connection.Models.db
         public virtual DbSet<Subject> Subject { get; set; }
         public virtual DbSet<SubjectType> SubjectType { get; set; }
         public virtual DbSet<SubjectExamination> SubjectExamination { get; set; }
+        public virtual DbSet<Student> Student { get; set; }
 
 
 
@@ -51,10 +52,6 @@ namespace iSlavici.Connection.Models.db
                     .IsRequired()
                     .HasMaxLength(50);
                     
-
-               // entity.Property(e => e.PersonId).HasColumnName("PersonID");
-
-                entity.Property(e => e.ProfileId).HasColumnName("ProfileID");
 
                 entity.Property(e => e.RoleId).HasColumnName("RoleID");
 

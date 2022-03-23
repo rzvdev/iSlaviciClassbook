@@ -20,6 +20,7 @@ namespace classbook.Connection
         public static Person _loggedPerson;
         public static Profile _loggedProfile;
         public static Role _loggedRole;
+        public static Student _student;
 
         public static Subject _subject;
         public static SubjectType subjectType;
@@ -67,8 +68,9 @@ namespace classbook.Connection
             List<UserList> userAndPerson;
             userAndPerson = (from acc in _dbContext.Account
                              join per in _dbContext.Person on acc.PersonId equals per.Id
+                             join stu in _dbContext.Student on per.Id equals stu.Id
                              join rol in _dbContext.Role on acc.RoleId equals rol.Id
-                             join pro in _dbContext.Profile on acc.ProfileId equals pro.Id into lftJoin
+                             join pro in _dbContext.Profile on stu.ProfileId equals pro.Id into lftJoin
                              from leftJoin in lftJoin.DefaultIfEmpty()
                              select new UserList
                              {
@@ -239,17 +241,16 @@ namespace classbook.Connection
         /// <param name="email"></param>
         /// <param name="CNP"></param>
         /// <param name="phone"></param>
-        internal static bool UpdateUser(string editAccountId, string username, string password, int profileId, int roleId, string fullName, string email, string CNP, string phone)
+        internal static bool UpdateUser(string editAccountId, string username, string password, int roleId, string fullName, string email, string CNP, string phone)
         {
             try
             {
-                Account account = (from acc in DataAccess._dbContext.Account
+                Account account = (from acc in _dbContext.Account
                                    where acc.Id == int.Parse(editAccountId)
                                    select acc).FirstOrDefault();
 
                 account.Username = username;
                 account.Password = password;
-                account.ProfileId = profileId;
                 account.RoleId = roleId;
 
                 Person person = (from per in _dbContext.Person
@@ -295,7 +296,6 @@ namespace classbook.Connection
                 IAccount account = buildAccount.Username(username)
                                                 .Password(password)
                                                 .Have(roleId)
-                                                .On(profileId)
                                                 .Build();
 
                 PersonBuilder buildPerson = new PersonBuilder();
