@@ -6,13 +6,124 @@ namespace iSlavici.Utility
 {
     public class TableCustomize
     {
+        /// <summary>
+        /// DGVCS1 - FIRST ROW CELLS
+        /// </summary>
+        private readonly Font CELL_FONT_STYLE = new Font("Tahoma", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        private readonly Color CELL_BACK_COLOR = Color.Gainsboro;
+        private readonly Color CELL_FORE_COLOR = Color.Black;
+        private readonly Color CELL_SELECTION_BACK_COLOR = Color.FromArgb(125,141,161);
+        private readonly Color CELL_SELECTION_FORE_COLOR = Color.WhiteSmoke;
+        private readonly DataGridViewContentAlignment CELL_CONTENT_ALIGN = DataGridViewContentAlignment.MiddleCenter;
+
+        /// <summary>
+        /// DGVCS2 - HEADER CELLS
+        /// </summary>
+        private readonly DataGridViewContentAlignment CELL_HEADER_CONTENT_ALIGN = DataGridViewContentAlignment.TopCenter;
+        private readonly Color CELL_HEADER_BACK_COLOR = Color.FromArgb(50,62,68);
+        private readonly Color CELL_HEADER_FORE_COLOR = Color.FromArgb(213,242,242);
+        private readonly Color CELL_HEADER_SELECTION_BACK_COLOR = SystemColors.Highlight;
+        private readonly Font CELL_HEADER_FONT_STYLE = new Font("Tahoma", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        private readonly Color CELL_HEADER_SELECTION_FORE_COLOR = SystemColors.HighlightText;
+        private readonly Padding CELL_HEADER_PADDING = new Padding(5, 0, 0, 0);
+        private readonly DataGridViewTriState CELL_HEADER_TRISTATE = DataGridViewTriState.True;
+
         public DataGridView Dgv { get; set; }
         public TableType Type { get; set; }
 
+        private DataGridViewCellStyle dgvcs1;
+        private DataGridViewCellStyle dgvcs2;
+        private DataGridViewCellStyle dgvcs3;
+        private DataGridViewCellStyle dgvcs4;
+        private DataGridViewCellStyle dgvcs5;
+
+
         public TableCustomize(DataGridView dgv, TableType type)
         {
-            Dgv = dgv;
+            InitializeStyles();
+            Dgv = SetTableSetting(dgv);
             Type = type;
+        }
+
+
+
+        private DataGridView SetTableSetting(DataGridView dgv)
+        {
+            dgv.AllowUserToAddRows = false;
+            dgv.AllowUserToDeleteRows = false;
+            dgv.AllowUserToResizeRows = false;
+            dgv.AlternatingRowsDefaultCellStyle = dgvcs1;
+            dgv.BackgroundColor = SystemColors.ActiveCaption;
+            dgv.BorderStyle = BorderStyle.None;
+            dgv.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            dgv.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgv.ColumnHeadersDefaultCellStyle = dgvcs2;
+            dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgv.DefaultCellStyle = dgvcs3;
+            dgv.Dock = DockStyle.Fill;
+            dgv.EnableHeadersVisualStyles = false;
+            dgv.ReadOnly = true;
+            dgv.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgv.RowHeadersDefaultCellStyle = dgvcs4;
+            dgv.RowHeadersWidth = 40;
+            dgv.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dgv.RowsDefaultCellStyle = dgvcs5;
+            dgv.RowTemplate.Resizable = DataGridViewTriState.False;
+            dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            return dgv;
+        }
+
+        private void InitializeStyles()
+        {
+            dgvcs1 = new DataGridViewCellStyle
+            {
+                Alignment = CELL_CONTENT_ALIGN,
+                BackColor = CELL_BACK_COLOR,
+                Font = CELL_FONT_STYLE,
+                ForeColor = CELL_FORE_COLOR,
+                SelectionBackColor = CELL_SELECTION_BACK_COLOR,
+                SelectionForeColor = CELL_SELECTION_FORE_COLOR
+            };
+
+            dgvcs2 = new DataGridViewCellStyle()
+            {
+                Alignment = CELL_HEADER_CONTENT_ALIGN,
+                BackColor = CELL_HEADER_BACK_COLOR,
+                Font = CELL_HEADER_FONT_STYLE,
+                ForeColor = CELL_HEADER_FORE_COLOR,
+                Padding = CELL_HEADER_PADDING,
+                SelectionBackColor = CELL_HEADER_SELECTION_BACK_COLOR,
+                SelectionForeColor = CELL_HEADER_SELECTION_FORE_COLOR,
+                WrapMode = CELL_HEADER_TRISTATE
+            };
+
+            dgvcs3 = new DataGridViewCellStyle()
+            {
+                Alignment = CELL_CONTENT_ALIGN,
+                BackColor = Color.WhiteSmoke,
+                ForeColor = CELL_FORE_COLOR,
+                SelectionBackColor = CELL_SELECTION_BACK_COLOR,
+                SelectionForeColor = CELL_SELECTION_FORE_COLOR,
+                Font = CELL_FONT_STYLE,
+                WrapMode = DataGridViewTriState.False
+            };
+
+            dgvcs4 = new DataGridViewCellStyle()
+            {
+                Alignment = CELL_CONTENT_ALIGN,
+                BackColor = CELL_BACK_COLOR,
+                ForeColor = CELL_FORE_COLOR,
+                SelectionBackColor = CELL_SELECTION_BACK_COLOR,
+                SelectionForeColor = CELL_SELECTION_FORE_COLOR,
+                Font = CELL_FONT_STYLE,
+                WrapMode = DataGridViewTriState.True
+            };
+
+            dgvcs5 = new DataGridViewCellStyle()
+            {
+                Alignment = CELL_CONTENT_ALIGN
+            };
         }
 
         public void AddButtons()
@@ -69,7 +180,7 @@ namespace iSlavici.Utility
             }
         }
 
-        public void CustomizeTable()
+        public void MakeColumns()
         {
             Dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(50, 58, 68);
             Dgv.ColumnHeadersHeight = 30;
@@ -80,8 +191,6 @@ namespace iSlavici.Utility
             {
                 col.DefaultCellStyle.Font = new Font("Tahoma", 11f, FontStyle.Regular);
             }
-
-       
 
             switch (Type)
             {
@@ -169,11 +278,11 @@ namespace iSlavici.Utility
                     Dgv.Columns[0].HeaderText = "ID";
 
                     // Student Name
-                    Dgv.Columns[1].Width = 200;
+                    Dgv.Columns[1].Width = 250;
                     Dgv.Columns[1].HeaderText = "Student";
 
                     // Subject Name
-                    Dgv.Columns[2].Width = 200;
+                    Dgv.Columns[2].Width = 300;
                     Dgv.Columns[2].HeaderText = "Course";
 
                     // Abrv
@@ -181,7 +290,7 @@ namespace iSlavici.Utility
                     Dgv.Columns[3].HeaderText = "Abrv";
 
                     // Teacher Name
-                    Dgv.Columns[4].Width = 200;
+                    Dgv.Columns[4].Width = 250;
                     Dgv.Columns[4].HeaderText = "Teacher";
 
                     // Note Type
@@ -200,7 +309,7 @@ namespace iSlavici.Utility
 
                 case TableType.NoteOnlyOneStudentTable:
                     // Course Name
-                    Dgv.Columns[0].Width = 250;
+                    Dgv.Columns[0].Width = 300;
                     Dgv.Columns[0].HeaderText = "Course";
 
                     // Abvr 

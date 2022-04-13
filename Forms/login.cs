@@ -1,5 +1,6 @@
 ﻿using classbook.Connection;
 using iSlavici.Connection.Models.db;
+using iSlavici.Forms;
 using iSlavici.Utility;
 using System;
 using System.Configuration;
@@ -72,12 +73,14 @@ namespace classbook
                     _connectionTick.StopTimer();
                     Hide();
                     Dashboard dashboard = new Dashboard();
-                    dashboard.ShowDialog();
-                    Close();
+                    dashboard.Show();
+                   // testNav nav = new testNav();
+                   // nav.Show();
+                    //Close();
                 }
             } catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw ex;
                 Close();
             }
         }

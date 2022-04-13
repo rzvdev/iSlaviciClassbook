@@ -2,7 +2,7 @@
 
 namespace iSlavici.Models
 {
-    public class NoteList
+    public class NoteListModel
     {
         public int Id { get; set; }
         public string StudentName { get; set; }

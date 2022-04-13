@@ -5,13 +5,9 @@ using iSlavici.Utility;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace iSlavici.Forms
@@ -22,37 +18,38 @@ namespace iSlavici.Forms
         private readonly Profile _profile;
         private NoteType _noteType;
         private Subject _subject;
+        private Student _student;
 
-        public AddNote(Person person, Profile profile, Subject subject)
+        public AddNote(Person person, Profile profile, Subject subject, Student student)
         {
             InitializeComponent();
 
             lblNameInput.Text = person.FullName;
             lblCnpInput.Text = person.CNP;
             lblProfileInput.Text = profile.Name;
-            lblYearInput.Text = 1.ToString();
-
+            lblYearInput.Text = student.InYear.ToString();
 
             _person = person;
             _profile = profile;
             _subject = subject;
+            _student = student;
 
             InitializeComboboxes();
             droBtnCourse.Text = subject.Name;
         }
 
-        private async void InitializeComboboxes()
+        private void InitializeComboboxes()
         {
             try
             {
                 droBtnCourse.Items.Clear();
                 droBtnNotetype.Items.Clear();
 
-                List<string> courseNames = await(from c in DataAccess._dbContext.Subject
-                                                 select c.Name).ToListAsync();
+                List<string> courseNames = (from c in DataAccess._dbContext.Subject
+                                                 select c.Name).ToList();
 
-                List<string> noteTypes = await(from nt in DataAccess._dbContext.NoteType
-                                               select nt.TypeName).ToListAsync();
+                List<string> noteTypes = (from nt in DataAccess._dbContext.NoteType
+                                               select nt.TypeName).ToList();
 
                 droBtnCourse.Items.AddRange(courseNames.ToArray());
                 droBtnNotetype.Items.AddRange(noteTypes.ToArray());
@@ -63,20 +60,6 @@ namespace iSlavici.Forms
             }
         }
 
-        private async Task LoadDgvNoteList()
-        {
-            try
-            {
-                await DataAccess.LoadStudentNotesAsync(_person.CNP,_subject.Name);
-                dgvStudentNote.DataSource = DataAccess.studentNoteList;
-                TableCustomize customize = new TableCustomize(dgvStudentNote,TableType.NoteOnlyOneStudentTable);
-                customize.CustomizeTable();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
 
         private void droBtnCourses_Click(object sender, EventArgs e)
         {
@@ -148,19 +131,7 @@ namespace iSlavici.Forms
 
         private void NoteType_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            try
-            {
-                if (e.ClickedItem != null)
-                {
-                    droBtnNotetype.Text = e.ClickedItem.Text;
-                    _noteType = (from nt in DataAccess._dbContext.NoteType
-                                 where nt.TypeName == e.ClickedItem.Text
-                                 select nt).FirstOrDefault();
-                }
-            }catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
-            }
+          
         }
 
         private void numBtnNoteValue_ValueChanged(object sender, EventArgs e)
@@ -175,7 +146,7 @@ namespace iSlavici.Forms
             }
         }
 
-        private void Add(object sender, EventArgs e)
+        private async void Add(object sender, EventArgs e)
         {
             try
             {
@@ -184,7 +155,8 @@ namespace iSlavici.Forms
                     if (_subject == null || _noteType == null || _profile == null) throw new ArgumentNullException();
                     if (DataAccess.AddNote(_person, _subject, _noteType, int.Parse(numBtnNoteValue.Value.ToString())))
                     {
-                        dgvStudentNote.DataSource = LoadDgvNoteList();
+                      //  await DataAccess.LoadStudentNotesAsync(_person.CNP,droBtnCourse.SelectedItem.ToString());
+                        dgvStudentNote.DataSource = DataAccess.studentNotes;
                         return;
                     }
                     MessageBox.Show("Cannot add this note!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -202,11 +174,6 @@ namespace iSlavici.Forms
         }
 
 
-        private void AddNote_Load(object sender, EventArgs e)
-        {
-            LoadDgvNoteList();
-        }
-
         private void splitcontainer_Panel1_Paint(object sender, PaintEventArgs e)
         {
 
@@ -215,6 +182,44 @@ namespace iSlavici.Forms
         private void dgvStudentNote_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+
+        private async void droBtnCourse_SelectedValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string selectedCourseName = droBtnCourse.SelectedItem.ToString();
+
+                _subject = (from sub in DataAccess._dbContext.Subject
+                            where sub.Name.Equals(selectedCourseName)
+                            select sub).FirstOrDefault();
+
+             //   await DataAccess.LoadStudentNotesAsync(_person.CNP, selectedCourseName);
+                dgvStudentNote.DataSource = DataAccess.studentNotes;
+                dgvStudentNote.Refresh();
+            } catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        private void droBtnNotetype_SelectedValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string notetype = droBtnNotetype.SelectedItem.ToString();
+                if (notetype != null)
+                {
+                    _noteType = (from nt in DataAccess._dbContext.NoteType
+                                 where nt.TypeName == notetype
+                                 select nt).FirstOrDefault();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

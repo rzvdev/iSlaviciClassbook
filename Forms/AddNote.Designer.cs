@@ -35,6 +35,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddNote));
             this.splitcontainer = new ComponentFactory.Krypton.Toolkit.KryptonSplitContainer();
+            this.droBtnNotetype = new System.Windows.Forms.ComboBox();
+            this.droBtnCourse = new System.Windows.Forms.ComboBox();
             this.numBtnNoteValue = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
             this.kryptonBorderEdge1 = new ComponentFactory.Krypton.Toolkit.KryptonBorderEdge();
             this.kryptonLabel4 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
@@ -54,9 +56,6 @@
             this.lblStudentSection = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.splitContainerTableNote = new ComponentFactory.Krypton.Toolkit.KryptonSplitContainer();
             this.dgvStudentNote = new System.Windows.Forms.DataGridView();
-            this.dgvNote = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.droBtnCourse = new System.Windows.Forms.ComboBox();
-            this.droBtnNotetype = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitcontainer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitcontainer.Panel1)).BeginInit();
             this.splitcontainer.Panel1.SuspendLayout();
@@ -69,7 +68,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerTableNote.Panel2)).BeginInit();
             this.splitContainerTableNote.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudentNote)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvNote)).BeginInit();
             this.SuspendLayout();
             // 
             // splitcontainer
@@ -106,10 +104,27 @@
             // splitcontainer.Panel2
             // 
             this.splitcontainer.Panel2.Controls.Add(this.splitContainerTableNote);
-            this.splitcontainer.Panel2.Controls.Add(this.dgvNote);
             this.splitcontainer.Size = new System.Drawing.Size(1121, 450);
             this.splitcontainer.SplitterDistance = 281;
             this.splitcontainer.TabIndex = 0;
+            // 
+            // droBtnNotetype
+            // 
+            this.droBtnNotetype.FormattingEnabled = true;
+            this.droBtnNotetype.Location = new System.Drawing.Point(78, 259);
+            this.droBtnNotetype.Name = "droBtnNotetype";
+            this.droBtnNotetype.Size = new System.Drawing.Size(173, 21);
+            this.droBtnNotetype.TabIndex = 90;
+            this.droBtnNotetype.SelectedValueChanged += new System.EventHandler(this.droBtnNotetype_SelectedValueChanged);
+            // 
+            // droBtnCourse
+            // 
+            this.droBtnCourse.FormattingEnabled = true;
+            this.droBtnCourse.Location = new System.Drawing.Point(78, 219);
+            this.droBtnCourse.Name = "droBtnCourse";
+            this.droBtnCourse.Size = new System.Drawing.Size(173, 21);
+            this.droBtnCourse.TabIndex = 89;
+            this.droBtnCourse.SelectedValueChanged += new System.EventHandler(this.droBtnCourse_SelectedValueChanged);
             // 
             // numBtnNoteValue
             // 
@@ -309,87 +324,11 @@
             // 
             // dgvStudentNote
             // 
-            this.dgvStudentNote.AllowUserToAddRows = false;
-            this.dgvStudentNote.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Gainsboro;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(141)))), ((int)(((byte)(161)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvStudentNote.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvStudentNote.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dgvStudentNote.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvStudentNote.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dgvStudentNote.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(62)))), ((int)(((byte)(68)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvStudentNote.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvStudentNote.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvStudentNote.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvStudentNote.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvStudentNote.EnableHeadersVisualStyles = false;
             this.dgvStudentNote.Location = new System.Drawing.Point(0, 0);
             this.dgvStudentNote.Name = "dgvStudentNote";
-            this.dgvStudentNote.ReadOnly = true;
-            this.dgvStudentNote.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvStudentNote.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvStudentNote.RowHeadersWidth = 40;
-            this.dgvStudentNote.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvStudentNote.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.dgvStudentNote.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvStudentNote.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvStudentNote.Size = new System.Drawing.Size(703, 450);
             this.dgvStudentNote.TabIndex = 2;
             this.dgvStudentNote.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStudentNote_CellContentClick);
-            // 
-            // dgvNote
-            // 
-            this.dgvNote.AllowUserToAddRows = false;
-            this.dgvNote.AllowUserToDeleteRows = false;
-            this.dgvNote.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvNote.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvNote.Location = new System.Drawing.Point(0, 0);
-            this.dgvNote.Name = "dgvNote";
-            this.dgvNote.ReadOnly = true;
-            this.dgvNote.Size = new System.Drawing.Size(835, 450);
-            this.dgvNote.TabIndex = 0;
-            // 
-            // droBtnCourse
-            // 
-            this.droBtnCourse.FormattingEnabled = true;
-            this.droBtnCourse.Location = new System.Drawing.Point(78, 219);
-            this.droBtnCourse.Name = "droBtnCourse";
-            this.droBtnCourse.Size = new System.Drawing.Size(173, 21);
-            this.droBtnCourse.TabIndex = 89;
-            // 
-            // droBtnNotetype
-            // 
-            this.droBtnNotetype.FormattingEnabled = true;
-            this.droBtnNotetype.Location = new System.Drawing.Point(78, 259);
-            this.droBtnNotetype.Name = "droBtnNotetype";
-            this.droBtnNotetype.Size = new System.Drawing.Size(173, 21);
-            this.droBtnNotetype.TabIndex = 90;
             // 
             // AddNote
             // 
@@ -401,7 +340,6 @@
             this.Name = "AddNote";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Note";
-            this.Load += new System.EventHandler(this.AddNote_Load);
             ((System.ComponentModel.ISupportInitialize)(this.splitcontainer.Panel1)).EndInit();
             this.splitcontainer.Panel1.ResumeLayout(false);
             this.splitcontainer.Panel1.PerformLayout();
@@ -415,7 +353,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerTableNote)).EndInit();
             this.splitContainerTableNote.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudentNote)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvNote)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -440,7 +377,6 @@
         private ComponentFactory.Krypton.Toolkit.KryptonBorderEdge kryptonBorderEdge1;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel4;
         private ComponentFactory.Krypton.Toolkit.KryptonButton kryptonButton1;
-        private ComponentFactory.Krypton.Toolkit.KryptonDataGridView dgvNote;
         private ComponentFactory.Krypton.Toolkit.KryptonSplitContainer splitContainerTableNote;
         private System.Windows.Forms.DataGridView dgvStudentNote;
         private System.Windows.Forms.ComboBox droBtnCourse;
