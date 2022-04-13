@@ -1,5 +1,6 @@
 ﻿using classbook.Connection;
 using iSlavici.Connection.Models.db;
+using iSlavici.Forms;
 using iSlavici.Utility;
 using System;
 using System.Configuration;
@@ -72,12 +73,14 @@ namespace classbook
                     _connectionTick.StopTimer();
                     Hide();
                     Dashboard dashboard = new Dashboard();
-                    dashboard.ShowDialog();
-                    Close();
+                    dashboard.Show();
+                   // testNav nav = new testNav();
+                   // nav.Show();
+                    //Close();
                 }
             } catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw ex;
                 Close();
             }
         }
@@ -100,16 +103,31 @@ namespace classbook
                 if (searchedAccount != null)
                 {
                     DataAccess._loggedAccount = searchedAccount;
-                    DataAccess._loggedPerson = (from person in DataAccess._dbContext.Person
-                                                where person.Id == searchedAccount.PersonId
-                                                select person).First();
-                    DataAccess._loggedRole = (from role in DataAccess._dbContext.Role
-                                              where role.Id == searchedAccount.RoleId
-                                              select role).First();
-                    /// THE ADMINISTRATOR ROLE CANNOT HAVE PROFILE 
-                    DataAccess._loggedProfile = (from pro in DataAccess._dbContext.Profile
-                                                 where pro.Id == searchedAccount.ProfileId
-                                                 select pro).FirstOrDefault();
+
+                    Person person = (from per in DataAccess._dbContext.Person
+                                     where per.Id == searchedAccount.PersonId
+                                     select per).First();
+
+                    Role role = (from rol in DataAccess._dbContext.Role
+                                 where rol.Id == searchedAccount.RoleId
+                                 select rol).First();
+
+                    DataAccess._loggedPerson = person;
+                    DataAccess._loggedRole = role;
+                    
+                    Student student = (from stu in DataAccess._dbContext.Student
+                                       where stu.PersonId == person.Id
+                                       select stu).FirstOrDefault();
+
+                    DataAccess._loggedStudent = student;
+
+                    if (student != null)
+                    {
+                        /// THE ADMINISTRATOR ROLE CANNOT HAVE PROFILE 
+                        DataAccess._loggedProfile = (from pro in DataAccess._dbContext.Profile
+                                                     where pro.Id == student.ProfileId
+                                                     select pro).FirstOrDefault();
+                    }
 
                     MessageBox.Show("You have successfully logged in!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     return true;

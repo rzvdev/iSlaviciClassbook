@@ -8,6 +8,5 @@
         Person Person { get; set; }
         int PersonId { get; set; }
         int RoleId { get; set; }
-        int? ProfileId { get; set; }
     }
 }

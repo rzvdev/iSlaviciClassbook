@@ -24,12 +24,6 @@ namespace iSlavici.Connection.Models.builder
             return this;
         }
 
-        public AccountBuilder On(int profileId)
-        {
-            _account.ProfileId = profileId;
-            return this;
-        }
-
         public Account Build()
         {
             return _account;

@@ -9,6 +9,8 @@ namespace iSlavici.Models
     public enum TableType
     {
         UserTable,
-        CourseTable
+        CourseTable,
+        NoteTable,
+        NoteOnlyOneStudentTable
     }
 }

@@ -34,10 +34,6 @@ namespace iSlavici.Migrations
                     b.Property<int>("PersonId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ProfileId")
-                        .HasColumnName("ProfileID")
-                        .HasColumnType("int");
-
                     b.Property<int>("RoleId")
                         .HasColumnName("RoleID")
                         .HasColumnType("int");
@@ -74,7 +70,7 @@ namespace iSlavici.Migrations
                     b.Property<int>("NoteValue")
                         .HasColumnType("int");
 
-                    b.Property<int?>("PersonId")
+                    b.Property<int>("PersonId")
                         .HasColumnType("int");
 
                     b.Property<string>("StudentName")
@@ -87,10 +83,6 @@ namespace iSlavici.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("NoteTypeId");
-
-                    b.HasIndex("PersonId");
 
                     b.HasIndex("SubjectId");
 
@@ -178,6 +170,36 @@ namespace iSlavici.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Role");
+                });
+
+            modelBuilder.Entity("iSlavici.Connection.Models.db.Student", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("EndYear")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("InYear")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PersonId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProfileId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("StartYear")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PersonId")
+                        .IsUnique();
+
+                    b.ToTable("Student");
                 });
 
             modelBuilder.Entity("iSlavici.Connection.Models.db.Subject", b =>
@@ -269,19 +291,18 @@ namespace iSlavici.Migrations
 
             modelBuilder.Entity("iSlavici.Connection.Models.db.Note", b =>
                 {
-                    b.HasOne("iSlavici.Connection.Models.db.NoteType", "NoteType")
-                        .WithMany()
-                        .HasForeignKey("NoteTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("iSlavici.Connection.Models.db.Person", "Person")
-                        .WithMany()
-                        .HasForeignKey("PersonId");
-
                     b.HasOne("iSlavici.Connection.Models.db.Subject", "Subject")
                         .WithMany()
                         .HasForeignKey("SubjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("iSlavici.Connection.Models.db.Student", b =>
+                {
+                    b.HasOne("iSlavici.Connection.Models.db.Person", "Person")
+                        .WithOne("Student")
+                        .HasForeignKey("iSlavici.Connection.Models.db.Student", "PersonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

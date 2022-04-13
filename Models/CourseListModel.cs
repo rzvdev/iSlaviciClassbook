@@ -1,6 +1,6 @@
 ﻿namespace iSlavici.Models
 {
-    public class CourseList
+    public class CourseListModel
     {
         public int ID { get; set; }
         public string Name { get; set; }
@@ -13,7 +13,7 @@
         public int Year { get; set; }
         public int Semester { get; set; }
 
-        public CourseList(int id, string courseName, string abrv, string teacherName, string profileName, string subjectType, int year, int semester, string examMode, int credit)
+        public CourseListModel(int id, string courseName, string abrv, string teacherName, string profileName, string subjectType, int year, int semester, string examMode, int credit)
         {
             ID = id;
             Name = courseName;
@@ -27,7 +27,7 @@
             Credit = credit;
         }
 
-        public CourseList()
+        public CourseListModel()
         {
 
         }

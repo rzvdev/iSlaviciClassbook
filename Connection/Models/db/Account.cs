@@ -19,7 +19,6 @@ namespace iSlavici.Connection.Models.db
         public int PersonId { get; set; }
 
         public int RoleId { get; set; }
-        public int? ProfileId { get; set; }
 
 
     }

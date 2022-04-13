@@ -2,10 +2,11 @@
 
 namespace iSlavici.Models
 {
-    public class UserList
+    public class UserListModel
     {
         public int ID { get; set; }
         public string Username { get; set; }
+        public string Password { get; set; }
         public string Name { get; set; }
         public string CNP { get; set; }
         public string Role { get; set; }
@@ -19,10 +20,11 @@ namespace iSlavici.Models
             set;
         }
 
-        public UserList(int Id, string username, string name, string cnp, string role, string email, string profile, string phone, int year, DateTime createdDate)
+        public UserListModel(int Id, string username,string password, string name, string cnp, string role, string email, string profile, string phone, int year, DateTime createdDate)
         {
             ID = Id;
             Username = username;
+            Password = password;
             Name = name;
             CNP = cnp;
             Role = role;
@@ -33,7 +35,7 @@ namespace iSlavici.Models
             CreatedDate = createdDate;
         }
 
-        public UserList()
+        public UserListModel()
         {
 
         }
