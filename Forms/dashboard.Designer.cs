@@ -177,8 +177,6 @@ namespace classbook
             this.dataGridViewColumn10 = new System.Windows.Forms.DataGridViewColumn();
             this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.dataGridViewButtonColumn2 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.dgVimageButtonDeleteColumn1 = new iSlavici.Utility.DGVimageButtonDeleteColumn();
-            this.dgVimageButtonEditColumn1 = new iSlavici.Utility.DGVimageButtonEditColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitcontainer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitcontainer.Panel1)).BeginInit();
             this.splitcontainer.Panel1.SuspendLayout();
@@ -1964,24 +1962,7 @@ namespace classbook
             this.dataGridViewButtonColumn2.Name = "dataGridViewButtonColumn2";
             this.dataGridViewButtonColumn2.ReadOnly = true;
             this.dataGridViewButtonColumn2.Width = 40;
-            // 
-            // dgVimageButtonDeleteColumn1
-            // 
-            this.dgVimageButtonDeleteColumn1.HeaderText = "";
-            this.dgVimageButtonDeleteColumn1.MinimumWidth = 6;
-            this.dgVimageButtonDeleteColumn1.Name = "dgVimageButtonDeleteColumn1";
-            this.dgVimageButtonDeleteColumn1.ReadOnly = true;
-            this.dgVimageButtonDeleteColumn1.Text = "Delete this user";
-            this.dgVimageButtonDeleteColumn1.Width = 20;
-            // 
-            // dgVimageButtonEditColumn1
-            // 
-            this.dgVimageButtonEditColumn1.HeaderText = "";
-            this.dgVimageButtonEditColumn1.MinimumWidth = 6;
-            this.dgVimageButtonEditColumn1.Name = "dgVimageButtonEditColumn1";
-            this.dgVimageButtonEditColumn1.ReadOnly = true;
-            this.dgVimageButtonEditColumn1.Text = "Edit this user";
-            this.dgVimageButtonEditColumn1.Width = 20;
+      
             // 
             // Dashboard
             // 
@@ -2203,7 +2184,5 @@ namespace classbook
         private DataGridViewColumn dataGridViewColumn8;
         private DataGridViewColumn dataGridViewColumn9;
         private DataGridViewColumn dataGridViewColumn10;
-        private DGVimageButtonDeleteColumn dgVimageButtonDeleteColumn1;
-        private DGVimageButtonEditColumn dgVimageButtonEditColumn1;
     }
 }

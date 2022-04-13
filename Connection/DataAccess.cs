@@ -6,7 +6,9 @@ using iSlavici.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.NetworkInformation;
+using System.Net.Sockets;
 using System.Text;
 
 namespace classbook.Connection
@@ -231,22 +233,13 @@ namespace classbook.Connection
         public static bool TryConnection() {
             try {
                 string ipAddress = _ISLAVICI_DB_IP_ADDRESS;
+                IPAddress ip = Dns.GetHostEntry(ipAddress).AddressList[0];
+                IPEndPoint ipEndPoint = new IPEndPoint(ip, 1433);
 
-                Ping ping = new Ping();
-                PingOptions options = new PingOptions {
-                    DontFragment = true
-                };
-
-                string data = "a";
-                byte[] buffer = Encoding.ASCII.GetBytes(data);
-                int timeout = 1;
-
-                PingReply reply = ping.Send(ipAddress, timeout, buffer, options);
-
-                if (reply.Status == IPStatus.Success) {
+                using (TcpClient tcpClient = new TcpClient()) {
+                    tcpClient.Connect(ipEndPoint);
                     return true;
                 }
-                return false;
             } catch {
                 return false;
             }
