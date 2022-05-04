@@ -93,5 +93,9 @@ namespace iSlavici.Controls.Dgv
             FillTable();
             Refresh();
         }
+
+        public override void FillTableFiltred(IFiltrable filtred) {
+            throw new NotImplementedException();
+        }
     }
 }

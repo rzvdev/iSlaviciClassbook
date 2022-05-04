@@ -1,6 +1,8 @@
 ﻿using ComponentFactory.Krypton.Navigator;
+using iSlavici.Connection.Models.db;
 using iSlavici.Controls.Nav.Pag;
 using iSlavici.Controls.Navigator.Pages;
+using iSlavici.Models;
 using System.Collections.Generic;
 
 namespace iSlavici.Controls.Navigator
@@ -140,5 +142,8 @@ namespace iSlavici.Controls.Navigator
             pageAddNoteType.splitter.noteTypeUC.noteTypeDGV.RefreshData();
         }
 
+        public void RefreshNoteDGVfiltred(IFiltrableNotes notes) {
+            pageNoteList.splitter.noteUC.noteDGV.FillTableFiltred((IFiltrable)notes);
+        }
     }
 }

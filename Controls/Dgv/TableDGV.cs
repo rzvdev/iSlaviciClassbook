@@ -1,5 +1,7 @@
-﻿using iSlavici.Controls.Dgv;
+﻿using iSlavici.Controls;
+using iSlavici.Controls.Dgv;
 using iSlavici.Properties;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -51,6 +53,8 @@ namespace iSlavici.Models
         public abstract void FillTable();
         public abstract void LoadData();
         public abstract void RefreshData();
+
+        public abstract void FillTableFiltred(IFiltrable filtred);
 
 
         protected void SetTableSettings(TableDGV tbl) {

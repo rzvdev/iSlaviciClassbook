@@ -1,4 +1,5 @@
 ﻿using classbook.Connection;
+using iSlavici.Controls;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -170,5 +171,8 @@ namespace iSlavici.Models
             }
         }
 
+        public override void FillTableFiltred(IFiltrable filtred) {
+            throw new NotImplementedException();
+        }
     }
 }

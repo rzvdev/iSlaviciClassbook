@@ -27,6 +27,7 @@ namespace iSlavici.Controls.Nav.Pag
         private PageUserList() {
         }
 
+
         public static PageUserList Create() {
             PageUserList pageUserList = new PageUserList();
             pageUserList.InitializePage();

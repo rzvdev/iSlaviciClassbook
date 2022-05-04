@@ -3,6 +3,7 @@ using iSlavici.Connection.Models.db;
 using iSlavici.Connection.Models.db.interfaces;
 using iSlavici.Connection.Models.interfaces;
 using iSlavici.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -75,11 +76,20 @@ namespace classbook.Connection
         }
 
 
-        public static void LoadStudents() {
+        public static void LoadStudents(Profile byProfile = null) {
             _dbContext = new SlaviciContext();
-            students = (from per in _dbContext.Person
-                        join stu in _dbContext.Student on per.Id equals stu.PersonId
-                        select per).ToList();
+            students.Clear();
+
+            if (byProfile == null) {
+                students = (from per in _dbContext.Person
+                            join stu in _dbContext.Student on per.Id equals stu.PersonId
+                            select per).ToList();
+            } else {
+                students = (from per in _dbContext.Person
+                            join stu in _dbContext.Student on per.Id equals stu.PersonId
+                            where stu.ProfileId == byProfile.Id
+                            select per).ToList();
+            }
         }
 
         public static void LoadProfiles() {
@@ -153,7 +163,10 @@ namespace classbook.Connection
                          TeacherName = n.Subject.TeacherName,
                          NoteType = n.NoteTypeName,
                          NoteValue = n.NoteValue,
-                         AddedDate = n.AddedDate
+                         AddedDate = n.AddedDate,
+                         ProfileId = stu.Student.ProfileId,
+                         CourseYear = n.Subject.YearStudy
+
                      }).ToList();
         }
 
@@ -162,9 +175,9 @@ namespace classbook.Connection
         /// list from database Subject table
         /// </summary>
         /// <returns></returns>
-        public static void LoadCourses() {
+        public static async void LoadCourses() {
             _dbContext = new SlaviciContext();
-            courses = (from c in _dbContext.Subject
+            courses = await (from c in _dbContext.Subject
                        join pro in _dbContext.Profile on c.ProfileId equals pro.Id
                        join subType in _dbContext.SubjectType on c.SubjectTypeId equals subType.Id
                        select new CourseListModel {
@@ -178,7 +191,7 @@ namespace classbook.Connection
                            Credit = c.Credit,
                            Year = c.YearStudy,
                            Semester = c.SemesterStudy,
-                       }).ToList();
+                       }).ToListAsync();
         }
 
 

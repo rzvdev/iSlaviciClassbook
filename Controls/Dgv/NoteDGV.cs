@@ -1,10 +1,8 @@
 ﻿using classbook.Connection;
-using iSlavici.Connection.Models.db;
+using iSlavici.Controls;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Linq;
 
 namespace iSlavici.Models
 {
@@ -90,6 +88,14 @@ namespace iSlavici.Models
             Refresh();
         }
 
+        public void FillTableFiltred(List<NoteListModel> notes) {
+            Rows.Clear();
+            foreach (var note in notes) {
+                Rows.Add(note.Id, note.StudentName, note.SubjectName, note.SubjectAbrv, note.TeacherName, note.NoteType, note.NoteValue, note.AddedDate);
+            }
+            Refresh();
+        }
+
         public override void RefreshData() {
             Rows.Clear();
             FillTable();
@@ -107,5 +113,12 @@ namespace iSlavici.Models
             throw new NotImplementedException();
         }
 
+        public override void FillTableFiltred(IFiltrable filtrable) {
+            Rows.Clear();
+            List<NoteListModel> notes = filtrable.GetNoteList();
+            foreach (var note in notes) {
+                Rows.Add(note.Id, note.StudentName, note.SubjectName, note.SubjectAbrv, note.TeacherName, note.NoteType, note.NoteValue, note.AddedDate);
+            }
+        }
     }
 }

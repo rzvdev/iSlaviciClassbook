@@ -248,6 +248,8 @@
     <Compile Include="Controls\Dgv\StudentNoteDGV.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\IFiltrable.cs" />
+    <Compile Include="Controls\IFiltrableNotes.cs" />
     <Compile Include="Controls\NavigatorUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
