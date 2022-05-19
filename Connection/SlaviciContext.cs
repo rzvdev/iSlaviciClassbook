@@ -35,7 +35,7 @@ namespace iSlavici.Connection.Models.db
     
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
             if (!optionsBuilder.IsConfigured) {
-                optionsBuilder.UseSqlServer("Data Source=100.42.52.207;Initial Catalog=nicudehelean_iSlavici; User=nicudehelean_rzvdev; Password=ksy7AJE8y0iNw3WJ");
+                optionsBuilder.UseSqlServer("Data Source=100.42.52.207;Initial Catalog=nicudehelean_iSlavici; User=nicudehelean_rzvdev; Password=ksy7AJE8y0iNw3WJ;Encrypt=Yes; TrustServerCertificate=Yes");
             }
 
             optionsBuilder.EnableSensitiveDataLogging();

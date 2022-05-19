@@ -5,7 +5,9 @@ using iSlavici.Utility;
 using System;
 using System.Configuration;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace classbook
@@ -17,8 +19,15 @@ namespace classbook
         public Login()
         {
             InitializeComponent();
+            SetVersion();
         }
 
+        private void SetVersion() {
+            var assembly = Assembly.GetExecutingAssembly();
+            var fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
+            var version = fvi.FileVersion;
+            lblVersion.Text = "v" + version.ToString();
+        }
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
@@ -81,7 +90,6 @@ namespace classbook
             } catch (Exception ex)
             {
                 throw ex;
-                Close();
             }
         }
 
@@ -140,7 +148,7 @@ namespace classbook
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
@@ -182,7 +190,7 @@ namespace classbook
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;
@@ -211,7 +219,6 @@ namespace classbook
                 }
             } catch(Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw ex;
             }
         }

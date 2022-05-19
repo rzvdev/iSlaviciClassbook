@@ -41,11 +41,14 @@ namespace classbook
             this.labelPersonName = new ComponentFactory.Krypton.Toolkit.KryptonWrapLabel();
             this.labelWelcome = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.panelStudent = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.btnMyTimetable = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnMyCourses = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.paletteRolePanel = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
             this.btnMyNotes = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnMyProfile = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.panelAdmin = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.kryptonButton1 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnTimetable = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnCourse = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnNotes = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnProfiles = new ComponentFactory.Krypton.Toolkit.KryptonButton();
@@ -181,9 +184,6 @@ namespace classbook
             this.dataGridViewColumn10 = new System.Windows.Forms.DataGridViewColumn();
             this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.dataGridViewButtonColumn2 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.btnMyTimetable = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.btnTimetable = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.kryptonButton1 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitcontainer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitcontainer.Panel1)).BeginInit();
             this.splitcontainer.Panel1.SuspendLayout();
@@ -348,6 +348,23 @@ namespace classbook
             this.panelStudent.TabIndex = 5;
             this.panelStudent.Visible = false;
             // 
+            // btnMyTimetable
+            // 
+            this.btnMyTimetable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMyTimetable.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.Custom1;
+            this.btnMyTimetable.Enabled = false;
+            this.btnMyTimetable.Location = new System.Drawing.Point(3, 140);
+            this.btnMyTimetable.Margin = new System.Windows.Forms.Padding(0);
+            this.btnMyTimetable.Name = "btnMyTimetable";
+            this.btnMyTimetable.Size = new System.Drawing.Size(100, 40);
+            this.btnMyTimetable.StateNormal.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnMyTimetable.TabIndex = 4;
+            this.btnMyTimetable.Values.Image = global::iSlavici.Properties.Resources.timetable_v2_24px;
+            this.btnMyTimetable.Values.Text = " Timetable";
+            // 
             // btnMyCourses
             // 
             this.btnMyCourses.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -425,6 +442,40 @@ namespace classbook
             this.panelAdmin.Size = new System.Drawing.Size(106, 364);
             this.panelAdmin.TabIndex = 0;
             this.panelAdmin.Visible = false;
+            // 
+            // kryptonButton1
+            // 
+            this.kryptonButton1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.kryptonButton1.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.Custom1;
+            this.kryptonButton1.Enabled = false;
+            this.kryptonButton1.Location = new System.Drawing.Point(3, 186);
+            this.kryptonButton1.Margin = new System.Windows.Forms.Padding(0);
+            this.kryptonButton1.Name = "kryptonButton1";
+            this.kryptonButton1.Size = new System.Drawing.Size(100, 40);
+            this.kryptonButton1.StateNormal.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.kryptonButton1.TabIndex = 6;
+            this.kryptonButton1.Values.Image = global::iSlavici.Properties.Resources.generate_24px;
+            this.kryptonButton1.Values.Text = "Document \r\nGeneration";
+            // 
+            // btnTimetable
+            // 
+            this.btnTimetable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTimetable.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.Custom1;
+            this.btnTimetable.Enabled = false;
+            this.btnTimetable.Location = new System.Drawing.Point(3, 140);
+            this.btnTimetable.Margin = new System.Windows.Forms.Padding(0);
+            this.btnTimetable.Name = "btnTimetable";
+            this.btnTimetable.Size = new System.Drawing.Size(100, 40);
+            this.btnTimetable.StateNormal.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnTimetable.TabIndex = 5;
+            this.btnTimetable.Values.Image = global::iSlavici.Properties.Resources.timetable_v2_24px;
+            this.btnTimetable.Values.Text = " Timetable";
             // 
             // btnCourse
             // 
@@ -506,7 +557,7 @@ namespace classbook
             this.pageAddNote,
             this.kryptonPage1,
             this.kryptonPage2});
-            this.navigator.SelectedIndex = 8;
+            this.navigator.SelectedIndex = 3;
             this.navigator.Size = new System.Drawing.Size(714, 467);
             this.navigator.TabIndex = 0;
             this.navigator.Visible = false;
@@ -2048,57 +2099,6 @@ namespace classbook
             this.dataGridViewButtonColumn2.Name = "dataGridViewButtonColumn2";
             this.dataGridViewButtonColumn2.ReadOnly = true;
             this.dataGridViewButtonColumn2.Width = 40;
-            // 
-            // btnMyTimetable
-            // 
-            this.btnMyTimetable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMyTimetable.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.Custom1;
-            this.btnMyTimetable.Enabled = false;
-            this.btnMyTimetable.Location = new System.Drawing.Point(3, 140);
-            this.btnMyTimetable.Margin = new System.Windows.Forms.Padding(0);
-            this.btnMyTimetable.Name = "btnMyTimetable";
-            this.btnMyTimetable.Size = new System.Drawing.Size(100, 40);
-            this.btnMyTimetable.StateNormal.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnMyTimetable.TabIndex = 4;
-            this.btnMyTimetable.Values.Image = global::iSlavici.Properties.Resources.timetable_v2_24px;
-            this.btnMyTimetable.Values.Text = " Timetable";
-            // 
-            // btnTimetable
-            // 
-            this.btnTimetable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTimetable.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.Custom1;
-            this.btnTimetable.Enabled = false;
-            this.btnTimetable.Location = new System.Drawing.Point(3, 140);
-            this.btnTimetable.Margin = new System.Windows.Forms.Padding(0);
-            this.btnTimetable.Name = "btnTimetable";
-            this.btnTimetable.Size = new System.Drawing.Size(100, 40);
-            this.btnTimetable.StateNormal.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnTimetable.TabIndex = 5;
-            this.btnTimetable.Values.Image = global::iSlavici.Properties.Resources.timetable_v2_24px;
-            this.btnTimetable.Values.Text = " Timetable";
-            // 
-            // kryptonButton1
-            // 
-            this.kryptonButton1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.kryptonButton1.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.Custom1;
-            this.kryptonButton1.Enabled = false;
-            this.kryptonButton1.Location = new System.Drawing.Point(3, 186);
-            this.kryptonButton1.Margin = new System.Windows.Forms.Padding(0);
-            this.kryptonButton1.Name = "kryptonButton1";
-            this.kryptonButton1.Size = new System.Drawing.Size(100, 40);
-            this.kryptonButton1.StateNormal.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.kryptonButton1.TabIndex = 6;
-            this.kryptonButton1.Values.Image = global::iSlavici.Properties.Resources.generate_24px;
-            this.kryptonButton1.Values.Text = "Document \r\nGeneration";
             // 
             // Dashboard
             // 

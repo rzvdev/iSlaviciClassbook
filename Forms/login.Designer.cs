@@ -39,12 +39,14 @@
             this.buttonLogin = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.labelPassword = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.labelUsername = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.lblVersion = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             ((System.ComponentModel.ISupportInitialize)(this.panelLogin)).BeginInit();
             this.panelLogin.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelLogin
             // 
+            this.panelLogin.Controls.Add(this.lblVersion);
             this.panelLogin.Controls.Add(this.checkbuttonRemember);
             this.panelLogin.Controls.Add(this.kryptonLabel1);
             this.panelLogin.Controls.Add(this.labelConnectionStatusPicture);
@@ -150,6 +152,17 @@
             this.labelUsername.TabIndex = 0;
             this.labelUsername.Values.Text = "Username:";
             // 
+            // lblVersion
+            // 
+            this.lblVersion.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblVersion.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.SuperTip;
+            this.lblVersion.Location = new System.Drawing.Point(1, 165);
+            this.lblVersion.Name = "lblVersion";
+            this.lblVersion.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
+            this.lblVersion.Size = new System.Drawing.Size(58, 26);
+            this.lblVersion.TabIndex = 38;
+            this.lblVersion.Values.Text = "v1.0.0.1";
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -183,6 +196,7 @@
         private ComponentFactory.Krypton.Toolkit.KryptonWrapLabel labelConnectionStatusPicture;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel1;
         private ComponentFactory.Krypton.Toolkit.KryptonCheckButton checkbuttonRemember;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel lblVersion;
     }
 }
 
