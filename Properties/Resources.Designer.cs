@@ -73,6 +73,16 @@ namespace iSlavici.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap btnAddNote_24px {
+            get {
+                object obj = ResourceManager.GetObject("btnAddNote_24px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap coursesBtn {
             get {
                 object obj = ResourceManager.GetObject("coursesBtn", resourceCulture);
@@ -126,6 +136,16 @@ namespace iSlavici.Properties {
         internal static System.Drawing.Bitmap economy {
             get {
                 object obj = ResourceManager.GetObject("economy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap generate_24px {
+            get {
+                object obj = ResourceManager.GetObject("generate-24px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -206,6 +226,26 @@ namespace iSlavici.Properties {
         internal static System.Drawing.Bitmap presenceBtn_24px {
             get {
                 object obj = ResourceManager.GetObject("presenceBtn_24px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap timetable_24px {
+            get {
+                object obj = ResourceManager.GetObject("timetable-24px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap timetable_v2_24px {
+            get {
+                object obj = ResourceManager.GetObject("timetable_v2-24px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

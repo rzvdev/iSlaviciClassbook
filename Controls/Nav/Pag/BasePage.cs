@@ -55,6 +55,25 @@ namespace iSlavici.Controls.Navigator.Pages
         protected readonly string PAGE_NOTE_TYPE_DESCRIPTION = "This is a note types list";
         protected readonly string PAGE_NOTE_TYPE_GROUP = "Notes";
 
+        // MY PROFILE PAGE
+        protected readonly string PAGE_MY_PROFILE_INDEX_NAME = "pagMyProfile";
+        protected readonly string PAGE_MY_PROFILE_TITLE = "MY PROFILE";
+        protected readonly string PAGE_MY_PROFILE_DESCRIPTION = "This is your student profile page";
+        protected readonly string PAGE_MY_PROFILE_GROUP = "Profile";
+
+        // MY COURSES PAGE
+        protected readonly string PAGE_MY_COURSES_INDEX_NAME = "pagMyCourses";
+        protected readonly string PAGE_MY_COURSES_TITLE = "MY COURSES";
+        protected readonly string PAGE_MY_COURSES_DESCRIPTION = "This is your courses";
+        protected readonly string PAGE_MY_COURSES_GROUP = "Course";
+
+        // MY NOTES PAGE
+        protected readonly string PAGE_MY_NOTES_INDEX_NAME = "pagMyNotes";
+        protected readonly string PAGE_MY_NOTES_TITLE = "MY NOTES";
+        protected readonly string PAGE_MY_NOTES_DESCRIPTION = "This is your notes";
+        protected readonly string PAGE_MY_NOTES_GROUP = "Note";
+
+
         public BasePage() {
             SetPageSettings(this);
         }

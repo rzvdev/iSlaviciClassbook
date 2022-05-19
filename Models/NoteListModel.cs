@@ -27,8 +27,16 @@ namespace iSlavici.Models
             return noteList;
         }
 
+        public List<NoteOneStudentListModel> GetOneStudentNoteList() {
+            throw new NotImplementedException();
+        }
+
         public void SetNoteList(List<NoteListModel> notes) {
             noteList = notes;
+        }
+
+        public void SetOneStudentNoteList(List<NoteOneStudentListModel> notes) {
+            throw new NotImplementedException();
         }
     }
 }

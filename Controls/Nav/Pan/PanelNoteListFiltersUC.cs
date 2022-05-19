@@ -15,6 +15,10 @@ namespace iSlavici.Controls.Nav.Pan
         private List<Subject> Subjects { get; set; } = new List<Subject>();
         private List<Person> Students { get; set; } = new List<Person>();
 
+
+        /// FILTER VARIABLE
+        private string SelectedSubject { get; set; }
+
         public PanelNoteListFiltersUC() {
             InitializeComponent();
             Dock = DockStyle.Fill;
@@ -28,19 +32,105 @@ namespace iSlavici.Controls.Nav.Pan
         }
 
         private void CbCourseSelectEvent(object sender, EventArgs e) {
-            string selected = cbCourse.SelectedItem.ToString();
-            ApplyCourseActiveFilter(selected);
+            ApplyCourseActiveFilter();
         }
 
-        private void ApplyCourseActiveFilter(string selectedCourse) {
-            bool allCourses = selectedCourse.Equals("ALL");
-            NoteListModel noteListModel = new NoteListModel();
-            List<NoteListModel> filtredNotes = new List<NoteListModel>();
-            DataAccess.LoadNotes();
+        private void CbStudentSelectEvent(object sender, EventArgs e) {
+            if (cbStudentName.SelectedItem != null) {
+                string selectedStudent = cbStudentName.SelectedItem.ToString();
+                string selectedCourse = cbCourse.SelectedItem.ToString();
+                bool allStudents = cbStudentName.SelectedItem.ToString().Equals("ALL");
+                bool allCourses = cbCourse.SelectedItem.ToString().Equals("ALL");
 
+                if (!allStudents && allCourses) {
+                    NoteListModel noteListModel = new NoteListModel();
+                    List<NoteListModel> filtredNotes = new List<NoteListModel>();
+                    DataAccess.LoadNotes();
+                    filtredNotes = DataAccess.notes.Where(s => s.StudentName == selectedStudent).ToList();
+                    noteListModel.SetNoteList(filtredNotes);
+                    Navigator.Navigator.GetInstance().RefreshNoteDGVfiltred(noteListModel);
+                } else if(allStudents && !allCourses) {
+                    NoteListModel noteListModel = new NoteListModel();
+                    List<NoteListModel> filtredNotes = new List<NoteListModel>();
+                    DataAccess.LoadNotes();
+                    filtredNotes = DataAccess.notes.Where(n => n.SubjectName == selectedCourse).ToList();
+                    noteListModel.SetNoteList(filtredNotes);
+                    Navigator.Navigator.GetInstance().RefreshNoteDGVfiltred(noteListModel);
+                } else if(!allStudents && !allCourses) {
+                    NoteListModel noteListModel = new NoteListModel();
+                    List<NoteListModel> filtredNotes = new List<NoteListModel>();
+                    DataAccess.LoadNotes();
+                    filtredNotes = DataAccess.notes.Where(n => n.SubjectName == selectedCourse && n.StudentName == selectedStudent).ToList();
+                    noteListModel.SetNoteList(filtredNotes);
+                    Navigator.Navigator.GetInstance().RefreshNoteDGVfiltred(noteListModel);
+                } else {
+                    NoteListModel noteListModel = new NoteListModel();
+                    List<NoteListModel> filtredNotes = new List<NoteListModel>();
+                    if (Profile == null) {
+                        filtredNotes = DataAccess.notes.ToList();
+                    } else {
+                        filtredNotes = DataAccess.notes.Where(n => n.ProfileId == Profile.Id).ToList();
+                    }
+                    noteListModel.SetNoteList(filtredNotes);
+                    Navigator.Navigator.GetInstance().RefreshNoteDGVfiltred(noteListModel);
+                }
+            }
+        }
 
-            if (allCourses) {
-              
+        private void CbStudentYearSelectEvent(object sender, EventArgs e) {
+            int selectedStudentsYear = 0;
+            if (cbStudentsYear.SelectedItem != null) {
+                int.TryParse(cbStudentsYear.SelectedItem.ToString(), out selectedStudentsYear);
+            }
+            bool allProfiles = cbProfile.SelectedItem.ToString().Equals("ALL");
+            bool allYears = cbStudentsYear.SelectedItem.ToString().Equals("ALL");
+
+            if (allProfiles && allYears) {
+                Students = (from stu in DataAccess._dbContext.Student
+                            join per in DataAccess._dbContext.Person on stu.PersonId equals per.Id
+                            select per).ToList();
+            } else if (!allProfiles && !allYears) {
+                Students = (from stu in DataAccess._dbContext.Student
+                            join per in DataAccess._dbContext.Person on stu.PersonId equals per.Id
+                            where stu.ProfileId == Profile.Id && stu.InYear == selectedStudentsYear
+                            select per).ToList();
+            } else {
+                Students = (from stu in DataAccess._dbContext.Student
+                            join per in DataAccess._dbContext.Person on stu.PersonId equals per.Id
+                            where stu.ProfileId == Profile.Id
+                            select per).ToList();
+            }
+
+            cbStudentName.Items.Clear();
+            cbStudentName.Items.Add("ALL");
+
+            foreach (var student in Students) {
+                cbStudentName.Items.Add(student.FullName);
+            }
+
+        }
+
+        private void ApplyCourseActiveFilter() {
+            SelectedSubject = cbCourse.SelectedItem.ToString();
+
+            if (SelectedSubject == "ALL") {
+                NoteListModel noteListModel = new NoteListModel();
+                List<NoteListModel> filtredNotes = new List<NoteListModel>();
+                DataAccess.LoadNotes();
+                if (Profile != null) {
+                    filtredNotes = DataAccess.notes.Where(n => n.ProfileId == Profile.Id).ToList();
+                } else {
+                    filtredNotes = DataAccess.notes.ToList();
+                }
+                noteListModel.SetNoteList(filtredNotes);
+                Navigator.Navigator.GetInstance().RefreshNoteDGVfiltred(noteListModel);
+            } else {
+                NoteListModel noteListModel = new NoteListModel();
+                List<NoteListModel> filtredNotes = new List<NoteListModel>();
+                DataAccess.LoadNotes();
+                filtredNotes = DataAccess.notes.Where(n => n.SubjectName == SelectedSubject).ToList();
+                noteListModel.SetNoteList(filtredNotes);
+                Navigator.Navigator.GetInstance().RefreshNoteDGVfiltred(noteListModel);
             }
         }
 
@@ -54,7 +144,7 @@ namespace iSlavici.Controls.Nav.Pan
             NoteListModel noteListModel = new NoteListModel();
             List<NoteListModel> filtredNotes = new List<NoteListModel>();
             DataAccess.LoadNotes();
-            
+
             if (allYears) {
                 if (Profile == null) {
                     InitializeCourses(null, null);

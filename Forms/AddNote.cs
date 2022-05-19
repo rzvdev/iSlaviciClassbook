@@ -1,5 +1,7 @@
 ﻿using classbook.Connection;
 using iSlavici.Connection.Models.db;
+using iSlavici.Controls;
+using iSlavici.Controls.Navigator;
 using iSlavici.Models;
 using iSlavici.Utility;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +21,9 @@ namespace iSlavici.Forms
         private NoteType _noteType;
         private Subject _subject;
         private Student _student;
+        private List<Note> _notes;
+        NoteOneStudentListModel studentNote = new NoteOneStudentListModel();
+
 
         public AddNote(Person person, Profile profile, Subject subject, Student student)
         {
@@ -36,6 +41,7 @@ namespace iSlavici.Forms
 
             InitializeComboboxes();
             droBtnCourse.Text = subject.Name;
+            droBtnCourse.SelectedValueChanged += Course_ItemClicked;
         }
 
         private void InitializeComboboxes()
@@ -46,7 +52,8 @@ namespace iSlavici.Forms
                 droBtnNotetype.Items.Clear();
 
                 List<string> courseNames = (from c in DataAccess._dbContext.Subject
-                                                 select c.Name).ToList();
+                                            where c.ProfileId == _profile.Id
+                                            select c.Name).ToList();
 
                 List<string> noteTypes = (from nt in DataAccess._dbContext.NoteType
                                                select nt.TypeName).ToList();
@@ -61,48 +68,47 @@ namespace iSlavici.Forms
         }
 
 
-        private void droBtnCourses_Click(object sender, EventArgs e)
-        {
-            var subjects = (from sub in DataAccess._dbContext.Subject
-                            where sub.ProfileId == _profile.Id
-                            select sub).ToList();
 
-           
-            List<ToolStripDropDownButton> toolStrip = new List<ToolStripDropDownButton>();
-            foreach(var subject in subjects)
-            {
-                toolStrip.Add(new ToolStripDropDownButton
-                {
-                    ShowDropDownArrow = false,
-                    TextAlign = ContentAlignment.TopCenter,
-                    ForeColor = Color.Red,
-                    Text = $"{subject.Name}",
-                });
-            }
+        private void Course_ItemClicked(object sender, EventArgs e) {
+            try {
+                ComboBox cb = (ComboBox)sender;
 
-            ContextMenuStrip context = new ContextMenuStrip();
-            context.ItemClicked += Course_ItemClicked;
-            context.Items.AddRange(toolStrip.ToArray());
+                if (cb.SelectedItem != null) {
+                    string selectedCourse = cb.SelectedItem.ToString();
 
-            droBtnCourse.ContextMenuStrip = context;
-        }
-
-        private void Course_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-            try
-            {
-                if (e.ClickedItem != null)
-                {
-                    droBtnCourse.Text = e.ClickedItem.Text;
                     _subject = (from sub in DataAccess._dbContext.Subject
-                                where sub.Name == e.ClickedItem.Text
+                                where sub.Name == selectedCourse
                                 select sub).FirstOrDefault();
+
+                    _notes = (from not in DataAccess._dbContext.Note
+                              where not.Subject == _subject
+                              && not.StudentName == _person.FullName
+                              select not).ToList();
+
+
+                    List<NoteOneStudentListModel> studentNotes = new List<NoteOneStudentListModel>();
+
+                    foreach(var note in _notes) {
+                        NoteOneStudentListModel noteModel = new NoteOneStudentListModel {
+                            SubjectName = note.SubjectName,
+                            SubjectAbvr = _subject.Abvr,
+                            Note = note.NoteValue,
+                            NoteType = note.NoteTypeName,
+                            DateAdded = note.AddedDate,
+                            TeacherName = _subject.TeacherName,
+                            NoteId = note.Id
+                        };
+                        studentNotes.Add(noteModel);
+                    }
+
+                    studentNote.SetOneStudentNoteList(studentNotes);
+                    Navigator.GetInstance().RefreshStudentNoteDGVfiltred(studentNote);
                 }
-            } catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void droBtnNotetype_Click(object sender, EventArgs e)
         {
@@ -146,7 +152,7 @@ namespace iSlavici.Forms
             }
         }
 
-        private async void Add(object sender, EventArgs e)
+        private void Add(object sender, EventArgs e)
         {
             try
             {
@@ -155,8 +161,30 @@ namespace iSlavici.Forms
                     if (_subject == null || _noteType == null || _profile == null) throw new ArgumentNullException();
                     if (DataAccess.AddNote(_person, _subject, _noteType, int.Parse(numBtnNoteValue.Value.ToString())))
                     {
-                      //  await DataAccess.LoadStudentNotesAsync(_person.CNP,droBtnCourse.SelectedItem.ToString());
-                        dgvStudentNote.DataSource = DataAccess.studentNotes;
+                        _notes = (from not in DataAccess._dbContext.Note
+                                  where not.Subject == _subject
+                                  && not.StudentName == _person.FullName
+                                  select not).ToList();
+
+
+                        List<NoteOneStudentListModel> studentNotes = new List<NoteOneStudentListModel>();
+
+                        foreach (var note in _notes) {
+                            NoteOneStudentListModel noteModel = new NoteOneStudentListModel {
+                                SubjectName = note.SubjectName,
+                                SubjectAbvr = _subject.Abvr,
+                                Note = note.NoteValue,
+                                NoteType = note.NoteTypeName,
+                                DateAdded = note.AddedDate,
+                                TeacherName = _subject.TeacherName,
+                                NoteId = note.Id
+                            };
+                            studentNotes.Add(noteModel);
+                        }
+
+                        studentNote.SetOneStudentNoteList(studentNotes);
+                        Navigator.GetInstance().RefreshStudentNoteDGVfiltred(studentNote);
+
                         return;
                     }
                     MessageBox.Show("Cannot add this note!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -174,35 +202,6 @@ namespace iSlavici.Forms
         }
 
 
-        private void splitcontainer_Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void dgvStudentNote_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-
-        private async void droBtnCourse_SelectedValueChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                string selectedCourseName = droBtnCourse.SelectedItem.ToString();
-
-                _subject = (from sub in DataAccess._dbContext.Subject
-                            where sub.Name.Equals(selectedCourseName)
-                            select sub).FirstOrDefault();
-
-             //   await DataAccess.LoadStudentNotesAsync(_person.CNP, selectedCourseName);
-                dgvStudentNote.DataSource = DataAccess.studentNotes;
-                dgvStudentNote.Refresh();
-            } catch(Exception ex)
-            {
-                throw ex;
-            }
-        }
 
         private void droBtnNotetype_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -220,6 +219,16 @@ namespace iSlavici.Forms
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void AddNote_Load(object sender, EventArgs e) {
+            string studentCnp = _student.Person.CNP;
+            string courseName = _subject.Name;
+
+            StudentNoteUC studentNoteUC = new StudentNoteUC(studentCnp,courseName);
+            studentNoteUC.Visible = true;
+            studentNoteUC.Dock = DockStyle.Fill;
+            splitContainerTableNote.Panel1.Controls.Add(studentNoteUC);
         }
     }
 }

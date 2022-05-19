@@ -102,6 +102,7 @@
             this.cbCourse.Name = "cbCourse";
             this.cbCourse.Size = new System.Drawing.Size(181, 21);
             this.cbCourse.TabIndex = 6;
+            this.cbCourse.SelectedValueChanged += new System.EventHandler(this.CbCourseSelectEvent);
             // 
             // lblYearCoursesFilter
             // 
@@ -121,6 +122,7 @@
             this.cbStudentName.Name = "cbStudentName";
             this.cbStudentName.Size = new System.Drawing.Size(128, 21);
             this.cbStudentName.TabIndex = 10;
+            this.cbStudentName.SelectedValueChanged += new System.EventHandler(this.CbStudentSelectEvent);
             // 
             // lblStudentNameFilter
             // 
@@ -185,6 +187,7 @@
             this.cbStudentsYear.Name = "cbStudentsYear";
             this.cbStudentsYear.Size = new System.Drawing.Size(84, 21);
             this.cbStudentsYear.TabIndex = 16;
+            this.cbStudentsYear.SelectedValueChanged += new System.EventHandler(this.CbStudentYearSelectEvent);
             // 
             // lblYearStudentsFilter
             // 

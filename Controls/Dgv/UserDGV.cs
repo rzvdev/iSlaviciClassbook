@@ -60,7 +60,10 @@ namespace iSlavici.Models
 
                         // EDIT BUTTON
                         case 12:
-                            
+                            if(role == "ADMINISTRATOR") {
+                                MessageBox.Show("Cannot edit admin users!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                return;
+                            }
                             Navigator.GetInstance().SelectEditUserPage(int.Parse(id),username, password, fullname, email, cnp, phone, role, profile, int.Parse(year));
                             break;
                     }
@@ -74,8 +77,12 @@ namespace iSlavici.Models
         public override void FillTable() {
             LoadData();
             foreach (var user in DataAccess.users) {
-                Rows.Add(user.ID, user.Username,user.Password, user.Name, user.CNP, user.Role, user.Email, user.Phone, user.Profile, user.Year, user.CreatedDate);
+                Rows.Add(user.ID, user.Username,user.Password, user.Name, user.CNP, user.Role, user.Email, user.Phone, user.Profile, user.Year, FormattedDate(user.CreatedDate));
             }
+        }
+
+        private string FormattedDate(DateTime date) {
+            return date.ToString("dd/MM/yyyy");
         }
 
         public override void LoadData() {
@@ -134,7 +141,7 @@ namespace iSlavici.Models
                     };
 
                     DataGridViewColumn roleColumn = new DataGridViewColumn {
-                        Width = 100,
+                        Width = 120,
                         HeaderText = "ROLE",
                         CellTemplate = new DataGridViewTextBoxCell()
                     };

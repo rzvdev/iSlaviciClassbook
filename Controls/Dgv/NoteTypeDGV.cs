@@ -2,6 +2,8 @@
 using iSlavici.Models;
 using System;
 using System.Windows.Forms;
+using System.Linq;
+using iSlavici.Connection.Models.db;
 
 namespace iSlavici.Controls.Dgv
 {
@@ -69,32 +71,7 @@ namespace iSlavici.Controls.Dgv
         }
 
         public void ButtonCellClick(object sender, DataGridViewCellEventArgs e) {
-            try {
-                // TREATING APPEAR TWO TIMES THE DIALOG RESULT
-                if (!(sender is NoteTypeDGV)) return;
-
-                if ((e.RowIndex < 0) || (e.ColumnIndex < 0)) return;
-
-                if (e.ColumnIndex == 2) {
-                    string id = Convert.ToString(Rows[e.RowIndex].Cells[0].Value) ?? string.Empty;
-                    string typeName = Convert.ToString(Rows[e.RowIndex].Cells[1].Value) ?? string.Empty;
-
-                    switch (e.ColumnIndex) {
-                        // DELETE BUTTON
-                        case 2:
-                            DialogResult dg = MessageBox.Show($"Do you really want to delete this note type?\nThe notes with this type of note will still exist!\n\nID: {id}\nTYPE: {typeName}", "Confirm delete", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-                            if (dg == DialogResult.Yes) {
-                                DataAccess.DeleteNoteType(int.Parse(id));
-                                RefreshData();
-                                return;
-                            }
-                            break;
-                    }
-                }
-
-            } catch (Exception ex) {
-                throw ex;
-            }
+            throw new NotImplementedException();
         }
 
         public override void LoadData() {

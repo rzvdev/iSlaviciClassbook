@@ -36,6 +36,7 @@ namespace iSlavici.Models
         /// </summary>
         private readonly Image btnEditImg = Resources.dgvUserListEditBtn_24px;
         private readonly Image btnDeleteImg = Resources.dgvUserListDeleteBtn_24px;
+        private readonly Image btnAddNote = Resources.btnAddNote_24px;
 
         private DataGridViewCellStyle dgvcs1;
         private DataGridViewCellStyle dgvcs2;
@@ -116,6 +117,19 @@ namespace iSlavici.Models
             e.Handled = true;
         }
 
+        private void PaintAddNoteButton(DataGridViewCellPaintingEventArgs e) {
+            int x, y, w, h;
+
+            e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+            w = btnAddNote.Width;
+            h = btnAddNote.Height;
+            x = e.CellBounds.Left + (e.CellBounds.Width - w) / 2;
+            y = e.CellBounds.Top + (e.CellBounds.Height - h) / 2;
+
+            e.Graphics.DrawImage(btnAddNote, new Rectangle(x, y, w, h));
+            e.Handled = true;
+        }
+
         private void CustomizeButtons(object sender, DataGridViewCellPaintingEventArgs e) {
             if (e.RowIndex < 0)
                 return;
@@ -137,6 +151,16 @@ namespace iSlavici.Models
             } else if (sender is NoteTypeDGV) {
                 // DELETE BUTTON
                 if (e.ColumnIndex == 2) {
+                    PaintDeleteButton(e);
+                }
+            } else if (sender is NoteDGV) {
+                // ADD NOTE BTN
+                if(e.ColumnIndex == 8) {
+                    PaintAddNoteButton(e);
+                }
+            } else if (sender is StudentNoteDGV) {
+                // DELETE BUTTON
+                if(e.ColumnIndex == 7) {
                     PaintDeleteButton(e);
                 }
             }

@@ -33,29 +33,25 @@ namespace classbook
             CultureInfo.DefaultThreadCurrentUICulture = defaultCulture;
         }
 
-
-
-
-
         /// <summary>
         /// Represents the method that initialize Student panel or Admin panel by Role type
         /// </summary>
         private void InitializeRolePanel() {
             if (DataAccess._loggedAccount.RoleId == 2) {
-                //panelStudent.Visible = true;
-                //panelStudent.Enabled = true;
+                panelStudent.Visible = true;
+                panelStudent.Enabled = true;
                 BringToFront();
 
-                //panelAdmin.Enabled = false;
-                //panelAdmin.Visible = false;
+                panelAdmin.Enabled = false;
+                panelAdmin.Visible = false;
 
             } else {
-                //panelAdmin.Visible = true;
-                // panelAdmin.Enabled = true;
+                panelAdmin.Visible = true;
+                panelAdmin.Enabled = true;
                 BringToFront();
 
-                //panelStudent.Enabled = false;
-                //panelStudent.Visible = false;
+                panelStudent.Enabled = false;
+                panelStudent.Visible = false;
             }
         }
 
@@ -63,19 +59,26 @@ namespace classbook
 
         private void BtnSelectGroup(object sender, EventArgs e) {
             KryptonButton btn = (KryptonButton)sender;
+            Navigator nav = Navigator.GetInstance();
 
             if (btn == btnCourse) {
-                Navigator nav = Navigator.GetInstance();
                 nav.HideAllPages();
                 nav.SetCoursesPageVisible();
             } else if (btn == btnProfiles) {
-                Navigator nav = Navigator.GetInstance();
                 nav.HideAllPages();
                 nav.SetProfilesPageVisible();
             } else if (btn == btnNotes) {
-                Navigator nav = Navigator.GetInstance();
                 nav.HideAllPages();
                 nav.SetNotesPageVisible();
+            } else if (btn == btnMyProfile) {
+                nav.HideAllPages();
+                nav.SetProfilesPageVisible();
+            } else if (btn == btnMyCourses) {
+                nav.HideAllPages();
+                nav.SetCoursesPageVisible(true);
+            } else if (btn == btnMyNotes) {
+                nav.HideAllPages();
+                nav.SetNotesPageVisible(true);
             }
         }
 
@@ -129,6 +132,11 @@ namespace classbook
             nav.Visible = true;
             nav.HideAllPages();
             splitcontainer.Panel2.Controls.Add(nav);
+        }
+
+  
+        private void Dashboard_FormClosed(object sender, FormClosedEventArgs e) {
+            Application.Exit();
         }
     }
 }

@@ -1,8 +1,7 @@
-﻿using ComponentFactory.Krypton.Navigator;
-using iSlavici.Connection.Models.db;
+﻿using classbook.Connection;
+using ComponentFactory.Krypton.Navigator;
 using iSlavici.Controls.Nav.Pag;
 using iSlavici.Controls.Navigator.Pages;
-using iSlavici.Models;
 using System.Collections.Generic;
 
 namespace iSlavici.Controls.Navigator
@@ -23,6 +22,9 @@ namespace iSlavici.Controls.Navigator
         private static PageNoteList pageNoteList;
         private static PageAddNote pageAddNote;
         private static PageAddNoteType pageAddNoteType;
+        private static PageMyProfile pageMyProfile;
+        private static PageMyCourses pageMyCourses;
+        private static PageMyNotes pageMyNotes;
 
         private Navigator() {
 
@@ -56,21 +58,34 @@ namespace iSlavici.Controls.Navigator
         }
 
         private void InitializePages() {
-            pageUserList = PageUserList.Create();
-            pageCreateUser = PageCreateUser.Create();
-            pageCreateCourse = PageCreateCourse.Create();
-            pageCourseList = PageCourseList.Create();
-            pageNoteList = PageNoteList.Create();
-            pageAddNote = PageAddNote.Create();
-            pageAddNoteType = PageAddNoteType.Create();
+            if (DataAccess._loggedRole.Name == "ADMINISTRATOR") {
+                pageUserList = PageUserList.Create();
+                pageCreateUser = PageCreateUser.Create();
+                pageCreateCourse = PageCreateCourse.Create();
+                pageCourseList = PageCourseList.Create();
+                pageNoteList = PageNoteList.Create();
+                pageAddNote = PageAddNote.Create();
+                pageAddNoteType = PageAddNoteType.Create();
+                pageMyProfile = PageMyProfile.Create();
+               
 
-            Pages.Add(pageCreateUser);
-            Pages.Add(pageUserList);
-            Pages.Add(pageCreateCourse);
-            Pages.Add(pageCourseList);
-            Pages.Add(pageNoteList);
-            Pages.Add(pageAddNote);
-            Pages.Add(pageAddNoteType);
+                Pages.Add(pageCreateUser);
+                Pages.Add(pageUserList);
+                Pages.Add(pageCreateCourse);
+                Pages.Add(pageCourseList);
+                Pages.Add(pageNoteList);
+                Pages.Add(pageAddNote);
+                Pages.Add(pageAddNoteType);
+                Pages.Add(pageMyProfile);
+            } else if(DataAccess._loggedRole.Name == "STUDENT") {
+                pageMyProfile = PageMyProfile.Create();
+                pageMyCourses = PageMyCourses.Create();
+                pageMyNotes = PageMyNotes.Create();
+
+                Pages.Add(pageMyProfile);
+                Pages.Add(pageMyCourses);
+                Pages.Add(pageMyNotes);
+            }
         }
         public void SelectEditUserPage(int id,string username, string password, string fullname, string email, string cnp, string phone, string role, string profile, int year) {
             pageEditUser = PageEditUser.Create();
@@ -87,13 +102,25 @@ namespace iSlavici.Controls.Navigator
 
         private List<BasePage> GetPages() {
             List<BasePage> pages = new List<BasePage>();
-            pages.Add(pageCreateCourse);
-            pages.Add(pageUserList);
-            pages.Add(pageCourseList);
-            pages.Add(pageNoteList);
-            pages.Add(pageCreateUser);
-            pages.Add(pageAddNote);
-            pages.Add(pageAddNoteType);
+
+            //ADMIN PAGES
+            if (DataAccess._loggedRole.Name == "ADMINISTRATOR") {
+                pages.Add(pageCreateCourse);
+                pages.Add(pageUserList);
+                pages.Add(pageCourseList);
+                pages.Add(pageNoteList);
+                pages.Add(pageCreateUser);
+                pages.Add(pageAddNote);
+                pages.Add(pageAddNoteType);
+
+                //STUDENT & ADMIN PAGES
+                pages.Add(pageMyProfile);
+
+            } else if(DataAccess._loggedRole.Name == "STUDENT") {
+                pages.Add(pageMyProfile);
+                pages.Add(pageMyCourses);
+                pages.Add(pageMyNotes);
+            }
 
             return pages;
         }
@@ -104,20 +131,30 @@ namespace iSlavici.Controls.Navigator
             }
         }
 
-        public void SetNotesPageVisible() {
-            pageNoteList.Visible = true;
-            pageAddNote.Visible = true;
-            pageAddNoteType.Visible = true;
+        public void SetNotesPageVisible(bool isStudent = false) {
+            if (!isStudent) {
+                if (pageNoteList != null) pageNoteList.Visible = true;
+                if (pageAddNote != null) pageAddNote.Visible = true;
+                if (pageAddNoteType != null) pageAddNoteType.Visible = true;
+            } else {
+                if (pageMyNotes != null) pageMyNotes.Visible = true;
+            }
+
         }
 
         public void SetProfilesPageVisible() {
-            pageCreateUser.Visible = true;
-            pageUserList.Visible = true;
+            if(pageCreateUser != null) pageCreateUser.Visible = true;
+            if(pageUserList != null) pageUserList.Visible = true;
+            if(pageMyProfile != null) pageMyProfile.Visible = true;
         }
 
-        public void SetCoursesPageVisible() {
-            pageCourseList.Visible = true;
-            pageCreateCourse.Visible = true;
+        public void SetCoursesPageVisible(bool isStudent = false) {
+            if (!isStudent) {
+                if (pageCourseList != null) pageCourseList.Visible = true;
+                if (pageCreateCourse != null) pageCreateCourse.Visible = true;
+            } else {
+                if (pageMyCourses != null) pageMyCourses.Visible = true;
+            }
         }
 
         public void SetEditUserPageHiden() {
@@ -144,6 +181,10 @@ namespace iSlavici.Controls.Navigator
 
         public void RefreshNoteDGVfiltred(IFiltrableNotes notes) {
             pageNoteList.splitter.noteUC.noteDGV.FillTableFiltred((IFiltrable)notes);
+        }
+
+        public void RefreshStudentNoteDGVfiltred(IFiltrableNotes notes) {
+            StudentNoteUC.StudentNoteDGV.FillTableFiltred((IFiltrable)notes);
         }
     }
 }

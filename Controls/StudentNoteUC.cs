@@ -7,6 +7,8 @@ namespace iSlavici.Controls
 {
     public partial class StudentNoteUC : UserControl
     {
+        public static StudentNoteDGV StudentNoteDGV { get; set; }
+
         public StudentNoteUC(string studentCnp, string courseName) {
             InitializeComponent();
             Visible = true;
@@ -15,8 +17,8 @@ namespace iSlavici.Controls
         }
 
         private void CreateAndAssignTable(string studentCnp,string courseName) {
-            TableDGV studentNoteDGV =  StudentNoteDGV.Create(studentCnp, courseName);
-            Controls.Add(studentNoteDGV);
+            StudentNoteDGV = StudentNoteDGV.Create(studentCnp, courseName);
+            Controls.Add(StudentNoteDGV);
         }
     }
 }

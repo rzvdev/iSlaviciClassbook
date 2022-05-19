@@ -132,6 +132,25 @@ namespace classbook.Connection
                      }).ToList();
         }
 
+        public static void LoadMyNotes(Person person) {
+            _dbContext = new SlaviciContext();
+            studentNotes = (from per in _dbContext.Person
+                            join stu in _dbContext.Student on per.Id equals stu.PersonId 
+                            join note in _dbContext.Note on per.Id equals note.PersonId
+                            join subject in _dbContext.Subject on note.SubjectId equals subject.Id
+                            where per.Id == person.Id
+                            orderby note.AddedDate descending
+                            select new NoteOneStudentListModel {
+                                SubjectName = subject.Name,
+                                SubjectAbvr = subject.Abvr,
+                                TeacherName = subject.TeacherName,
+                                NoteType = note.NoteTypeName,
+                                Note = note.NoteValue,
+                                DateAdded = note.AddedDate,
+                                NoteId = note.Id
+                            }).ToList();
+        }
+
         public static void LoadStudentNotes(string studentCnp, string subjectName) {
             _dbContext = new SlaviciContext();
             studentNotes = (from student in _dbContext.Person
@@ -146,7 +165,8 @@ namespace classbook.Connection
                                 TeacherName = subject.TeacherName,
                                 NoteType = note.NoteTypeName,
                                 Note = note.NoteValue,
-                                DateAdded = note.AddedDate
+                                DateAdded = note.AddedDate,
+                                NoteId = note.Id
                             }).ToList();
         }
 
@@ -175,9 +195,9 @@ namespace classbook.Connection
         /// list from database Subject table
         /// </summary>
         /// <returns></returns>
-        public static async void LoadCourses() {
+        public static void LoadCourses() {
             _dbContext = new SlaviciContext();
-            courses = await (from c in _dbContext.Subject
+            courses =  (from c in _dbContext.Subject
                        join pro in _dbContext.Profile on c.ProfileId equals pro.Id
                        join subType in _dbContext.SubjectType on c.SubjectTypeId equals subType.Id
                        select new CourseListModel {
@@ -191,7 +211,26 @@ namespace classbook.Connection
                            Credit = c.Credit,
                            Year = c.YearStudy,
                            Semester = c.SemesterStudy,
-                       }).ToListAsync();
+                       }).ToList();
+        }
+
+        public static void LoadCoursesByStudent(Student student) {
+            _dbContext = new SlaviciContext();
+            courses = (from c in _dbContext.Subject
+                       join pro in _dbContext.Profile on c.ProfileId equals pro.Id
+                       where c.YearStudy <= student.InYear
+                       select new CourseListModel {
+                           ID = c.Id,
+                           Name = c.Name,
+                           Abrv = c.Abvr,
+                           Teacher = c.TeacherName,
+                           Profile = c.ProfileName,
+                           Type = c.SubjectTypeName,
+                           ExaminationMode = c.CourseExaminationName,
+                           Credit = c.Credit,
+                           Year = c.YearStudy,
+                           Semester = c.SemesterStudy,
+                       }).ToList();
         }
 
 
@@ -212,6 +251,25 @@ namespace classbook.Connection
 
                     _dbContext.Account.Remove(deleteAccount);
                     _dbContext.Person.Remove(deletePerson);
+                    _dbContext.SaveChanges();
+                    return true;
+                }
+                return false;
+
+            } catch (Exception ex) {
+                throw ex;
+            }
+        }
+
+        public static bool DeleteNote(int id) {
+            try {
+                if (_isConnection) {
+                    Note note = (from nt in _dbContext.Note
+                                 where nt.Id == id
+                                 select nt).FirstOrDefault();
+          
+
+                    _dbContext.Note.Remove(note);
                     _dbContext.SaveChanges();
                     return true;
                 }

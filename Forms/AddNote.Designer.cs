@@ -28,11 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddNote));
             this.splitcontainer = new ComponentFactory.Krypton.Toolkit.KryptonSplitContainer();
             this.droBtnNotetype = new System.Windows.Forms.ComboBox();
@@ -55,7 +50,6 @@
             this.borderStudentSection = new ComponentFactory.Krypton.Toolkit.KryptonBorderEdge();
             this.lblStudentSection = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.splitContainerTableNote = new ComponentFactory.Krypton.Toolkit.KryptonSplitContainer();
-            this.dgvStudentNote = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.splitcontainer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitcontainer.Panel1)).BeginInit();
             this.splitcontainer.Panel1.SuspendLayout();
@@ -64,10 +58,8 @@
             this.splitcontainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerTableNote)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerTableNote.Panel1)).BeginInit();
-            this.splitContainerTableNote.Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerTableNote.Panel2)).BeginInit();
             this.splitContainerTableNote.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStudentNote)).BeginInit();
             this.SuspendLayout();
             // 
             // splitcontainer
@@ -99,7 +91,6 @@
             this.splitcontainer.Panel1.Controls.Add(this.lblName);
             this.splitcontainer.Panel1.Controls.Add(this.borderStudentSection);
             this.splitcontainer.Panel1.Controls.Add(this.lblStudentSection);
-            this.splitcontainer.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitcontainer_Panel1_Paint);
             // 
             // splitcontainer.Panel2
             // 
@@ -110,6 +101,8 @@
             // 
             // droBtnNotetype
             // 
+            this.droBtnNotetype.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.droBtnNotetype.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.droBtnNotetype.FormattingEnabled = true;
             this.droBtnNotetype.Location = new System.Drawing.Point(78, 259);
             this.droBtnNotetype.Name = "droBtnNotetype";
@@ -119,15 +112,17 @@
             // 
             // droBtnCourse
             // 
+            this.droBtnCourse.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.droBtnCourse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.droBtnCourse.FormattingEnabled = true;
             this.droBtnCourse.Location = new System.Drawing.Point(78, 219);
             this.droBtnCourse.Name = "droBtnCourse";
             this.droBtnCourse.Size = new System.Drawing.Size(173, 21);
             this.droBtnCourse.TabIndex = 89;
-            this.droBtnCourse.SelectedValueChanged += new System.EventHandler(this.droBtnCourse_SelectedValueChanged);
             // 
             // numBtnNoteValue
             // 
+            this.numBtnNoteValue.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.numBtnNoteValue.Location = new System.Drawing.Point(79, 302);
             this.numBtnNoteValue.Maximum = new decimal(new int[] {
             10,
@@ -171,6 +166,7 @@
             // 
             // kryptonButton1
             // 
+            this.kryptonButton1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.kryptonButton1.Location = new System.Drawing.Point(78, 413);
             this.kryptonButton1.Name = "kryptonButton1";
             this.kryptonButton1.Size = new System.Drawing.Size(90, 25);
@@ -210,6 +206,7 @@
             // 
             // lblYearInput
             // 
+            this.lblYearInput.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblYearInput.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.BoldControl;
             this.lblYearInput.Location = new System.Drawing.Point(67, 121);
             this.lblYearInput.Name = "lblYearInput";
@@ -220,6 +217,7 @@
             // 
             // lblProfileInput
             // 
+            this.lblProfileInput.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblProfileInput.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.BoldControl;
             this.lblProfileInput.Location = new System.Drawing.Point(67, 95);
             this.lblProfileInput.Name = "lblProfileInput";
@@ -230,6 +228,7 @@
             // 
             // lblCnpInput
             // 
+            this.lblCnpInput.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblCnpInput.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.BoldControl;
             this.lblCnpInput.Location = new System.Drawing.Point(67, 69);
             this.lblCnpInput.Name = "lblCnpInput";
@@ -240,6 +239,7 @@
             // 
             // lblNameInput
             // 
+            this.lblNameInput.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblNameInput.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.BoldControl;
             this.lblNameInput.Location = new System.Drawing.Point(67, 46);
             this.lblNameInput.Name = "lblNameInput";
@@ -314,21 +314,9 @@
             this.splitContainerTableNote.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainerTableNote.Location = new System.Drawing.Point(0, 0);
             this.splitContainerTableNote.Name = "splitContainerTableNote";
-            // 
-            // splitContainerTableNote.Panel1
-            // 
-            this.splitContainerTableNote.Panel1.Controls.Add(this.dgvStudentNote);
             this.splitContainerTableNote.Size = new System.Drawing.Size(835, 450);
             this.splitContainerTableNote.SplitterDistance = 703;
             this.splitContainerTableNote.TabIndex = 1;
-            // 
-            // dgvStudentNote
-            // 
-            this.dgvStudentNote.Location = new System.Drawing.Point(0, 0);
-            this.dgvStudentNote.Name = "dgvStudentNote";
-            this.dgvStudentNote.Size = new System.Drawing.Size(703, 450);
-            this.dgvStudentNote.TabIndex = 2;
-            this.dgvStudentNote.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStudentNote_CellContentClick);
             // 
             // AddNote
             // 
@@ -340,6 +328,7 @@
             this.Name = "AddNote";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Note";
+            this.Load += new System.EventHandler(this.AddNote_Load);
             ((System.ComponentModel.ISupportInitialize)(this.splitcontainer.Panel1)).EndInit();
             this.splitcontainer.Panel1.ResumeLayout(false);
             this.splitcontainer.Panel1.PerformLayout();
@@ -348,11 +337,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitcontainer)).EndInit();
             this.splitcontainer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerTableNote.Panel1)).EndInit();
-            this.splitContainerTableNote.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerTableNote.Panel2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerTableNote)).EndInit();
             this.splitContainerTableNote.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStudentNote)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -378,7 +365,6 @@
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel4;
         private ComponentFactory.Krypton.Toolkit.KryptonButton kryptonButton1;
         private ComponentFactory.Krypton.Toolkit.KryptonSplitContainer splitContainerTableNote;
-        private System.Windows.Forms.DataGridView dgvStudentNote;
         private System.Windows.Forms.ComboBox droBtnCourse;
         private System.Windows.Forms.ComboBox droBtnNotetype;
     }
