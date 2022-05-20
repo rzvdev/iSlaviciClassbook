@@ -177,5 +177,7 @@ namespace iSlavici.Models
                 Rows.Add(note.Id, note.StudentName, note.SubjectName, note.SubjectAbrv, note.TeacherName, note.NoteType, note.NoteValue, FormattedDate(note.AddedDate));
             }
         }
+
+    
     }
 }

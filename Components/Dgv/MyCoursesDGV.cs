@@ -1,6 +1,7 @@
 ﻿using classbook.Connection;
 using iSlavici.Models;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace iSlavici.Controls.Dgv
@@ -137,5 +138,7 @@ namespace iSlavici.Controls.Dgv
             FillTable();
             Refresh();
         }
+
+     
     }
 }

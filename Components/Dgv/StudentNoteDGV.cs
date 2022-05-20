@@ -159,5 +159,7 @@ namespace iSlavici.Controls.Dgv
                 Rows.Add(note.NoteId,note.SubjectName, note.SubjectAbvr, note.TeacherName, note.NoteType, note.Note, FormattedDate(note.DateAdded));
             }
         }
+
+     
     }
 }

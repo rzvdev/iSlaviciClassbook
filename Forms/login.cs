@@ -33,7 +33,6 @@ namespace classbook
         {
             try
             {
-                SetSavedAccount();
                 _connectionTick = new ConnectionTick(labelConnectionStatusPicture);
                 _connectionTick.StartTimer();
             }
@@ -83,9 +82,6 @@ namespace classbook
                     Hide();
                     Dashboard dashboard = new Dashboard();
                     dashboard.Show();
-                   // testNav nav = new testNav();
-                   // nav.Show();
-                    //Close();
                 }
             } catch (Exception ex)
             {

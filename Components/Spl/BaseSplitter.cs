@@ -19,7 +19,7 @@ namespace iSlavici.Controls.Spl
             Location = new System.Drawing.Point(0, 0);
             Orientation = System.Windows.Forms.Orientation.Horizontal;
             Size = new System.Drawing.Size(704, 375);
-            SplitterDistance = 38;
+            SplitterDistance = 75;
 
             if(this is SplitterNoteType) {
                 Orientation = System.Windows.Forms.Orientation.Vertical;

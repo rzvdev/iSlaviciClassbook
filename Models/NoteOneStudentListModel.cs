@@ -33,5 +33,13 @@ namespace iSlavici.Models
         public void SetOneStudentNoteList(List<NoteOneStudentListModel> notes) {
             noteList = notes;
         }
+
+        public List<CourseListModel> GetCourseList() {
+            throw new NotImplementedException();
+        }
+
+        public void SetCourseList(List<CourseListModel> courseList) {
+            throw new NotImplementedException();
+        }
     }
 }

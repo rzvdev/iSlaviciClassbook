@@ -19,7 +19,7 @@ namespace iSlavici.Utility
         /// <summary>
         /// Represents the interval of that timer
         /// </summary>
-        private readonly int _interval = int.Parse(ConfigurationManager.AppSettings["CHECK_CONNECTION_INTERVAL"]);
+        private readonly int _interval = 1000;
         /// <summary>
         /// Represents the status label picture, if exist on the form
         /// </summary>

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using iSlavici.Controls;
+using iSlavici.Components.Nav;
 
 namespace iSlavici.Controls.Nav.Pan
 {

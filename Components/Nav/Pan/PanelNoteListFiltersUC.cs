@@ -94,7 +94,12 @@ namespace iSlavici.Controls.Nav.Pan
                             join per in DataAccess._dbContext.Person on stu.PersonId equals per.Id
                             where stu.ProfileId == Profile.Id && stu.InYear == selectedStudentsYear
                             select per).ToList();
-            } else {
+            } else if(allProfiles && !allYears){
+                Students = (from stu in DataAccess._dbContext.Student
+                            join per in DataAccess._dbContext.Person on stu.PersonId equals per.Id
+                            where stu.InYear == selectedStudentsYear
+                            select per).ToList();
+            } else if(!allProfiles && allYears) {
                 Students = (from stu in DataAccess._dbContext.Student
                             join per in DataAccess._dbContext.Person on stu.PersonId equals per.Id
                             where stu.ProfileId == Profile.Id

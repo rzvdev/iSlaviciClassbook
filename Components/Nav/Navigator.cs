@@ -1,7 +1,9 @@
 ﻿using classbook.Connection;
 using ComponentFactory.Krypton.Navigator;
+using iSlavici.Components.interfaces;
 using iSlavici.Controls.Nav.Pag;
 using iSlavici.Controls.Navigator.Pages;
+using iSlavici.Models;
 using System.Collections.Generic;
 
 namespace iSlavici.Controls.Navigator
@@ -185,6 +187,10 @@ namespace iSlavici.Controls.Navigator
 
         public void RefreshStudentNoteDGVfiltred(IFiltrableNotes notes) {
             StudentNoteUC.StudentNoteDGV.FillTableFiltred((IFiltrable)notes);
+        }
+
+        public void RefreshCourseDGVfiltred(IFiltrableCourse course) {
+            pageCourseList.splitterCourseList.courseUC.courseDGV.FillTableFiltred((IFiltrable)course);
         }
     }
 }

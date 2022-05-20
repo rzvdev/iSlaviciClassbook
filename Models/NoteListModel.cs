@@ -23,11 +23,19 @@ namespace iSlavici.Models
         public int ProfileId { get; set; }
         public int CourseYear { get; set; }
 
+        public List<CourseListModel> GetCourseList() {
+            throw new NotImplementedException();
+        }
+
         public List<NoteListModel> GetNoteList() {
             return noteList;
         }
 
         public List<NoteOneStudentListModel> GetOneStudentNoteList() {
+            throw new NotImplementedException();
+        }
+
+        public void SetCourseList(List<CourseListModel> courseList) {
             throw new NotImplementedException();
         }
 

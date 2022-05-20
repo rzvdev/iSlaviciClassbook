@@ -6,7 +6,7 @@ namespace iSlavici.Controls
 {
     public partial class CourseUC : UserControl
     {
-        public TableDGV courseDGV { get; set; }
+        public CourseDGV courseDGV { get; set; }
 
         public CourseUC()
         {

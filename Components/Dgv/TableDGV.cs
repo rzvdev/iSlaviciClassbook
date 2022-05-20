@@ -57,7 +57,6 @@ namespace iSlavici.Models
 
         public abstract void FillTableFiltred(IFiltrable filtred);
 
-
         protected void SetTableSettings(TableDGV tbl) {
             tbl.AllowUserToAddRows = false;
             tbl.AllowUserToDeleteRows = false;
@@ -89,6 +88,7 @@ namespace iSlavici.Models
             tbl.RowHeadersWidth = 51;
             tbl.Visible = true;
             tbl.Size = new Size(2000, 2000);
+            tbl.BackgroundColor = Color.WhiteSmoke;
             tbl.CellPainting += CustomizeButtons;
         }
 

@@ -1,6 +1,7 @@
 ﻿using classbook.Connection;
 using iSlavici.Controls;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -172,7 +173,13 @@ namespace iSlavici.Models
         }
 
         public override void FillTableFiltred(IFiltrable filtred) {
-            throw new NotImplementedException();
+            Rows.Clear();
+            List<CourseListModel> courses = filtred.GetCourseList();
+            foreach (var course in courses) {
+                Rows.Add(course.ID, course.Name, course.Abrv, course.Teacher, course.Profile, course.Type, course.ExaminationMode, course.Credit, course.Year, course.Semester);
+            }
         }
+
+       
     }
 }

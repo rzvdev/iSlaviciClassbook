@@ -4,6 +4,7 @@ using System;
 using System.Windows.Forms;
 using System.Linq;
 using iSlavici.Connection.Models.db;
+using System.Collections.Generic;
 
 namespace iSlavici.Controls.Dgv
 {
@@ -88,5 +89,7 @@ namespace iSlavici.Controls.Dgv
         public override void FillTableFiltred(IFiltrable filtred) {
             throw new NotImplementedException();
         }
+
+      
     }
 }

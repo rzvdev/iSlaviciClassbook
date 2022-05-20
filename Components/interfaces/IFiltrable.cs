@@ -1,10 +1,8 @@
-﻿using iSlavici.Connection.Models.db;
-using iSlavici.Models;
-using System.Collections.Generic;
+﻿using iSlavici.Components.interfaces;
 
 namespace iSlavici.Controls
 {
-    public interface IFiltrable : IFiltrableNotes
+    public interface IFiltrable : IFiltrableNotes, IFiltrableCourse
     {
     }
 }
