@@ -40,6 +40,7 @@
             // 
             this.cbYear.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cbYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbYear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbYear.FormattingEnabled = true;
             this.cbYear.Location = new System.Drawing.Point(217, 50);
             this.cbYear.Name = "cbYear";
@@ -60,6 +61,7 @@
             // 
             this.cbProfile.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cbProfile.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbProfile.FormattingEnabled = true;
             this.cbProfile.Location = new System.Drawing.Point(85, 50);
             this.cbProfile.Name = "cbProfile";
@@ -118,6 +120,7 @@
             // 
             this.cbSearch.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cbSearch.DropDownHeight = 200;
+            this.cbSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbSearch.FormattingEnabled = true;
             this.cbSearch.IntegralHeight = false;
             this.cbSearch.ItemHeight = 13;

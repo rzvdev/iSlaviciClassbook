@@ -94,15 +94,15 @@ namespace iSlavici.Controls.Dgv
 
 
         public override void FillTableFiltred(IFiltrable filtred) {
-            throw new System.NotImplementedException();
+            Rows.Clear();
+            List<NoteOneStudentListModel> notes = filtred.GetOneStudentNoteList();
+            foreach (var note in notes.OrderBy(n => n.DateAdded)) {
+                Rows.Add(note.NoteId, note.SubjectName, note.SubjectAbvr, note.TeacherName, note.NoteType, note.Note, FormattedDate(note.DateAdded));
+            }
         }
 
         public void ButtonCellClick(object sender, DataGridViewCellEventArgs e) {
-            try {
-                throw new NotImplementedException();
-            } catch (Exception ex) {
-                throw ex;
-            }
+            
         }
 
         public override void InitializeTable() {

@@ -47,7 +47,7 @@ namespace classbook
             this.btnMyNotes = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnMyProfile = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.panelAdmin = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.kryptonButton1 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnDocGenerate = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnTimetable = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnCourse = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnNotes = new ComponentFactory.Krypton.Toolkit.KryptonButton();
@@ -184,6 +184,8 @@ namespace classbook
             this.dataGridViewColumn10 = new System.Windows.Forms.DataGridViewColumn();
             this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.dataGridViewButtonColumn2 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.btnManageFees = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnPayFees = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitcontainer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitcontainer.Panel1)).BeginInit();
             this.splitcontainer.Panel1.SuspendLayout();
@@ -280,8 +282,8 @@ namespace classbook
             // 
             // splitcontainerLeftSide.Panel2
             // 
-            this.splitcontainerLeftSide.Panel2.Controls.Add(this.panelStudent);
             this.splitcontainerLeftSide.Panel2.Controls.Add(this.panelAdmin);
+            this.splitcontainerLeftSide.Panel2.Controls.Add(this.panelStudent);
             this.splitcontainerLeftSide.Size = new System.Drawing.Size(106, 467);
             this.splitcontainerLeftSide.SplitterDistance = 103;
             this.splitcontainerLeftSide.SplitterWidth = 0;
@@ -335,6 +337,7 @@ namespace classbook
             // 
             // panelStudent
             // 
+            this.panelStudent.Controls.Add(this.btnPayFees);
             this.panelStudent.Controls.Add(this.btnMyTimetable);
             this.panelStudent.Controls.Add(this.btnMyCourses);
             this.panelStudent.Controls.Add(this.btnMyNotes);
@@ -429,7 +432,8 @@ namespace classbook
             // 
             // panelAdmin
             // 
-            this.panelAdmin.Controls.Add(this.kryptonButton1);
+            this.panelAdmin.Controls.Add(this.btnManageFees);
+            this.panelAdmin.Controls.Add(this.btnDocGenerate);
             this.panelAdmin.Controls.Add(this.btnTimetable);
             this.panelAdmin.Controls.Add(this.btnCourse);
             this.panelAdmin.Controls.Add(this.btnNotes);
@@ -443,22 +447,22 @@ namespace classbook
             this.panelAdmin.TabIndex = 0;
             this.panelAdmin.Visible = false;
             // 
-            // kryptonButton1
+            // btnDocGenerate
             // 
-            this.kryptonButton1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnDocGenerate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.kryptonButton1.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.Custom1;
-            this.kryptonButton1.Enabled = false;
-            this.kryptonButton1.Location = new System.Drawing.Point(3, 186);
-            this.kryptonButton1.Margin = new System.Windows.Forms.Padding(0);
-            this.kryptonButton1.Name = "kryptonButton1";
-            this.kryptonButton1.Size = new System.Drawing.Size(100, 40);
-            this.kryptonButton1.StateNormal.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            this.btnDocGenerate.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.Custom1;
+            this.btnDocGenerate.Enabled = false;
+            this.btnDocGenerate.Location = new System.Drawing.Point(3, 186);
+            this.btnDocGenerate.Margin = new System.Windows.Forms.Padding(0);
+            this.btnDocGenerate.Name = "btnDocGenerate";
+            this.btnDocGenerate.Size = new System.Drawing.Size(100, 40);
+            this.btnDocGenerate.StateNormal.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.kryptonButton1.TabIndex = 6;
-            this.kryptonButton1.Values.Image = global::iSlavici.Properties.Resources.generate_24px;
-            this.kryptonButton1.Values.Text = "Document \r\nGeneration";
+            this.btnDocGenerate.TabIndex = 6;
+            this.btnDocGenerate.Values.Image = global::iSlavici.Properties.Resources.generate_24px;
+            this.btnDocGenerate.Values.Text = "Document  \r\nGeneration";
             // 
             // btnTimetable
             // 
@@ -475,7 +479,7 @@ namespace classbook
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.btnTimetable.TabIndex = 5;
             this.btnTimetable.Values.Image = global::iSlavici.Properties.Resources.timetable_v2_24px;
-            this.btnTimetable.Values.Text = " Timetable";
+            this.btnTimetable.Values.Text = "Manage\r\nTimetable\r\n";
             // 
             // btnCourse
             // 
@@ -2100,6 +2104,41 @@ namespace classbook
             this.dataGridViewButtonColumn2.ReadOnly = true;
             this.dataGridViewButtonColumn2.Width = 40;
             // 
+            // btnManageFees
+            // 
+            this.btnManageFees.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnManageFees.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.Custom1;
+            this.btnManageFees.Enabled = false;
+            this.btnManageFees.Location = new System.Drawing.Point(3, 231);
+            this.btnManageFees.Margin = new System.Windows.Forms.Padding(0);
+            this.btnManageFees.Name = "btnManageFees";
+            this.btnManageFees.Size = new System.Drawing.Size(100, 40);
+            this.btnManageFees.StateNormal.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnManageFees.TabIndex = 7;
+            this.btnManageFees.Values.ExtraText = "       .";
+            this.btnManageFees.Values.Image = global::iSlavici.Properties.Resources.btnFees_24px;
+            this.btnManageFees.Values.Text = "Manage \r\nTaxes";
+            // 
+            // btnPayFees
+            // 
+            this.btnPayFees.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPayFees.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.Custom1;
+            this.btnPayFees.Enabled = false;
+            this.btnPayFees.Location = new System.Drawing.Point(3, 186);
+            this.btnPayFees.Margin = new System.Windows.Forms.Padding(0);
+            this.btnPayFees.Name = "btnPayFees";
+            this.btnPayFees.Size = new System.Drawing.Size(100, 40);
+            this.btnPayFees.StateNormal.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnPayFees.TabIndex = 8;
+            this.btnPayFees.Values.Image = global::iSlavici.Properties.Resources.btnFees_24px;
+            this.btnPayFees.Values.Text = " Pay Taxes";
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2329,6 +2368,8 @@ namespace classbook
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnMyProfile;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnMyTimetable;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnTimetable;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton kryptonButton1;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnDocGenerate;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnManageFees;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnPayFees;
     }
 }

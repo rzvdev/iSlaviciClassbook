@@ -13,7 +13,7 @@ namespace iSlavici.Controls
 {
     public partial class MyCoursesUC : UserControl
     {
-        public static MyCoursesDGV MyCoursesDGV { get; set; }
+        public MyCoursesDGV MyCoursesDGV { get; set; }
 
         public MyCoursesUC() {
             InitializeComponent();

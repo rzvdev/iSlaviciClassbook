@@ -84,7 +84,8 @@ namespace classbook.Connection
                 students = (from per in _dbContext.Person
                             join stu in _dbContext.Student on per.Id equals stu.PersonId
                             select per).ToList();
-            } else {
+            } 
+            else{
                 students = (from per in _dbContext.Person
                             join stu in _dbContext.Student on per.Id equals stu.PersonId
                             where stu.ProfileId == byProfile.Id
@@ -151,23 +152,43 @@ namespace classbook.Connection
                             }).ToList();
         }
 
-        public static void LoadStudentNotes(string studentCnp, string subjectName) {
+        public static void LoadStudentNotes(string studentCnp, string subjectName = null) {
             _dbContext = new SlaviciContext();
-            studentNotes = (from student in _dbContext.Person
-                            where student.CNP.Equals(studentCnp)
-                            join note in _dbContext.Note on student.Id equals note.PersonId
-                            join subject in _dbContext.Subject on note.SubjectId equals subject.Id
-                            where subject.Name == subjectName
-                            orderby note.AddedDate descending
-                            select new NoteOneStudentListModel {
-                                SubjectName = subject.Name,
-                                SubjectAbvr = subject.Abvr,
-                                TeacherName = subject.TeacherName,
-                                NoteType = note.NoteTypeName,
-                                Note = note.NoteValue,
-                                DateAdded = note.AddedDate,
-                                NoteId = note.Id
-                            }).ToList();
+
+            if (subjectName != null) {
+                studentNotes = (from student in _dbContext.Person
+                                where student.CNP.Equals(studentCnp)
+                                join note in _dbContext.Note on student.Id equals note.PersonId
+                                join subject in _dbContext.Subject on note.SubjectId equals subject.Id
+                                where subject.Name == subjectName
+                                orderby note.AddedDate descending
+                                select new NoteOneStudentListModel {
+                                    SubjectName = subject.Name,
+                                    SubjectAbvr = subject.Abvr,
+                                    TeacherName = subject.TeacherName,
+                                    NoteType = note.NoteTypeName,
+                                    Note = note.NoteValue,
+                                    DateAdded = note.AddedDate,
+                                    NoteId = note.Id,
+                                    InYear = subject.YearStudy
+                                }).ToList();
+            } else {
+                studentNotes = (from student in _dbContext.Person
+                                where student.CNP.Equals(studentCnp)
+                                join note in _dbContext.Note on student.Id equals note.PersonId
+                                join subject in _dbContext.Subject on note.SubjectId equals subject.Id
+                                orderby note.AddedDate descending
+                                select new NoteOneStudentListModel {
+                                    SubjectName = subject.Name,
+                                    SubjectAbvr = subject.Abvr,
+                                    TeacherName = subject.TeacherName,
+                                    NoteType = note.NoteTypeName,
+                                    Note = note.NoteValue,
+                                    DateAdded = note.AddedDate,
+                                    NoteId = note.Id,
+                                    InYear = subject.YearStudy
+                                }).ToList();
+            }
         }
 
         public static void LoadNotes() {

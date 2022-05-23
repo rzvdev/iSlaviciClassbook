@@ -35,6 +35,7 @@ namespace iSlavici.Controls.Nav.Pan
             ApplyCourseActiveFilter();
         }
 
+
         private void CbStudentSelectEvent(object sender, EventArgs e) {
             if (cbStudentName.SelectedItem != null) {
                 string selectedStudent = cbStudentName.SelectedItem.ToString();
@@ -49,14 +50,14 @@ namespace iSlavici.Controls.Nav.Pan
                     filtredNotes = DataAccess.notes.Where(s => s.StudentName == selectedStudent).ToList();
                     noteListModel.SetNoteList(filtredNotes);
                     Navigator.Navigator.GetInstance().RefreshNoteDGVfiltred(noteListModel);
-                } else if(allStudents && !allCourses) {
+                } else if (allStudents && !allCourses) {
                     NoteListModel noteListModel = new NoteListModel();
                     List<NoteListModel> filtredNotes = new List<NoteListModel>();
                     DataAccess.LoadNotes();
                     filtredNotes = DataAccess.notes.Where(n => n.SubjectName == selectedCourse).ToList();
                     noteListModel.SetNoteList(filtredNotes);
                     Navigator.Navigator.GetInstance().RefreshNoteDGVfiltred(noteListModel);
-                } else if(!allStudents && !allCourses) {
+                } else if (!allStudents && !allCourses) {
                     NoteListModel noteListModel = new NoteListModel();
                     List<NoteListModel> filtredNotes = new List<NoteListModel>();
                     DataAccess.LoadNotes();
@@ -94,12 +95,12 @@ namespace iSlavici.Controls.Nav.Pan
                             join per in DataAccess._dbContext.Person on stu.PersonId equals per.Id
                             where stu.ProfileId == Profile.Id && stu.InYear == selectedStudentsYear
                             select per).ToList();
-            } else if(allProfiles && !allYears){
+            } else if (allProfiles && !allYears) {
                 Students = (from stu in DataAccess._dbContext.Student
                             join per in DataAccess._dbContext.Person on stu.PersonId equals per.Id
                             where stu.InYear == selectedStudentsYear
                             select per).ToList();
-            } else if(!allProfiles && allYears) {
+            } else if (!allProfiles && allYears) {
                 Students = (from stu in DataAccess._dbContext.Student
                             join per in DataAccess._dbContext.Person on stu.PersonId equals per.Id
                             where stu.ProfileId == Profile.Id
@@ -363,5 +364,164 @@ namespace iSlavici.Controls.Nav.Pan
                 }
             }
         }
+
+
+        #region NEW OPTIMIZED METHODS
+        private void PageLoadEventV2(object sender, EventArgs e) {
+            InitializeProfilesV2();
+            InitializeCourseYearsV2();
+            InitializeCoursesV2();
+            InitializeStudentsV2();
+        }
+
+        private void InitializeStudentsV2() {
+            cbStudentName.Items.Clear();
+            cbStudentName.Items.Add("ALL");
+            cbStudentName.SelectedItem = cbStudentName.Items[0];
+
+            DataAccess.LoadStudents();
+            foreach (var student in DataAccess.students) {
+                cbStudentName.Items.Add(student.FullName);
+            }
+        }
+
+        private void InitializeCoursesV2() {
+            cbCourse.Items.Clear();
+            DataAccess.LoadCourses();
+            cbCourse.Items.Add("ALL");
+            cbCourse.SelectedItem = cbCourse.Items[0];
+            foreach (var course in DataAccess.courses) {
+                cbCourse.Items.Add(course.Name);
+            }
+        }
+
+        private void InitializeProfilesV2() {
+            cbProfile.Items.Clear();
+            DataAccess.LoadProfiles();
+            cbProfile.Items.Add("ALL");
+            cbProfile.SelectedItem = cbProfile.Items[0];
+            foreach (var profile in DataAccess.profiles) {
+                cbProfile.Items.Add(profile.Name);
+            }
+        }
+
+        private void InitializeCourseYearsV2() {
+            cbCoursesYear.Items.Clear();
+            cbCoursesYear.Items.Add("ALL");
+
+            cbStudentsYear.Items.Clear();
+            cbStudentsYear.Items.Add("ALL");
+
+            cbStudentsYear.SelectedItem = cbStudentsYear.Items[0];
+            cbCoursesYear.SelectedItem = cbCoursesYear.Items[0];
+
+            DataAccess.LoadProfiles();
+            int maxYear = DataAccess.profiles.Max(x => x.Years);
+            for (int i = 1; i <= maxYear; i++) {
+                cbCoursesYear.Items.Add(i);
+                cbStudentsYear.Items.Add(i);
+            }
+        }
+
+
+        private void SelectingClickEvent(object sender, EventArgs e) {
+            ComboBox cb = (ComboBox)sender;
+
+            if(cb == cbProfile) {
+                bool allProfile = cbProfile.SelectedItem.ToString().Equals("ALL");
+                string selectedProfile = cbProfile.SelectedItem.ToString();
+
+                if (!allProfile) {
+                    cbCoursesYear.Items.Clear();
+                    cbCoursesYear.Items.Add("ALL");
+                    cbCoursesYear.SelectedItem = cbCoursesYear.Items[0];
+                    cbStudentsYear.Items.Clear();
+                    cbStudentsYear.Items.Add("ALL");
+                    cbStudentsYear.SelectedItem = cbStudentsYear.Items[0];
+
+                    for (int i = 1; i <= DataAccess._loggedProfile.Years; i++) {
+                        cbCoursesYear.Items.Add(i);
+                        cbStudentsYear.Items.Add(i);
+                    }
+
+                    cbCourse.Items.Clear();
+                    DataAccess.LoadCourses();
+                    cbCourse.Items.Add("ALL");
+                    cbCourse.SelectedItem = cbCourse.Items[0];
+                    foreach (var course in DataAccess.courses.Where(c => c.Profile == selectedProfile)) {
+                        cbCourse.Items.Add(course.Name);
+                    }
+
+                    cbStudentName.Items.Clear();
+                    cbStudentName.Items.Add("ALL");
+                    cbStudentName.SelectedItem = cbStudentName.Items[0];
+
+                    Profile profile = (from pr in DataAccess._dbContext.Profile
+                                       where pr.Name == selectedProfile
+                                       select pr).FirstOrDefault();
+                    DataAccess.LoadStudents(profile);
+                    foreach (var student in DataAccess.students) {
+                        cbStudentName.Items.Add(student.FullName);
+                    }
+
+                    AdvancedFilter(profile);
+
+                } else {
+                    cbCoursesYear.Items.Clear();
+                    cbCoursesYear.Items.Add("ALL");
+                    cbCoursesYear.SelectedItem = cbCoursesYear.Items[0];
+                    cbStudentsYear.Items.Clear();
+                    cbStudentsYear.Items.Add("ALL");
+                    cbStudentsYear.SelectedItem = cbStudentsYear.Items[0];
+
+                    DataAccess.LoadProfiles();
+                    int maxYear = DataAccess.profiles.Max(x => x.Years);
+                    for (int i = 1; i <= maxYear; i++) {
+                        cbCoursesYear.Items.Add(i);
+                        cbStudentsYear.Items.Add(i);
+                    }
+
+                    cbCourse.Items.Clear();
+                    DataAccess.LoadCourses();
+                    cbCourse.Items.Add("ALL");
+                    cbCourse.SelectedItem = cbCourse.Items[0];
+                    foreach (var course in DataAccess.courses) {
+                        cbCourse.Items.Add(course.Name);
+                    }
+
+                    cbStudentName.Items.Clear();
+                    cbStudentName.Items.Add("ALL");
+                    cbStudentName.SelectedItem = cbStudentName.Items[0];
+
+                    DataAccess.LoadStudents();
+                    foreach (var student in DataAccess.students) {
+                        cbStudentName.Items.Add(student.FullName);
+                    }
+
+                    AdvancedFilter(null);
+                }
+            } else if(cb == cbCoursesYear) {
+
+            }
+
+
+
+        }
+
+        private void AdvancedFilter(Profile byProfile) {
+            NoteListModel notmod = new NoteListModel();
+            DataAccess.LoadNotes();
+
+            if (byProfile != null) {
+                DataAccess.notes = DataAccess.notes.Where(n => n.ProfileId == byProfile.Id).ToList();
+            }
+
+
+            notmod.SetNoteList(DataAccess.notes);
+            Navigator.Navigator.GetInstance().RefreshNoteDGVfiltred(notmod);
+        }
+
+
+        #endregion
     }
 }

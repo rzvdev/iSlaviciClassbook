@@ -72,7 +72,7 @@ namespace iSlavici.Controls.Nav.Pan
             this.textboxCnpCreate.Location = new System.Drawing.Point(485, 104);
             this.textboxCnpCreate.Name = "textboxCnpCreate";
             this.textboxCnpCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
-            this.textboxCnpCreate.Size = new System.Drawing.Size(146, 27);
+            this.textboxCnpCreate.Size = new System.Drawing.Size(146, 23);
             this.textboxCnpCreate.TabIndex = 47;
             this.textboxCnpCreate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -122,7 +122,7 @@ namespace iSlavici.Controls.Nav.Pan
             this.lblAccountSectionCreate.Location = new System.Drawing.Point(72, 37);
             this.lblAccountSectionCreate.Name = "lblAccountSectionCreate";
             this.lblAccountSectionCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
-            this.lblAccountSectionCreate.Size = new System.Drawing.Size(73, 30);
+            this.lblAccountSectionCreate.Size = new System.Drawing.Size(60, 26);
             this.lblAccountSectionCreate.TabIndex = 37;
             this.lblAccountSectionCreate.Values.Text = "Account";
             // 
@@ -142,7 +142,7 @@ namespace iSlavici.Controls.Nav.Pan
             0});
             this.numBtnYearCreate.Name = "numBtnYearCreate";
             this.numBtnYearCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
-            this.numBtnYearCreate.Size = new System.Drawing.Size(60, 26);
+            this.numBtnYearCreate.Size = new System.Drawing.Size(60, 22);
             this.numBtnYearCreate.TabIndex = 53;
             this.numBtnYearCreate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.numBtnYearCreate.Value = new decimal(new int[] {
@@ -157,7 +157,7 @@ namespace iSlavici.Controls.Nav.Pan
             this.lblUsernameCreate.Location = new System.Drawing.Point(66, 80);
             this.lblUsernameCreate.Name = "lblUsernameCreate";
             this.lblUsernameCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
-            this.lblUsernameCreate.Size = new System.Drawing.Size(83, 24);
+            this.lblUsernameCreate.Size = new System.Drawing.Size(68, 20);
             this.lblUsernameCreate.TabIndex = 38;
             this.lblUsernameCreate.Values.Text = "Username:";
             // 
@@ -176,7 +176,7 @@ namespace iSlavici.Controls.Nav.Pan
             this.lblPasswordCreate.Location = new System.Drawing.Point(66, 115);
             this.lblPasswordCreate.Name = "lblPasswordCreate";
             this.lblPasswordCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
-            this.lblPasswordCreate.Size = new System.Drawing.Size(79, 24);
+            this.lblPasswordCreate.Size = new System.Drawing.Size(65, 20);
             this.lblPasswordCreate.TabIndex = 39;
             this.lblPasswordCreate.Values.Text = "Password:";
             // 
@@ -187,7 +187,7 @@ namespace iSlavici.Controls.Nav.Pan
             this.lblProfileSectionCreate.Location = new System.Drawing.Point(72, 253);
             this.lblProfileSectionCreate.Name = "lblProfileSectionCreate";
             this.lblProfileSectionCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
-            this.lblProfileSectionCreate.Size = new System.Drawing.Size(62, 30);
+            this.lblProfileSectionCreate.Size = new System.Drawing.Size(51, 26);
             this.lblProfileSectionCreate.TabIndex = 56;
             this.lblProfileSectionCreate.Values.Text = "Profile";
             // 
@@ -198,7 +198,7 @@ namespace iSlavici.Controls.Nav.Pan
             this.lblPersonSectionCreate.Location = new System.Drawing.Point(419, 37);
             this.lblPersonSectionCreate.Name = "lblPersonSectionCreate";
             this.lblPersonSectionCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
-            this.lblPersonSectionCreate.Size = new System.Drawing.Size(115, 30);
+            this.lblPersonSectionCreate.Size = new System.Drawing.Size(94, 26);
             this.lblPersonSectionCreate.TabIndex = 40;
             this.lblPersonSectionCreate.Values.Text = "Person Profile";
             // 
@@ -224,10 +224,10 @@ namespace iSlavici.Controls.Nav.Pan
             // lblFullNameCreate
             // 
             this.lblFullNameCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblFullNameCreate.Location = new System.Drawing.Point(397, 77);
+            this.lblFullNameCreate.Location = new System.Drawing.Point(408, 77);
             this.lblFullNameCreate.Name = "lblFullNameCreate";
             this.lblFullNameCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
-            this.lblFullNameCreate.Size = new System.Drawing.Size(84, 24);
+            this.lblFullNameCreate.Size = new System.Drawing.Size(68, 20);
             this.lblFullNameCreate.TabIndex = 41;
             this.lblFullNameCreate.Values.Text = "Full Name:";
             // 
@@ -236,7 +236,7 @@ namespace iSlavici.Controls.Nav.Pan
             this.radBtnAdminCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.radBtnAdminCreate.Location = new System.Drawing.Point(168, 205);
             this.radBtnAdminCreate.Name = "radBtnAdminCreate";
-            this.radBtnAdminCreate.Size = new System.Drawing.Size(142, 24);
+            this.radBtnAdminCreate.Size = new System.Drawing.Size(118, 20);
             this.radBtnAdminCreate.TabIndex = 51;
             this.radBtnAdminCreate.Values.Text = "ADMINISTRATOR";
             this.radBtnAdminCreate.Click += new System.EventHandler(this.RadBtnRole);
@@ -268,7 +268,7 @@ namespace iSlavici.Controls.Nav.Pan
             this.radBtnStudentCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.radBtnStudentCreate.Location = new System.Drawing.Point(71, 205);
             this.radBtnStudentCreate.Name = "radBtnStudentCreate";
-            this.radBtnStudentCreate.Size = new System.Drawing.Size(89, 24);
+            this.radBtnStudentCreate.Size = new System.Drawing.Size(75, 20);
             this.radBtnStudentCreate.TabIndex = 50;
             this.radBtnStudentCreate.Values.Text = "STUDENT";
             this.radBtnStudentCreate.Click += new System.EventHandler(this.RadBtnRole);
@@ -279,7 +279,7 @@ namespace iSlavici.Controls.Nav.Pan
             this.txtboxUsernameCreate.Location = new System.Drawing.Point(138, 76);
             this.txtboxUsernameCreate.Name = "txtboxUsernameCreate";
             this.txtboxUsernameCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
-            this.txtboxUsernameCreate.Size = new System.Drawing.Size(146, 27);
+            this.txtboxUsernameCreate.Size = new System.Drawing.Size(146, 23);
             this.txtboxUsernameCreate.TabIndex = 44;
             this.txtboxUsernameCreate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -299,7 +299,7 @@ namespace iSlavici.Controls.Nav.Pan
             this.txtboxPasswordCreate.Name = "txtboxPasswordCreate";
             this.txtboxPasswordCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.txtboxPasswordCreate.PasswordChar = '●';
-            this.txtboxPasswordCreate.Size = new System.Drawing.Size(146, 27);
+            this.txtboxPasswordCreate.Size = new System.Drawing.Size(146, 23);
             this.txtboxPasswordCreate.TabIndex = 45;
             this.txtboxPasswordCreate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtboxPasswordCreate.UseSystemPasswordChar = true;
@@ -311,7 +311,7 @@ namespace iSlavici.Controls.Nav.Pan
             this.lblRoleSectionCreate.Location = new System.Drawing.Point(72, 179);
             this.lblRoleSectionCreate.Name = "lblRoleSectionCreate";
             this.lblRoleSectionCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
-            this.lblRoleSectionCreate.Size = new System.Drawing.Size(46, 30);
+            this.lblRoleSectionCreate.Size = new System.Drawing.Size(38, 26);
             this.lblRoleSectionCreate.TabIndex = 55;
             this.lblRoleSectionCreate.Values.Text = "Role";
             // 
@@ -321,7 +321,7 @@ namespace iSlavici.Controls.Nav.Pan
             this.txtboxFullNameCreate.Location = new System.Drawing.Point(485, 76);
             this.txtboxFullNameCreate.Name = "txtboxFullNameCreate";
             this.txtboxFullNameCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
-            this.txtboxFullNameCreate.Size = new System.Drawing.Size(146, 27);
+            this.txtboxFullNameCreate.Size = new System.Drawing.Size(146, 23);
             this.txtboxFullNameCreate.TabIndex = 46;
             this.txtboxFullNameCreate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -331,7 +331,7 @@ namespace iSlavici.Controls.Nav.Pan
             this.txtboxEmailCreate.Location = new System.Drawing.Point(485, 131);
             this.txtboxEmailCreate.Name = "txtboxEmailCreate";
             this.txtboxEmailCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
-            this.txtboxEmailCreate.Size = new System.Drawing.Size(146, 27);
+            this.txtboxEmailCreate.Size = new System.Drawing.Size(146, 23);
             this.txtboxEmailCreate.TabIndex = 48;
             this.txtboxEmailCreate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -343,7 +343,7 @@ namespace iSlavici.Controls.Nav.Pan
             this.txtboxPhoneCreate.Location = new System.Drawing.Point(485, 162);
             this.txtboxPhoneCreate.Name = "txtboxPhoneCreate";
             this.txtboxPhoneCreate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
-            this.txtboxPhoneCreate.Size = new System.Drawing.Size(146, 27);
+            this.txtboxPhoneCreate.Size = new System.Drawing.Size(146, 23);
             this.txtboxPhoneCreate.TabIndex = 49;
             this.txtboxPhoneCreate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 

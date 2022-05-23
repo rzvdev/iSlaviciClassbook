@@ -138,5 +138,13 @@ namespace classbook
         private void Dashboard_FormClosed(object sender, FormClosedEventArgs e) {
             Application.Exit();
         }
+
+        private void kryptonButton1_Click(object sender, EventArgs e) {
+
+        }
+
+        private void btnManageNews_Click(object sender, EventArgs e) {
+
+        }
     }
 }

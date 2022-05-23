@@ -40,6 +40,7 @@ namespace iSlavici.Components.Nav.Pan
             // 
             this.cbCoursesYear.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cbCoursesYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCoursesYear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbCoursesYear.FormattingEnabled = true;
             this.cbCoursesYear.Location = new System.Drawing.Point(401, 54);
             this.cbCoursesYear.Name = "cbCoursesYear";
@@ -60,6 +61,7 @@ namespace iSlavici.Components.Nav.Pan
             // 
             this.cbProfile.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cbProfile.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbProfile.FormattingEnabled = true;
             this.cbProfile.Location = new System.Drawing.Point(274, 54);
             this.cbProfile.Name = "cbProfile";
@@ -100,6 +102,7 @@ namespace iSlavici.Components.Nav.Pan
             // 
             this.cbType.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbType.FormattingEnabled = true;
             this.cbType.Location = new System.Drawing.Point(491, 54);
             this.cbType.Name = "cbType";

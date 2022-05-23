@@ -6,7 +6,7 @@ namespace iSlavici.Controls
 {
     public partial class MyNotesUC : UserControl
     {
-        public static MyNotesDGV MyNotesDGV { get; set; }
+        public MyNotesDGV MyNotesDGV { get; set; }
 
         public MyNotesUC() {
             InitializeComponent();

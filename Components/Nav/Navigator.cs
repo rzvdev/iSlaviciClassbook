@@ -25,7 +25,7 @@ namespace iSlavici.Controls.Navigator
         private static PageAddNote pageAddNote;
         private static PageAddNoteType pageAddNoteType;
         private static PageMyProfile pageMyProfile;
-        private static PageMyCourses pageMyCourses;
+        private static PanelMyCouresListFilter pageMyCourses;
         private static PageMyNotes pageMyNotes;
 
         private Navigator() {
@@ -81,7 +81,7 @@ namespace iSlavici.Controls.Navigator
                 Pages.Add(pageMyProfile);
             } else if(DataAccess._loggedRole.Name == "STUDENT") {
                 pageMyProfile = PageMyProfile.Create();
-                pageMyCourses = PageMyCourses.Create();
+                pageMyCourses = PanelMyCouresListFilter.Create();
                 pageMyNotes = PageMyNotes.Create();
 
                 Pages.Add(pageMyProfile);
@@ -195,6 +195,14 @@ namespace iSlavici.Controls.Navigator
 
         public void RefreshUserDGVfiltred(IFiltrableUser user) {
             pageUserList.spliitterUserList.userUC.userDGV.FillTableFiltred((IFiltrable)user);
+        }
+
+        public void RefreshMyCourseDGVfiltred(IFiltrableCourse studentCourse) {
+            pageMyCourses.SplitterMyCourses.MyCoursesUC.MyCoursesDGV.FillTableFiltred((IFiltrable)studentCourse);
+        }
+
+        public void RefreshMyNotesDGVfilted(IFiltrableNotes myNotes) {
+            pageMyNotes.splitterMyNotes.MyNotesUC.MyNotesDGV.FillTableFiltred((IFiltrable)myNotes);
         }
     }
 }

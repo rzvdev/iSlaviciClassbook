@@ -314,6 +314,18 @@
     <Compile Include="Components\Nav\Pan\PanelCourseListFiltersUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Components\Nav\Pan\PanelMyCoursesListFiltersUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Nav\Pan\PanelMyCoursesListFiltersUC.Designer.cs">
+      <DependentUpon>PanelMyCoursesListFiltersUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Nav\Pan\PanelMyNotesListFiltersUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Nav\Pan\PanelMyNotesListFiltersUC.Designer.cs">
+      <DependentUpon>PanelMyNotesListFiltersUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\Nav\Pan\PanelUserListFiltersUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -578,6 +590,12 @@
     <EmbeddedResource Include="Components\Nav\Pan\PanelEditUserUC.resx">
       <DependentUpon>PanelEditUserUC.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Components\Nav\Pan\PanelMyCoursesListFiltersUC.resx">
+      <DependentUpon>PanelMyCoursesListFiltersUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Nav\Pan\PanelMyNotesListFiltersUC.resx">
+      <DependentUpon>PanelMyNotesListFiltersUC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Components\Nav\Pan\PanelMyProfileUC.resx">
       <DependentUpon>PanelMyProfileUC.cs</DependentUpon>
     </EmbeddedResource>
@@ -689,6 +707,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="mainFormIcon.ico" />
+    <None Include="Resources\news-24px.png" />
+    <None Include="Resources\btnFees-24px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

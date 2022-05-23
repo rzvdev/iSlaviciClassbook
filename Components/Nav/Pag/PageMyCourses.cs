@@ -3,7 +3,7 @@ using iSlavici.Controls.Spl;
 
 namespace iSlavici.Controls.Nav.Pag
 {
-    public class PageMyCourses : BasePage, IPage,IPageSplitted
+    public class PanelMyCouresListFilter : BasePage, IPage,IPageSplitted
     {
         public string PageIdName => PAGE_MY_COURSES_INDEX_NAME;
 
@@ -28,8 +28,8 @@ namespace iSlavici.Controls.Nav.Pag
             TextTitle = PageGroup;
         }
 
-        public static PageMyCourses Create() {
-            PageMyCourses page = new PageMyCourses();
+        public static PanelMyCouresListFilter Create() {
+            PanelMyCouresListFilter page = new PanelMyCouresListFilter();
             page.InitializePage();
             return page;
         }

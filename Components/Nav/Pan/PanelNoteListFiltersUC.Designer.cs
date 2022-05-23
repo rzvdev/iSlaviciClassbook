@@ -35,7 +35,6 @@
             this.cbStudentName = new System.Windows.Forms.ComboBox();
             this.lblStudentNameFilter = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.cbCoursesYear = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.kryptonPage1 = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.kryptonPage2 = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.cbStudentsYear = new System.Windows.Forms.ComboBox();
@@ -67,7 +66,7 @@
             // lblSearchProfile
             // 
             this.lblSearchProfile.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblSearchProfile.Location = new System.Drawing.Point(59, 30);
+            this.lblSearchProfile.Location = new System.Drawing.Point(103, 30);
             this.lblSearchProfile.Name = "lblSearchProfile";
             this.lblSearchProfile.Size = new System.Drawing.Size(51, 20);
             this.lblSearchProfile.TabIndex = 3;
@@ -77,8 +76,9 @@
             // 
             this.cbProfile.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cbProfile.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbProfile.FormattingEnabled = true;
-            this.cbProfile.Location = new System.Drawing.Point(24, 53);
+            this.cbProfile.Location = new System.Drawing.Point(68, 53);
             this.cbProfile.Name = "cbProfile";
             this.cbProfile.Size = new System.Drawing.Size(121, 21);
             this.cbProfile.TabIndex = 4;
@@ -87,7 +87,7 @@
             // lblCourseFilter
             // 
             this.lblCourseFilter.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblCourseFilter.Location = new System.Drawing.Point(311, 30);
+            this.lblCourseFilter.Location = new System.Drawing.Point(355, 30);
             this.lblCourseFilter.Name = "lblCourseFilter";
             this.lblCourseFilter.Size = new System.Drawing.Size(54, 20);
             this.lblCourseFilter.TabIndex = 5;
@@ -97,8 +97,9 @@
             // 
             this.cbCourse.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cbCourse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCourse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbCourse.FormattingEnabled = true;
-            this.cbCourse.Location = new System.Drawing.Point(243, 53);
+            this.cbCourse.Location = new System.Drawing.Point(287, 53);
             this.cbCourse.Name = "cbCourse";
             this.cbCourse.Size = new System.Drawing.Size(181, 21);
             this.cbCourse.TabIndex = 6;
@@ -107,7 +108,7 @@
             // lblYearCoursesFilter
             // 
             this.lblYearCoursesFilter.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblYearCoursesFilter.Location = new System.Drawing.Point(154, 30);
+            this.lblYearCoursesFilter.Location = new System.Drawing.Point(198, 30);
             this.lblYearCoursesFilter.Name = "lblYearCoursesFilter";
             this.lblYearCoursesFilter.Size = new System.Drawing.Size(81, 20);
             this.lblYearCoursesFilter.TabIndex = 7;
@@ -117,8 +118,9 @@
             // 
             this.cbStudentName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cbStudentName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbStudentName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbStudentName.FormattingEnabled = true;
-            this.cbStudentName.Location = new System.Drawing.Point(523, 53);
+            this.cbStudentName.Location = new System.Drawing.Point(567, 53);
             this.cbStudentName.Name = "cbStudentName";
             this.cbStudentName.Size = new System.Drawing.Size(128, 21);
             this.cbStudentName.TabIndex = 10;
@@ -127,7 +129,7 @@
             // lblStudentNameFilter
             // 
             this.lblStudentNameFilter.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblStudentNameFilter.Location = new System.Drawing.Point(543, 30);
+            this.lblStudentNameFilter.Location = new System.Drawing.Point(587, 30);
             this.lblStudentNameFilter.Name = "lblStudentNameFilter";
             this.lblStudentNameFilter.Size = new System.Drawing.Size(89, 20);
             this.lblStudentNameFilter.TabIndex = 9;
@@ -137,22 +139,13 @@
             // 
             this.cbCoursesYear.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cbCoursesYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCoursesYear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbCoursesYear.FormattingEnabled = true;
-            this.cbCoursesYear.Location = new System.Drawing.Point(151, 53);
+            this.cbCoursesYear.Location = new System.Drawing.Point(195, 53);
             this.cbCoursesYear.Name = "cbCoursesYear";
             this.cbCoursesYear.Size = new System.Drawing.Size(84, 21);
             this.cbCoursesYear.TabIndex = 12;
             this.cbCoursesYear.SelectedIndexChanged += new System.EventHandler(this.CbYearSelectEvent);
-            // 
-            // button1
-            // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button1.Location = new System.Drawing.Point(661, 51);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "Apply";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // kryptonPage1
             // 
@@ -182,8 +175,9 @@
             // 
             this.cbStudentsYear.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cbStudentsYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbStudentsYear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbStudentsYear.FormattingEnabled = true;
-            this.cbStudentsYear.Location = new System.Drawing.Point(431, 53);
+            this.cbStudentsYear.Location = new System.Drawing.Point(475, 53);
             this.cbStudentsYear.Name = "cbStudentsYear";
             this.cbStudentsYear.Size = new System.Drawing.Size(84, 21);
             this.cbStudentsYear.TabIndex = 16;
@@ -192,7 +186,7 @@
             // lblYearStudentsFilter
             // 
             this.lblYearStudentsFilter.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblYearStudentsFilter.Location = new System.Drawing.Point(433, 30);
+            this.lblYearStudentsFilter.Location = new System.Drawing.Point(477, 30);
             this.lblYearStudentsFilter.Name = "lblYearStudentsFilter";
             this.lblYearStudentsFilter.Size = new System.Drawing.Size(86, 20);
             this.lblYearStudentsFilter.TabIndex = 15;
@@ -204,7 +198,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.cbStudentsYear);
             this.Controls.Add(this.lblYearStudentsFilter);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.cbCoursesYear);
             this.Controls.Add(this.cbStudentName);
             this.Controls.Add(this.lblStudentNameFilter);
@@ -239,7 +232,6 @@
         private System.Windows.Forms.ComboBox cbStudentName;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel lblStudentNameFilter;
         private System.Windows.Forms.ComboBox cbCoursesYear;
-        private System.Windows.Forms.Button button1;
         private ComponentFactory.Krypton.Navigator.KryptonPage kryptonPage1;
         private ComponentFactory.Krypton.Navigator.KryptonPage kryptonPage2;
         private System.Windows.Forms.ComboBox cbStudentsYear;

@@ -14,6 +14,7 @@ namespace iSlavici.Models
         public string TeacherName { get; set; }
         public string NoteType { get; set; }
         public int Note { get; set; }
+        public int InYear { get; set; }
         public DateTime DateAdded { get; set; }
 
         
