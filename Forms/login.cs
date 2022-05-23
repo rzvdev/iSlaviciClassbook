@@ -35,6 +35,7 @@ namespace classbook
             {
                 _connectionTick = new ConnectionTick(labelConnectionStatusPicture);
                 _connectionTick.StartTimer();
+                SetSavedAccount();
             }
             catch (Exception ex)
             {

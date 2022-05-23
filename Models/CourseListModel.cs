@@ -60,5 +60,13 @@ namespace iSlavici.Models
         public void SetOneStudentNoteList(List<NoteOneStudentListModel> notes) {
             throw new System.NotImplementedException();
         }
+
+        public List<UserListModel> GetUserList() {
+            throw new System.NotImplementedException();
+        }
+
+        public void SetUserList(List<UserListModel> userList) {
+            throw new System.NotImplementedException();
+        }
     }
 }

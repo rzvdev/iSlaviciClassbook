@@ -1,9 +1,13 @@
-﻿using System;
+﻿using iSlavici.Components.interfaces;
+using iSlavici.Controls;
+using System;
+using System.Collections.Generic;
 
 namespace iSlavici.Models
 {
-    public class UserListModel
+    public class UserListModel : IFiltrable,IFiltrableUser
     {
+        private List<UserListModel> UserLists { get; set; }
         public int ID { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
@@ -39,6 +43,37 @@ namespace iSlavici.Models
         {
 
         }
-       
+
+        public List<UserListModel> GetUserList() {
+            return UserLists;
+        }
+
+        public void SetUserList(List<UserListModel> userList) {
+            UserLists = userList;
+        }
+
+        public List<NoteListModel> GetNoteList() {
+            throw new NotImplementedException();
+        }
+
+        public List<NoteOneStudentListModel> GetOneStudentNoteList() {
+            throw new NotImplementedException();
+        }
+
+        public void SetNoteList(List<NoteListModel> notes) {
+            throw new NotImplementedException();
+        }
+
+        public void SetOneStudentNoteList(List<NoteOneStudentListModel> notes) {
+            throw new NotImplementedException();
+        }
+
+        public List<CourseListModel> GetCourseList() {
+            throw new NotImplementedException();
+        }
+
+        public void SetCourseList(List<CourseListModel> courseList) {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -192,5 +192,9 @@ namespace iSlavici.Controls.Navigator
         public void RefreshCourseDGVfiltred(IFiltrableCourse course) {
             pageCourseList.splitterCourseList.courseUC.courseDGV.FillTableFiltred((IFiltrable)course);
         }
+
+        public void RefreshUserDGVfiltred(IFiltrableUser user) {
+            pageUserList.spliitterUserList.userUC.userDGV.FillTableFiltred((IFiltrable)user);
+        }
     }
 }

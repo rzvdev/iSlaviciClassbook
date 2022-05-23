@@ -142,7 +142,7 @@ namespace iSlavici.Models
                     };
 
                     DataGridViewColumn roleColumn = new DataGridViewColumn {
-                        Width = 120,
+                        Width = 150,
                         HeaderText = "ROLE",
                         CellTemplate = new DataGridViewTextBoxCell()
                     };
@@ -197,7 +197,11 @@ namespace iSlavici.Models
         }
 
         public override void FillTableFiltred(IFiltrable filtred) {
-            throw new NotImplementedException();
+            Rows.Clear();
+            List<UserListModel> users = filtred.GetUserList();
+            foreach (var user in users) {
+                Rows.Add(user.ID, user.Username, user.Password, user.Name, user.CNP, user.Role, user.Email, user.Phone, user.Profile, user.Year, FormattedDate(user.CreatedDate));
+            }
         }
     }
 }

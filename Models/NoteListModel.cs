@@ -1,5 +1,4 @@
-﻿using iSlavici.Connection.Models.db;
-using iSlavici.Controls;
+﻿using iSlavici.Controls;
 using System;
 using System.Collections.Generic;
 
@@ -35,6 +34,10 @@ namespace iSlavici.Models
             throw new NotImplementedException();
         }
 
+        public List<UserListModel> GetUserList() {
+            throw new NotImplementedException();
+        }
+
         public void SetCourseList(List<CourseListModel> courseList) {
             throw new NotImplementedException();
         }
@@ -44,6 +47,10 @@ namespace iSlavici.Models
         }
 
         public void SetOneStudentNoteList(List<NoteOneStudentListModel> notes) {
+            throw new NotImplementedException();
+        }
+
+        public void SetUserList(List<UserListModel> userList) {
             throw new NotImplementedException();
         }
     }

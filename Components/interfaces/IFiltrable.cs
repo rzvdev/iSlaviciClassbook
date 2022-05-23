@@ -2,7 +2,7 @@
 
 namespace iSlavici.Controls
 {
-    public interface IFiltrable : IFiltrableNotes, IFiltrableCourse
+    public interface IFiltrable : IFiltrableNotes, IFiltrableCourse, IFiltrableUser
     {
     }
 }

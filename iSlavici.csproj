@@ -310,8 +310,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\interfaces\IFiltrableCourse.cs" />
+    <Compile Include="Components\interfaces\IFiltrableUser.cs" />
     <Compile Include="Components\Nav\Pan\PanelCourseListFiltersUC.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Nav\Pan\PanelUserListFiltersUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Nav\Pan\PanelUserListFiltersUC.Designer.cs">
+      <DependentUpon>PanelUserListFiltersUC.cs</DependentUpon>
     </Compile>
     <Compile Include="Connection\Models\builder\AccountBuilder.cs" />
     <Compile Include="Connection\Models\builder\PersonBuilder.cs" />
@@ -560,6 +567,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\Nav\Pan\PanelCourseListFiltersUC.resx">
       <DependentUpon>PanelCourseListFiltersUC.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\Nav\Pan\PanelCreateCourseUC.resx">
       <DependentUpon>PanelCreateCourseUC.cs</DependentUpon>
@@ -575,6 +583,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\Nav\Pan\PanelNoteListFiltersUC.resx">
       <DependentUpon>PanelNoteListFiltersUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Nav\Pan\PanelUserListFiltersUC.resx">
+      <DependentUpon>PanelUserListFiltersUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\UserUC.resx">
       <DependentUpon>UserUC.cs</DependentUpon>

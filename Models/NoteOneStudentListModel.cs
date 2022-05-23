@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace iSlavici.Models
 {
-    public class NoteOneStudentListModel : IFiltrable, IFiltrableNotes
+    public class NoteOneStudentListModel : IFiltrable,IFiltrableNotes
     {
         private List<NoteOneStudentListModel> noteList { get; set; }
 
@@ -39,6 +39,14 @@ namespace iSlavici.Models
         }
 
         public void SetCourseList(List<CourseListModel> courseList) {
+            throw new NotImplementedException();
+        }
+
+        public List<UserListModel> GetUserList() {
+            throw new NotImplementedException();
+        }
+
+        public void SetUserList(List<UserListModel> userList) {
             throw new NotImplementedException();
         }
     }
