@@ -15,6 +15,7 @@ namespace iSlavici.Components.Nav.Pan
         private int SelectedYear { get; set; }
 
 
+
         public PanelUserListFiltersUC() {
             InitializeComponent();
         }
@@ -75,6 +76,21 @@ namespace iSlavici.Components.Nav.Pan
                 for (int i = 1; i <= SelectedProfile.Years; i++) {
                     cbYear.Items.Add(i.ToString());
                 }
+            }
+        }
+
+        private void SearchActiveFilter(object sender,EventArgs e) {
+            ComboBox cb = (ComboBox)sender;
+            bool allUsers = cb.SelectedItem.ToString().Equals("ALL");
+
+            if (!allUsers) {
+                string searched = cb.SelectedItem.ToString();
+                List<UserListModel> userSearched = DataAccess.users.Where(u => u.Name == searched).ToList();
+                UserListModel userList = new UserListModel();
+                userList.SetUserList(userSearched);
+                Navigator.GetInstance().RefreshUserDGVfiltred(userList);
+            } else {
+                LoadUsers(SelectedProfile, SelectedYear);
             }
         }
 

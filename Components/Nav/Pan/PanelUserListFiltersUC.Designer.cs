@@ -125,6 +125,7 @@
             this.cbSearch.Name = "cbSearch";
             this.cbSearch.Size = new System.Drawing.Size(225, 21);
             this.cbSearch.TabIndex = 45;
+            this.cbSearch.SelectionChangeCommitted += new System.EventHandler(this.SearchActiveFilter);
             // 
             // PanelUserListFiltersUC
             // 
